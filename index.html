@@ -1171,6 +1171,264 @@
                 font-size: .95rem
             }
         }
+
+        /* DEMO MODAL */
+        .demo-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 12, 41, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .demo-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .demo-modal {
+            width: 100%;
+            max-width: 400px;
+            height: 85vh;
+            max-height: 800px;
+            background: #F8F7FF;
+            border-radius: 32px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+            position: relative;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media(max-width: 480px) {
+            .demo-overlay { align-items: flex-end; }
+            .demo-modal { 
+                height: 90vh; 
+                border-radius: 32px 32px 0 0;
+                transform: translateY(100%);
+            }
+        }
+
+        .demo-overlay.active .demo-modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .demo-head {
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #FFF;
+            border-bottom: 1px solid rgba(107, 85, 230, 0.08);
+            z-index: 10;
+        }
+
+        .demo-title {
+            font-weight: 800;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .demo-close {
+            background: rgba(107, 85, 230, 0.08);
+            color: var(--muted);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .demo-close:hover { background: rgba(107, 85, 230, 0.15); color: var(--b6); }
+
+        .demo-body {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+        }
+
+        /* Demo States */
+        .ds-idle, .ds-listening, .ds-parsing, .ds-result {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .ds-idle.active, .ds-listening.active, .ds-parsing.active, .ds-result.active {
+            display: flex;
+        }
+
+        .ds-result.active {
+            justify-content: flex-start;
+        }
+
+        /* Mic Button */
+        .mic-btn {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--b5), var(--b6));
+            color: var(--w);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(79, 56, 189, 0.3);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .mic-btn svg { width: 36px; height: 36px; }
+        
+        .mic-rings {
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(107, 85, 230, 0.2) 0%, transparent 70%);
+            z-index: 1;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .ds-listening .mic-rings {
+            animation: pulse-ring 1.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .ds-listening .mic-btn {
+            animation: pulse-core 1.5s infinite;
+        }
+
+        .demo-hint { font-size: 1rem; color: var(--muted); font-weight: 600; }
+        .demo-transcript {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.5;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+        }
+        .demo-transcript.show { opacity: 1; transform: translateY(0); }
+
+        /* Loader */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 4px solid rgba(107, 85, 230, 0.1);
+            border-top-color: var(--b6);
+            animation: spin 1s infinite linear;
+            margin-bottom: 20px;
+        }
+
+        /* Results */
+        .log-cards { width: 100%; display: flex; flex-direction: column; gap: 12px; margin-top: 10px; margin-bottom: 24px; }
+        
+        .log-card {
+            background: var(--w);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid rgba(107,85,230,0.06);
+            opacity: 0;
+            transform: translateY(20px);
+            text-align: left;
+        }
+
+        .lc-anim.show {
+            animation: slideUpCard 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .lc-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .lc-icon svg { width: 22px; height: 22px; }
+        
+        .lc-icon.sus { background: rgba(56, 189, 248, 0.1); color: #0284C7; }
+        .lc-icon.pup { background: rgba(245, 158, 66, 0.1); color: #EA580C; }
+        .lc-icon.tdr { background: rgba(107, 85, 230, 0.1); color: var(--b6); }
+        .lc-icon.mkn { background: rgba(52, 211, 153, 0.1); color: #059669; }
+
+        .lc-content { flex: 1; }
+        .lc-title { font-weight: 800; color: var(--dark); font-size: 0.95rem; margin-bottom: 2px; }
+        .lc-desc { font-size: 0.85rem; color: var(--muted); }
+        .lc-time { font-weight: 700; color: var(--dark); font-size: 0.85rem; background: var(--bg); padding: 4px 8px; border-radius: 6px; }
+
+        .demo-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            opacity: 0;
+            margin-top: auto;
+        }
+        .demo-actions.show { animation: slideUpCard 0.5s ease forwards; animation-delay: 0.6s; }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--b5), var(--b6));
+            color: var(--w);
+            padding: 16px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--b6);
+            padding: 14px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            width: 100%;
+            border: 2px solid rgba(107, 85, 230, 0.2);
+        }
+
+        /* Result Transcript shrink */
+        .shrinky-text {
+            font-size: 0.95rem;
+            color: var(--muted);
+            font-style: italic;
+            background: rgba(107,85,230,0.05);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--b5);
+            text-align: left;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes pulse-ring { 0% { transform: scale(0.8); opacity: 0; } 50% { opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
+        @keyframes pulse-core { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes slideUpCard { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
     </style>
 </head>
 
@@ -1210,8 +1468,12 @@
                             stroke="currentColor" stroke-width="2.5">
                             <path d="M5 12h14" />
                             <path d="m12 5 7 7-7 7" />
-                        </svg>Mulai Gratis Sekarang</a>
-                    <a href="#fitur" class="bs">Pelajari Fitur</a>
+                        </svg>Mulai Gratis</a>
+                    <button class="bs" onclick="openDemo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" x2="12" y1="19" y2="22"/>
+                    </svg>Coba Demo AI ✨</button>
                 </div>
                 <div class="htr">
                     <span class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1461,7 +1723,165 @@
         </div>
     </footer>
 
+    <!-- DEMO OVERLAY -->
+    <div class="demo-overlay" id="demoOverlay">
+        <div class="demo-modal">
+            <div class="demo-head">
+                <div class="demo-title">Simulasi LangkahKecil AI</div>
+                <button class="demo-close" onclick="closeDemo()" aria-label="Tutup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="demo-body" id="demoBody">
+                
+                <!-- State 1: Idle -->
+                <div class="ds-idle active" id="dsIdle">
+                    <button class="mic-btn" onclick="startDemoRecording()">
+                        <div class="mic-rings"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                    </button>
+                    <div class="demo-hint">Sentuh mic untuk mencoba</div>
+                </div>
+
+                <!-- State 2: Listening & Transcript -->
+                <div class="ds-listening" id="dsListen">
+                    <div style="position:relative; margin-bottom: 24px;">
+                        <div class="mic-rings"></div>
+                        <div class="mic-btn" style="margin-bottom:0;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                        </div>
+                    </div>
+                    <div class="demo-hint" id="listenStatus">Mendengarkan...</div>
+                    <div class="demo-transcript" id="liveTranscript">"Hari ini Rezda jam 7 pagi minum susu 180 ml, jam 8 pup, jam 12 tidur siang sekitar 1 jam 20 menit, lalu jam 1 siang makan bubur ayam setengah mangkok."</div>
+                </div>
+
+                <!-- State 3: Parsing -->
+                <div class="ds-parsing" id="dsParse">
+                    <div class="loader"></div>
+                    <div class="demo-title">AI sedang memproses catatanmu...</div>
+                    <div class="demo-hint" style="margin-top:8px;">Memecah suara jadi beberapa logs</div>
+                </div>
+
+                <!-- State 4: Results -->
+                <div class="ds-result" id="dsResult">
+                    <div class="shrinky-text">"Hari ini Rezda jam 7 pagi minum susu 180 ml, jam 8 pup, jam 12 tidur siang sekitar 1 jam 20 mnt, lalu jam 1 siang makan bubur..."</div>
+                    
+                    <div class="log-cards">
+                        <!-- Card 1 -->
+                        <div class="log-card lc-anim" style="animation-delay: 0.1s;">
+                            <div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div>
+                            <div class="lc-content">
+                                <div class="lc-title">Minum Susu</div>
+                                <div class="lc-desc">180 ml</div>
+                            </div>
+                            <div class="lc-time">07:00</div>
+                        </div>
+                        
+                        <!-- Card 2 -->
+                        <div class="log-card lc-anim" style="animation-delay: 0.2s;">
+                            <div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div>
+                            <div class="lc-content">
+                                <div class="lc-title">Popok / Pup</div>
+                                <div class="lc-desc">Kotor/Pup</div>
+                            </div>
+                            <div class="lc-time">08:00</div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="log-card lc-anim" style="animation-delay: 0.3s;">
+                            <div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div>
+                            <div class="lc-content">
+                                <div class="lc-title">Tidur Siang</div>
+                                <div class="lc-desc">Durasi: 1 jam 20 mnt</div>
+                            </div>
+                            <div class="lc-time">12:00</div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="log-card lc-anim" style="animation-delay: 0.4s;">
+                            <div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
+                            <div class="lc-content">
+                                <div class="lc-title">Makan Padat</div>
+                                <div class="lc-desc">Bubur ayam 1/2 porsi</div>
+                            </div>
+                            <div class="lc-time">13:00</div>
+                        </div>
+                    </div>
+
+                    <div class="demo-actions" id="demoActions">
+                        <button class="btn-primary" onclick="closeDemo()">Simpan 4 log</button>
+                        <button class="btn-secondary" onclick="closeDemo()">Edit hasil</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Demo Logic
+        let demoTimeout1, demoTimeout2, demoTimeout3;
+
+        function openDemo() {
+            document.getElementById('demoOverlay').classList.add('active');
+            resetDemoState();
+            document.body.style.overflow = 'hidden'; // prevent bg scroll
+        }
+
+        function closeDemo() {
+            document.getElementById('demoOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+            clearTimeout(demoTimeout1);
+            clearTimeout(demoTimeout2);
+            clearTimeout(demoTimeout3);
+        }
+
+        function resetDemoState() {
+            document.querySelectorAll('.ds-idle, .ds-listening, .ds-parsing, .ds-result').forEach(el => el.classList.remove('active'));
+            document.getElementById('dsIdle').classList.add('active');
+            document.getElementById('listenStatus').innerText = "Mendengarkan...";
+            document.getElementById('liveTranscript').classList.remove('show');
+            document.querySelectorAll('.lc-anim').forEach(el => el.classList.remove('show'));
+            document.getElementById('demoActions').classList.remove('show');
+            
+            // Scroll ke atas modal
+            const bBody = document.getElementById('demoBody');
+            if(bBody) bBody.scrollTop = 0;
+        }
+
+        function startDemoRecording() {
+            // Switch to Listening
+            document.getElementById('dsIdle').classList.remove('active');
+            document.getElementById('dsListen').classList.add('active');
+
+            // 1. Show transcript after 2s
+            demoTimeout1 = setTimeout(() => {
+                document.getElementById('listenStatus').innerText = "Merekam...";
+                document.getElementById('liveTranscript').classList.add('show');
+                
+                // 2. Switch to Parsing after 2.5s more
+                demoTimeout2 = setTimeout(() => {
+                    document.getElementById('dsListen').classList.remove('active');
+                    document.getElementById('dsParse').classList.add('active');
+                    
+                    // 3. Switch to Result after 1.5s more
+                    demoTimeout3 = setTimeout(() => {
+                        document.getElementById('dsParse').classList.remove('active');
+                        document.getElementById('dsResult').classList.add('active');
+                        
+                        // Scroll top
+                        document.getElementById('demoBody').scrollTop = 0;
+
+                        // Trigger card animations
+                        setTimeout(() => {
+                            document.querySelectorAll('.lc-anim').forEach(el => el.classList.add('show'));
+                            document.getElementById('demoActions').classList.add('show');
+                        }, 50);
+
+                    }, 1800);
+                }, 3000);
+            }, 1500);
+        }
+
+        // Base Logic
         function initReveal() { const r = document.querySelectorAll('.rv'); new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe && r.forEach(el => new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe(el)) }
         function initNav() { const n = document.getElementById('navbar'); window.addEventListener('scroll', () => { n.classList.toggle('sc', scrollY > 50) }) }
         function initMob() { const t = document.getElementById('navToggle'), l = document.getElementById('navLinks'); t.addEventListener('click', () => { l.classList.toggle('open'); const s = t.querySelectorAll('span'), o = l.classList.contains('open'); s[0].style.transform = o ? 'rotate(45deg) translate(5px,5px)' : ''; s[1].style.opacity = o ? '0' : ''; s[2].style.transform = o ? 'rotate(-45deg) translate(5px,-5px)' : '' }); l.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { l.classList.remove('open'); t.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = '' }) })) }
