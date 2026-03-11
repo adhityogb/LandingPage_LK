@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -1185,7 +1185,7 @@
                 <li><a href="#fitur">Fitur</a></li>
                 <li><a href="#insight">Insight Pintar</a></li>
                 <li><a href="#keunggulan">Keunggulan</a></li>
-                <li><a href="#" class="bn" onclick="scrollToApp()">Mulai Sekarang</a></li>
+                <li><a href="https://langkahkecil-v-1.pages.dev" class="bn">Mulai Sekarang</a></li>
             </ul>
             <button class="nav-t" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
@@ -1208,7 +1208,7 @@
                     ketik, secepat satu sentuh.
                 </p>
                 <div class="hcta">
-                    <a href="#" class="bp" onclick="scrollToApp()"><svg viewBox="0 0 24 24" fill="none"
+                    <a href="https://langkahkecil-v-1.pages.dev" class="bp"><svg viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5">
                             <path d="M5 12h14" />
                             <path d="m12 5 7 7-7 7" />
@@ -1446,7 +1446,7 @@
         <div class="c cta-c rv">
             <h2>Mulai Langkah Kecil Hari Ini 💜</h2>
             <p>Setiap catatan kecil hari ini adalah investasi besar untuk tumbuh kembang si buah hati esok hari.</p>
-            <a href="#" class="bw" onclick="scrollToApp()">Mulai Sekarang — Gratis<svg viewBox="0 0 24 24" fill="none"
+            <a href="https://langkahkecil-v-1.pages.dev" class="bw">Mulai Sekarang — Gratis<svg viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2.5">
                     <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
@@ -1471,7 +1471,7 @@
         function initReveal() { const r = document.querySelectorAll('.rv'); new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe && r.forEach(el => new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe(el)) }
         function initNav() { const n = document.getElementById('navbar'); window.addEventListener('scroll', () => { n.classList.toggle('sc', scrollY > 50) }) }
         function initMob() { const t = document.getElementById('navToggle'), l = document.getElementById('navLinks'); t.addEventListener('click', () => { l.classList.toggle('open'); const s = t.querySelectorAll('span'), o = l.classList.contains('open'); s[0].style.transform = o ? 'rotate(45deg) translate(5px,5px)' : ''; s[1].style.opacity = o ? '0' : ''; s[2].style.transform = o ? 'rotate(-45deg) translate(5px,-5px)' : '' }); l.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { l.classList.remove('open'); t.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = '' }) })) }
-        function scrollToApp() { location.href = '/' }
+        function scrollToApp() { location.href = 'https://langkahkecil-v-1.pages.dev' }
         document.addEventListener('DOMContentLoaded', () => { initReveal(); initNav(); initMob() });
     </script>
 </body>
