@@ -4,23 +4,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>LangkahKecil — Catat, Pantau, Optimalkan Tumbuh Kembang si Kecil</title>
+    <title>LangkahKecil — Catat Aktivitas si Kecil dengan Cepat dan Rapi</title>
     <meta name="description"
-        content="Catat aktivitas harian si kecil lalu dapatkan rangkuman cerdas dan analisa pertumbuhan otomatis. Gratis, offline-first, data aman." />
+        content="Catat makan, tidur, dan popok dalam hitungan detik. LangkahKecil merapikan catatan jadi rangkuman, pengingat, dan pantauan pertumbuhan yang mudah dipahami." />
     <meta name="theme-color" content="#4F38BD" />
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
         *,
         *::before,
         *::after {
             box-sizing: border-box;
             margin: 0;
-            padding: 0
+            padding: 0;
         }
 
         :root {
@@ -41,11 +40,11 @@
             --rlg: 24px;
             --s2: 0 4px 20px rgba(79, 56, 189, .12);
             --s3: 0 8px 40px rgba(79, 56, 189, .16);
-            --s4: 0 20px 60px rgba(79, 56, 189, .20)
+            --s4: 0 20px 60px rgba(79, 56, 189, .20);
         }
 
         html {
-            scroll-behavior: smooth
+            scroll-behavior: smooth;
         }
 
         body {
@@ -55,133 +54,107 @@
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -webkit-text-size-adjust: 100%
+            -webkit-text-size-adjust: 100%;
         }
 
         img {
             max-width: 100%;
             height: auto;
-            display: block
+            display: block;
         }
 
         a {
             color: inherit;
-            text-decoration: none
+            text-decoration: none;
         }
 
         button {
             cursor: pointer;
             border: none;
-            font-family: inherit
+            font-family: inherit;
         }
 
         .c {
-            max-width: 1200px;
+            max-width: 1160px;
             margin: 0 auto;
-            padding: 0 20px
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0)
-            }
-
-            50% {
-                transform: translateY(-12px)
-            }
-        }
-
-        @keyframes floatS {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0)
-            }
-
-            50% {
-                transform: translateY(-8px) rotate(3deg)
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1)
-            }
-
-            50% {
-                opacity: .7;
-                transform: scale(1.05)
-            }
-        }
-
-        @keyframes gshift {
-            0% {
-                background-position: 0 50%
-            }
-
-            50% {
-                background-position: 100% 50%
-            }
-
-            100% {
-                background-position: 0 50%
-            }
-        }
-
-        @keyframes slideL {
-            from {
-                opacity: 0;
-                transform: translateX(-40px)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0)
-            }
-        }
-
-        @keyframes slideR {
-            from {
-                opacity: 0;
-                transform: translateX(40px)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0)
-            }
+            padding: 0 20px;
         }
 
         .rv {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all .8s cubic-bezier(.16, 1, .3, 1)
+            transform: translateY(28px);
+            transition: all .7s cubic-bezier(.16, 1, .3, 1);
         }
 
         .rv.vis {
             opacity: 1;
-            transform: translateY(0)
+            transform: translateY(0);
         }
 
         .d1 {
-            transition-delay: .1s
+            transition-delay: .1s;
         }
 
         .d2 {
-            transition-delay: .2s
+            transition-delay: .2s;
         }
 
         .d3 {
-            transition-delay: .3s
+            transition-delay: .3s;
         }
 
         .d4 {
-            transition-delay: .4s
+            transition-delay: .4s;
+        }
+
+        .sl {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(107, 85, 230, .08);
+            color: var(--b6);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: .78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            margin-bottom: 14px;
+        }
+
+        .st {
+            font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .ss {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 660px;
+            line-height: 1.72;
+        }
+
+        .sh {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .sh .ss {
+            margin: 0 auto;
+        }
+
+        .sec {
+            padding: 92px 0;
+        }
+
+        .card {
+            background: var(--w);
+            border: 1px solid rgba(107, 85, 230, .1);
+            border-radius: var(--rlg);
+            box-shadow: var(--s2);
         }
 
         /* NAV */
@@ -191,22 +164,21 @@
             left: 0;
             right: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, .88);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(79, 56, 189, .06);
-            transition: all .3s
+            background: rgba(255, 255, 255, .9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(79, 56, 189, .08);
+            transition: box-shadow .25s;
         }
 
         .nav.sc {
-            box-shadow: var(--s2)
+            box-shadow: var(--s2);
         }
 
         .nav-i {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 64px
+            height: 64px;
         }
 
         .nav-l {
@@ -214,47 +186,39 @@
             align-items: center;
             gap: 10px;
             font-weight: 900;
-            font-size: 1.15rem;
-            color: var(--b6)
+            font-size: 1.08rem;
+            color: var(--b6);
         }
 
         .nav-l img {
             width: 36px;
             height: 36px;
-            border-radius: 10px
+            border-radius: 10px;
         }
 
         .nav-k {
             display: flex;
             align-items: center;
-            gap: 28px;
-            list-style: none
+            gap: 24px;
+            list-style: none;
         }
 
         .nav-k a {
-            font-weight: 600;
+            font-weight: 700;
             font-size: .9rem;
             color: var(--muted);
-            transition: color .2s
         }
 
         .nav-k a:hover {
-            color: var(--b6)
+            color: var(--b6);
         }
 
         .bn {
             background: linear-gradient(135deg, var(--b5), var(--b6));
-            color: var(--w);
-            padding: 10px 20px;
+            color: var(--w) !important;
+            padding: 10px 18px;
             border-radius: 12px;
-            font-weight: 700;
-            font-size: .9rem;
-            transition: all .3s;
-            box-shadow: 0 4px 16px rgba(79, 56, 189, .3)
-        }
-
-        .bn:hover {
-            transform: translateY(-2px)
+            box-shadow: 0 4px 16px rgba(79, 56, 189, .25);
         }
 
         .nav-t {
@@ -262,53 +226,28 @@
             flex-direction: column;
             gap: 5px;
             background: none;
-            padding: 4px
+            padding: 4px;
         }
 
         .nav-t span {
-            display: block;
             width: 22px;
             height: 2.5px;
             background: var(--b6);
             border-radius: 2px;
-            transition: all .3s
+            transition: all .3s;
         }
 
         /* HERO */
         .hero {
-            position: relative;
-            min-height: 100vh;
-            min-height: 100dvh;
-            display: flex;
-            align-items: center;
-            padding: 100px 0 60px;
-            overflow: hidden;
-            background: linear-gradient(160deg, #F8F7FF 0%, #EDE9FE 40%, #DDD6FE 100%)
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(107, 85, 230, .15) 0%, transparent 70%);
-            animation: pulse 6s ease-in-out infinite
+            padding: 96px 0 58px;
+            background: linear-gradient(160deg, #F8F7FF 0%, #EEEAFE 46%, #E2DAFD 100%);
         }
 
         .hero-i {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1.08fr .92fr;
+            gap: 42px;
             align-items: center;
-            position: relative;
-            z-index: 2
-        }
-
-        .hero-c {
-            animation: slideL 1s cubic-bezier(.16, 1, .3, 1)
         }
 
         .hbadge {
@@ -318,667 +257,402 @@
             background: rgba(107, 85, 230, .1);
             border: 1px solid rgba(107, 85, 230, .2);
             color: var(--b6);
-            padding: 6px 14px;
+            padding: 7px 14px;
             border-radius: 100px;
-            font-size: .8rem;
-            font-weight: 700;
-            margin-bottom: 20px
-        }
-
-        .hbadge svg {
-            width: 14px;
-            height: 14px
+            font-size: .78rem;
+            font-weight: 800;
+            margin-bottom: 18px;
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 4.5vw, 3.5rem);
-            font-weight: 900;
+            font-size: clamp(2rem, 4.8vw, 3.3rem);
             line-height: 1.15;
-            margin-bottom: 18px
+            font-weight: 900;
+            margin-bottom: 14px;
         }
 
         .hero h1 .gt {
-            background: linear-gradient(135deg, var(--b5), var(--b7), var(--orange));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gshift 4s ease-in-out infinite
+            color: var(--b6);
         }
 
         .hsub {
-            font-size: 1.05rem;
+            font-size: 1.03rem;
             color: var(--muted);
             line-height: 1.75;
-            margin-bottom: 32px;
-            max-width: 480px
+            margin-bottom: 28px;
+            max-width: 540px;
         }
 
         .hcta {
             display: flex;
             gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .bp,
+        .bs,
+        .bw {
+            display: inline-flex;
             align-items: center;
-            flex-wrap: wrap
+            justify-content: center;
+            gap: 9px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: .98rem;
+            transition: all .25s ease;
         }
 
         .bp {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
             background: linear-gradient(135deg, var(--b5), var(--b7));
             color: var(--w);
-            padding: 14px 28px;
-            border-radius: 14px;
-            font-weight: 800;
-            font-size: 1rem;
-            transition: all .3s;
-            box-shadow: 0 8px 30px rgba(79, 56, 189, .35);
-            overflow: hidden
+            padding: 14px 24px;
+            box-shadow: 0 8px 30px rgba(79, 56, 189, .32);
         }
 
-        .bp:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(79, 56, 189, .45)
-        }
-
-        .bp svg {
-            width: 18px;
-            height: 18px
+        .bp:hover,
+        .bw:hover {
+            transform: translateY(-2px);
         }
 
         .bs {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
             background: var(--w);
             color: var(--b6);
-            padding: 14px 24px;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 1rem;
-            border: 2px solid rgba(107, 85, 230, .2);
-            transition: all .3s
-        }
-
-        .bs:hover {
-            border-color: var(--b5);
-            transform: translateY(-2px)
+            padding: 14px 20px;
+            border: 2px solid rgba(107, 85, 230, .22);
         }
 
         .htr {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 24px;
-            flex-wrap: wrap
-        }
-
-        .tb {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: rgba(52, 211, 153, .1);
-            color: #059669;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: .75rem;
-            font-weight: 700
-        }
-
-        .tb svg {
-            width: 12px;
-            height: 12px
+            margin-top: 16px;
+            font-size: .86rem;
+            color: #475569;
+            font-weight: 700;
         }
 
         .hv {
             position: relative;
             display: flex;
             justify-content: center;
-            animation: slideR 1s cubic-bezier(.16, 1, .3, 1) .2s both
         }
 
         .hmk {
-            width: 300px;
-            border-radius: 24px;
+            width: min(100%, 312px);
+            border-radius: 22px;
             box-shadow: var(--s4);
-            animation: float 6s ease-in-out infinite;
-            position: relative;
-            z-index: 2
         }
 
-        .hd1 {
-            position: absolute;
-            top: -20px;
-            right: -10px;
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, var(--orange), #F97316);
-            opacity: .8;
-            animation: floatS 5s ease-in-out infinite
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
         }
 
-        .hd2 {
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            width: 50px;
-            height: 50px;
+        .chip {
+            background: rgba(255, 255, 255, .9);
+            border: 1px solid rgba(107, 85, 230, .18);
+            color: #4c1d95;
+            border-radius: 10px;
+            padding: 6px 10px;
+            font-size: .76rem;
+            font-weight: 700;
+        }
+
+        /* QUICK PROOF */
+        .proof {
+            background: var(--w);
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 26px;
+        }
+
+        .proof-card {
+            padding: 22px;
+        }
+
+        .proof-title {
+            font-size: .88rem;
+            color: var(--b6);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .note-input {
             border-radius: 14px;
-            background: linear-gradient(135deg, var(--green), #10B981);
-            opacity: .8;
-            animation: floatS 7s ease-in-out infinite 1s
+            background: #f5f3ff;
+            border: 1px solid #e9e5ff;
+            padding: 14px;
+            color: #4338ca;
+            font-weight: 700;
+            font-size: .92rem;
+            line-height: 1.65;
         }
 
-        .hd3 {
-            position: absolute;
-            top: 50%;
-            right: -40px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--sky), #0EA5E9);
-            opacity: .6;
-            animation: floatS 6s ease-in-out infinite 2s
+        .proof-list {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+            color: #334155;
+            font-size: .92rem;
+            font-weight: 700;
         }
 
-        /* SECTIONS */
-        .sl {
+        .proof-list span {
+            color: var(--b6);
+        }
+
+        .proof-foot {
+            margin-top: 12px;
+            color: #0f766e;
+            font-weight: 800;
+            font-size: .86rem;
+        }
+
+        /* HOW */
+        .how {
+            background: var(--bg);
+        }
+
+        .hg {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .hc {
+            padding: 24px;
+            text-align: left;
+        }
+
+        .hn {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--b5), var(--b7));
+            color: var(--w);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(107, 85, 230, .08);
-            color: var(--b6);
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: .8rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: .05em;
-            margin-bottom: 14px
-        }
-
-        .st {
-            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            justify-content: center;
+            font-size: 1.05rem;
             font-weight: 900;
-            line-height: 1.2;
             margin-bottom: 14px;
-            color: var(--dark)
         }
 
-        .ss {
-            font-size: 1rem;
+        .hc h3 {
+            font-size: 1.06rem;
+            margin-bottom: 8px;
+        }
+
+        .hc p {
             color: var(--muted);
-            max-width: 560px;
-            line-height: 1.7
-        }
-
-        .sh {
-            text-align: center;
-            margin-bottom: 56px
-        }
-
-        .sh .ss {
-            margin: 0 auto
+            font-size: .92rem;
+            line-height: 1.7;
         }
 
         /* FEATURES */
         .feat {
-            padding: 100px 0;
-            background: var(--w)
+            background: var(--w);
         }
 
         .fg {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px
+            gap: 18px;
         }
 
         .fc {
-            background: var(--w);
-            border: 1px solid rgba(107, 85, 230, .08);
+            padding: 26px 22px;
+            border: 1px solid rgba(107, 85, 230, .1);
             border-radius: var(--rlg);
-            padding: 32px 24px;
-            transition: all .4s cubic-bezier(.16, 1, .3, 1);
-            position: relative;
-            overflow: hidden
-        }
-
-        .fc::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            border-radius: 4px 4px 0 0;
-            opacity: 0;
-            transition: opacity .4s
-        }
-
-        .fc:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--s3);
-            border-color: transparent
-        }
-
-        .fc:hover::before {
-            opacity: 1
-        }
-
-        .fc:nth-child(1)::before {
-            background: linear-gradient(90deg, var(--sky), #0EA5E9)
-        }
-
-        .fc:nth-child(2)::before {
-            background: linear-gradient(90deg, var(--b4), var(--b6))
-        }
-
-        .fc:nth-child(3)::before {
-            background: linear-gradient(90deg, var(--rose), #E11D48)
-        }
-
-        .fc:nth-child(4)::before {
-            background: linear-gradient(90deg, var(--orange), #F97316)
-        }
-
-        .fc:nth-child(5)::before {
-            background: linear-gradient(90deg, var(--green), #10B981)
-        }
-
-        .fc:nth-child(6)::before {
-            background: linear-gradient(90deg, var(--amber), #F59E0B)
+            background: var(--w);
         }
 
         .fi {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px
-        }
-
-        .fi svg {
-            width: 26px;
-            height: 26px
-        }
-
-        .fi.sk {
-            background: rgba(56, 189, 248, .12);
-            color: #0284C7
-        }
-
-        .fi.pr {
-            background: rgba(107, 85, 230, .12);
-            color: var(--b6)
-        }
-
-        .fi.rs {
-            background: rgba(251, 113, 133, .12);
-            color: #E11D48
-        }
-
-        .fi.or {
-            background: rgba(245, 158, 66, .12);
-            color: #EA580C
-        }
-
-        .fi.gr {
-            background: rgba(52, 211, 153, .12);
-            color: #059669
-        }
-
-        .fi.am {
-            background: rgba(251, 191, 36, .12);
-            color: #D97706
-        }
-
-        .fc h3 {
-            font-size: 1.1rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: var(--dark)
-        }
-
-        .fc p {
-            font-size: .9rem;
-            color: var(--muted);
-            line-height: 1.65
-        }
-
-        /* INSIGHT */
-        .ins {
-            padding: 100px 0;
-            background: linear-gradient(160deg, var(--b7) 0%, var(--b6) 50%, var(--b5) 100%);
-            position: relative;
-            overflow: hidden
-        }
-
-        .ins::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")
-        }
-
-        .ins-i {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 2
-        }
-
-        .ins-c {
-            color: var(--w)
-        }
-
-        .ins-c .sl {
-            background: rgba(255, 255, 255, .15);
-            color: var(--w)
-        }
-
-        .ins-c .st {
-            color: var(--w)
-        }
-
-        .ins-c .ss {
-            color: rgba(255, 255, 255, .8)
-        }
-
-        .il {
-            list-style: none;
-            margin-top: 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px
-        }
-
-        .il li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: .95rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, .9)
-        }
-
-        .id {
-            width: 34px;
-            height: 34px;
-            min-width: 34px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, .15)
-        }
-
-        .id svg {
-            width: 16px;
-            height: 16px;
-            color: var(--w)
-        }
-
-        .ins-v {
-            display: flex;
-            justify-content: center;
-            position: relative
-        }
-
-        .imk {
-            width: 300px;
-            border-radius: 20px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, .3);
-            animation: float 7s ease-in-out infinite
-        }
-
-        .igl {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 360px;
-            height: 360px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 255, 255, .08) 0%, transparent 70%);
-            animation: pulse 4s ease-in-out infinite
-        }
-
-        /* STATS */
-        .stats {
-            padding: 80px 0;
-            background: var(--bg)
-        }
-
-        .sg {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px
-        }
-
-        .sc {
-            text-align: center;
-            padding: 32px 16px;
-            background: var(--w);
-            border-radius: var(--rlg);
-            border: 1px solid rgba(107, 85, 189, .06);
-            transition: all .3s
-        }
-
-        .sc:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--s2)
-        }
-
-        .si {
             width: 48px;
             height: 48px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 14px
+            margin-bottom: 14px;
         }
 
-        .si svg {
-            width: 22px;
-            height: 22px
+        .fi svg {
+            width: 24px;
+            height: 24px;
         }
 
-        .si.pr {
-            background: rgba(107, 85, 230, .1);
-            color: var(--b6)
+        .fi.sk {
+            background: rgba(56, 189, 248, .12);
+            color: #0284C7;
         }
 
-        .si.gr {
-            background: rgba(52, 211, 153, .1);
-            color: #059669
+        .fi.pr {
+            background: rgba(107, 85, 230, .12);
+            color: var(--b6);
         }
 
-        .si.or {
-            background: rgba(245, 158, 66, .1);
-            color: #EA580C
+        .fi.rs {
+            background: rgba(251, 113, 133, .12);
+            color: #E11D48;
         }
 
-        .si.sk {
-            background: rgba(56, 189, 248, .1);
-            color: #0284C7
+        .fi.or {
+            background: rgba(245, 158, 66, .12);
+            color: #EA580C;
         }
 
-        .sn {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--dark);
-            margin-bottom: 2px
+        .fi.gr {
+            background: rgba(52, 211, 153, .12);
+            color: #059669;
         }
 
-        .sla {
-            font-size: .85rem;
+        .fi.am {
+            background: rgba(251, 191, 36, .12);
+            color: #D97706;
+        }
+
+        .fc h3 {
+            font-size: 1.04rem;
+            margin-bottom: 8px;
+        }
+
+        .fc p {
+            font-size: .9rem;
             color: var(--muted);
-            font-weight: 600
+            line-height: 1.68;
         }
 
         /* GALLERY */
         .gal {
-            padding: 100px 0;
-            background: var(--w);
-            overflow: hidden
+            background: var(--bg);
         }
 
         .gg {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 16px;
-            margin-top: 40px
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 14px;
         }
 
         .gc {
-            border-radius: var(--rlg);
+            border-radius: 18px;
             overflow: hidden;
+            border: 1px solid rgba(107, 85, 230, .1);
+            background: var(--w);
             box-shadow: var(--s2);
-            transition: all .4s;
-            background: var(--bg)
-        }
-
-        .gc:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: var(--s4)
         }
 
         .gc img {
             width: 100%;
-            height: auto;
-            object-fit: cover
+            object-fit: cover;
         }
 
         .gc-l {
-            padding: 10px 16px;
-            font-size: .8rem;
-            font-weight: 700;
-            color: var(--b6);
-            text-align: center;
-            background: var(--w)
+            padding: 12px;
         }
 
-        /* HOW */
-        .how {
-            padding: 100px 0;
-            background: var(--bg)
-        }
-
-        .hg {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 48px
-        }
-
-        .hc {
-            text-align: center
-        }
-
-        .hn {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, var(--b5), var(--b7));
-            color: var(--w);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            font-weight: 900;
-            margin: 0 auto 20px;
-            box-shadow: 0 8px 24px rgba(79, 56, 189, .25)
-        }
-
-        .hc h3 {
-            font-size: 1.1rem;
-            font-weight: 800;
-            margin-bottom: 8px
-        }
-
-        .hc p {
+        .gc-l strong {
+            display: block;
+            color: var(--dark);
             font-size: .9rem;
-            color: var(--muted);
-            line-height: 1.65
+            margin-bottom: 4px;
         }
 
-        /* CTA */
+        .gc-l span {
+            color: var(--muted);
+            font-size: .8rem;
+            line-height: 1.55;
+            display: block;
+        }
+
+        /* TRUST */
+        .trust {
+            background: var(--w);
+        }
+
+        .trust-wrap {
+            padding: 28px;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .trust-item {
+            background: #f8f7ff;
+            border-radius: 14px;
+            padding: 14px;
+            border: 1px solid #ebe8ff;
+        }
+
+        .trust-item h3 {
+            font-size: .95rem;
+            color: var(--b6);
+            margin-bottom: 6px;
+        }
+
+        .trust-item p {
+            font-size: .88rem;
+            color: #475569;
+            line-height: 1.65;
+        }
+
+        .disclaimer {
+            margin-top: 16px;
+            color: #475569;
+            font-size: .85rem;
+            border-top: 1px dashed #d8d2ff;
+            padding-top: 14px;
+        }
+
+        /* FINAL CTA */
         .cta {
-            padding: 100px 0;
             background: linear-gradient(160deg, var(--b8) 0%, var(--b6) 100%);
             text-align: center;
-            position: relative;
-            overflow: hidden
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 700px;
-            height: 700px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(107, 85, 230, .3) 0%, transparent 60%)
         }
 
         .cta-c {
-            position: relative;
-            z-index: 2
+            max-width: 740px;
+            margin: 0 auto;
         }
 
         .cta h2 {
-            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-            font-weight: 900;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
             color: var(--w);
-            margin-bottom: 14px
+            margin-bottom: 10px;
         }
 
         .cta p {
-            font-size: 1.05rem;
-            color: rgba(255, 255, 255, .8);
-            margin-bottom: 36px;
-            max-width: 520px;
-            margin-left: auto;
-            margin-right: auto
+            color: rgba(255, 255, 255, .85);
+            margin-bottom: 30px;
         }
 
         .bw {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
             background: var(--w);
             color: var(--b6);
-            padding: 16px 36px;
-            border-radius: 14px;
-            font-weight: 800;
-            font-size: 1.05rem;
-            transition: all .3s;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, .15)
+            padding: 15px 32px;
+            box-shadow: 0 10px 32px rgba(0, 0, 0, .2);
         }
 
-        .bw:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 40px rgba(0, 0, 0, .25)
-        }
-
-        .bw svg {
-            width: 18px;
-            height: 18px
+        .bw svg,
+        .bp svg,
+        .bs svg {
+            width: 17px;
+            height: 17px;
         }
 
         /* FOOTER */
         .foot {
-            padding: 40px 0;
+            padding: 30px 0;
             background: var(--dark);
-            color: rgba(255, 255, 255, .6)
+            color: rgba(255, 255, 255, .7);
         }
 
         .foot-i {
@@ -986,7 +660,7 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 16px
+            gap: 14px;
         }
 
         .foot-l {
@@ -995,67 +669,65 @@
             gap: 8px;
             color: var(--w);
             font-weight: 800;
-            font-size: 1rem
+            font-size: .98rem;
         }
 
         .foot-l img {
             width: 28px;
             height: 28px;
-            border-radius: 8px
+            border-radius: 8px;
         }
 
         .foot-t {
-            font-size: .85rem
+            font-size: .84rem;
         }
 
         .foot-k {
             display: flex;
-            gap: 20px;
-            list-style: none
+            gap: 18px;
+            list-style: none;
         }
 
         .foot-k a {
-            font-size: .85rem;
-            transition: color .2s
+            font-size: .84rem;
         }
 
         .foot-k a:hover {
-            color: var(--w)
+            color: var(--w);
         }
 
         /* RESPONSIVE */
         @media(max-width:1024px) {
 
             .hero-i,
-            .ins-i {
+            .proof-grid,
+            .trust-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .hero-i {
                 text-align: center;
-                gap: 40px
             }
 
             .hsub {
-                margin: 0 auto 32px
+                margin-inline: auto;
             }
 
             .hcta,
-            .htr {
-                justify-content: center
+            .chip-row {
+                justify-content: center;
             }
 
             .fg {
-                grid-template-columns: repeat(2, 1fr)
-            }
-
-            .sg {
-                grid-template-columns: repeat(2, 1fr)
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .gg {
-                grid-template-columns: repeat(3, 1fr)
+                grid-template-columns: repeat(3, 1fr);
             }
 
-            .hmk {
-                width: 260px
+            .hv {
+                margin-top: 8px;
             }
         }
 
@@ -1068,411 +740,348 @@
                 right: 0;
                 background: var(--w);
                 flex-direction: column;
-                padding: 20px;
+                padding: 18px;
                 gap: 14px;
-                border-bottom: 1px solid rgba(107, 85, 230, .1);
-                box-shadow: var(--s2)
+                border-bottom: 1px solid rgba(107, 85, 230, .12);
+                box-shadow: var(--s2);
             }
 
             .nav-k.open {
-                display: flex
+                display: flex;
             }
 
             .nav-t {
-                display: flex
+                display: flex;
+            }
+
+            .sec {
+                padding: 72px 0;
+            }
+
+            .hero {
+                padding: 90px 0 48px;
             }
 
             .fg,
-            .hg {
-                grid-template-columns: 1fr
-            }
-
-            .sg {
-                grid-template-columns: repeat(2, 1fr)
-            }
-
+            .hg,
             .gg {
-                grid-template-columns: repeat(2, 1fr)
-            }
-
-            .hmk,
-            .imk {
-                width: 220px
-            }
-
-            .hd1,
-            .hd2,
-            .hd3 {
-                display: none
-            }
-
-            .foot-i {
-                flex-direction: column;
-                text-align: center
+                grid-template-columns: 1fr;
             }
 
             .hcta {
                 flex-direction: column;
-                align-items: stretch
+                align-items: stretch;
             }
 
             .bp,
-            .bs {
-                justify-content: center
+            .bs,
+            .bw {
+                width: 100%;
             }
 
-            .feat,
-            .ins,
-            .stats,
-            .gal,
-            .cta,
-            .how {
-                padding: 72px 0
-            }
-
-            .hero {
-                padding: 90px 0 48px
-            }
-
-            .gc-l {
-                font-size: .75rem;
-                padding: 8px 12px
+            .foot-i {
+                flex-direction: column;
+                text-align: center;
             }
 
             .nav-i {
-                height: 56px
-            }
-        }
-
-        @media(max-width:480px) {
-            .hero h1 {
-                font-size: 1.8rem
-            }
-
-            .st {
-                font-size: 1.5rem
-            }
-
-            .hmk,
-            .imk {
-                width: 200px
-            }
-
-            .gg {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px
-            }
-
-            .sn {
-                font-size: 1.6rem
-            }
-
-            .hsub {
-                font-size: .95rem
+                height: 56px;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <!-- NAV -->
-    <nav class="nav" id="navbar">
+    <nav class="nav" id="navbar" aria-label="Navigasi utama">
         <div class="c nav-i">
-            <a href="#" class="nav-l"><img src="brand/LangkahKecil_logo.png"
-                    alt="LangkahKecil" /><span>LangkahKecil</span></a>
+            <a href="#" class="nav-l"><img src="brand/LangkahKecil_logo.png" alt="Logo LangkahKecil" /><span>LangkahKecil</span></a>
             <ul class="nav-k" id="navLinks">
+                <li><a href="#cara-kerja">Cara Kerja</a></li>
                 <li><a href="#fitur">Fitur</a></li>
-                <li><a href="#insight">Insight Pintar</a></li>
-                <li><a href="#keunggulan">Keunggulan</a></li>
-                <li><a href="https://langkahkecil-v-1.pages.dev" class="bn">Mulai Sekarang</a></li>
+                <li><a href="#kepercayaan">Privasi</a></li>
+                <li><a href="https://langkahkecil-v-1.pages.dev" class="bn">Coba Gratis Sekarang</a></li>
             </ul>
-            <button class="nav-t" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <button class="nav-t" id="navToggle" aria-label="Buka menu navigasi"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="c hero-i">
-            <div class="hero-c">
-                <div class="hbadge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-                        <path d="m9 12 2 2 4-4" />
-                    </svg>
-                    Offline-first · Gratis · Data aman di perangkatmu
+    <main>
+        <section class="hero" id="hero">
+            <div class="c hero-i">
+                <div class="hero-c rv vis">
+                    <div class="hbadge">Aplikasi catatan parenting yang cepat dan praktis</div>
+                    <h1>Catat makan, tidur, dan popok <span class="gt">dalam hitungan detik.</span></h1>
+                    <p class="hsub">LangkahKecil membantu orang tua mencatat aktivitas harian si kecil dengan cepat, lalu merapikannya menjadi rangkuman, pengingat, dan pantauan pertumbuhan yang mudah dipahami.</p>
+                    <div class="hcta">
+                        <a href="https://langkahkecil-v-1.pages.dev" class="bp" aria-label="Coba gratis LangkahKecil sekarang">Coba Gratis Sekarang
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </a>
+                        <a href="#cara-kerja" class="bs" aria-label="Lihat cara kerja LangkahKecil">Lihat Cara Kerjanya</a>
+                    </div>
+                    <p class="htr" aria-label="Keunggulan utama">Offline-first • Privat • Tanpa iklan</p>
+                    <div class="chip-row" aria-hidden="true">
+                        <span class="chip">Mobile-first</span>
+                        <span class="chip">Rangkuman harian</span>
+                        <span class="chip">Siap dipakai di browser</span>
+                    </div>
                 </div>
-                <h1>Awali <span class="gt">Langkah Kecil</span> dengan Catatan yang Bermakna.</h1>
-                <p class="hsub">Cukup catat aktivitas harian si kecil — makan, tidur, popok — lalu dapatkan
-                    <strong>rangkuman cerdas & analisa otomatis</strong> untuk mengoptimalkan tumbuh kembangnya. Semudah
-                    ketik, secepat satu sentuh.
-                </p>
-                <div class="hcta">
-                    <a href="https://langkahkecil-v-1.pages.dev" class="bp"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5">
-                            <path d="M5 12h14" />
-                            <path d="m12 5 7 7-7 7" />
-                        </svg>Mulai Gratis Sekarang</a>
-                    <a href="#fitur" class="bs">Pelajari Fitur</a>
-                </div>
-                <div class="htr">
-                    <span class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>100% Privat</span>
-                    <span class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                            <polyline points="22 4 12 14.01 9 11.01" />
-                        </svg>Tanpa Iklan</span>
+                <div class="hv rv d1">
+                    <img src="img/ss-dashboard.jpeg" alt="Tampilan dashboard harian LangkahKecil" class="hmk" />
                 </div>
             </div>
-            <div class="hv">
-                <div class="hd1"></div>
-                <div class="hd2"></div>
-                <div class="hd3"></div>
-                <img src="img/ss-dashboard.jpeg" alt="LangkahKecil Dashboard" class="hmk" />
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FEATURES -->
-    <section class="feat" id="fitur">
-        <div class="c">
-            <div class="sh rv">
-                <span class="sl">⚡ Fitur Unggulan</span>
-                <h2 class="st">Catat Cepat, Pantau Otomatis,<br />Keputusan Lebih Tepat</h2>
-                <p class="ss">Dirancang untuk orang tua sibuk yang ingin memastikan setiap aspek tumbuh kembang si kecil
-                    terpantau tanpa ribet.</p>
-            </div>
-            <div class="fg">
-                <div class="fc rv d1">
-                    <div class="fi sk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
-                        </svg></div>
-                    <h3>Input Cepat & Parsing Otomatis</h3>
-                    <p>Ketik &#8220;makan nasi 200gr jam 12&#8221; dan data langsung tersimpan rapi. Parsing cerdas
-                        memahami waktu, kategori, dan jumlah — tanpa isi form manual.</p>
+        <section class="sec proof" id="nilai">
+            <div class="c">
+                <div class="sh rv">
+                    <span class="sl">Bukti Nilai Cepat</span>
+                    <h2 class="st">Catatan sederhana masuk, ringkasan rapi langsung jadi</h2>
+                    <p class="ss">Dalam beberapa detik, catatan acak bisa berubah menjadi data yang jelas dan siap dipantau. Anda tidak perlu membaca ulang catatan satu per satu.</p>
                 </div>
-                <div class="fc rv d2">
-                    <div class="fi pr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path
-                                d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z" />
-                        </svg></div>
-                    <h3>Rangkuman Pintar</h3>
-                    <p>Lihat ringkasan harian yang insightful — pola asupan, durasi tidur, pertumbuhan, dan insight
-                        penting si kecil terangkum dalam satu tampilan.</p>
-                </div>
-                <div class="fc rv d3">
-                    <div class="fi rs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-                            <rect width="8" height="4" x="8" y="2" rx="1" />
-                            <path d="M9 14h6" />
-                            <path d="M9 18h6" />
-                        </svg></div>
-                    <h3>Catatan Konsultasi Dokter</h3>
-                    <p>Data pertumbuhan, pola makan, riwayat vaksin, dan catatan kesehatan — tersusun rapi siap dibawa
-                        saat konsultasi ke dokter anak.</p>
-                </div>
-                <div class="fc rv d1">
-                    <div class="fi or"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
-                            <path d="M7 2v20" />
-                            <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
-                        </svg></div>
-                    <h3>Pantau Makan & ASI</h3>
-                    <p>Log ASI, susu formula, MPASI, dan makanan padat. Lacak volume, waktu, dan pola makan harian si
-                        kecil dengan analisa visual otomatis.</p>
-                </div>
-                <div class="fc rv d2">
-                    <div class="fi gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                        </svg></div>
-                    <h3>Grafik Pertumbuhan WHO</h3>
-                    <p>Pantau berat, tinggi, dan lingkar kepala si kecil dengan grafik standar WHO. Lihat tren
-                        pertumbuhannya secara visual dan akurat.</p>
-                </div>
-                <div class="fc rv d3">
-                    <div class="fi am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="m9 12 2 2 4-4" />
-                            <path
-                                d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z" />
-                        </svg></div>
-                    <h3>Vaksin & Reminder</h3>
-                    <p>Jadwal vaksinasi lengkap sesuai IDAI. Pengingat otomatis memastikan tidak ada jadwal vaksin yang
-                        terlewat.</p>
+                <div class="proof-grid">
+                    <article class="card proof-card rv d1">
+                        <p class="proof-title">Yang Anda tulis</p>
+                        <p class="note-input">"makan nasi 200 gr jam 12, tidur siang 1 jam, pup jam 3"</p>
+                    </article>
+                    <article class="card proof-card rv d2">
+                        <p class="proof-title">Yang LangkahKecil rapikan</p>
+                        <ul class="proof-list">
+                            <li><span>Makan:</span> 12.00</li>
+                            <li><span>Tidur siang:</span> 1 jam</li>
+                            <li><span>Eliminasi:</span> 15.00</li>
+                            <li><span>Status:</span> Ringkasan harian siap dilihat</li>
+                        </ul>
+                        <p class="proof-foot">Lebih cepat dipahami, lebih mudah ditindaklanjuti.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- INSIGHT SHOWCASE -->
-    <section class="ins" id="insight">
-        <div class="c ins-i">
-            <div class="ins-c rv">
-                <span class="sl">✨ Rangkuman Pintar</span>
-                <h2 class="st">Dari Catatan Harian<br />Jadi Insight Berharga</h2>
-                <p class="ss">Cukup catat kegiatan si kecil setiap hari. LangkahKecil otomatis menganalisa pola dan
-                    menyusun rangkuman yang mudah dipahami — siap untuk konsultasi dokter.</p>
-                <ul class="il">
-                    <li><span class="id"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                            </svg></span>Analisa pola tidur & asupan makan otomatis</li>
-                    <li><span class="id"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21" />
-                            </svg></span>Ringkasan harian nutrisi, eliminasi & vitamin</li>
-                    <li><span class="id"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <section class="sec how" id="cara-kerja">
+            <div class="c">
+                <div class="sh rv">
+                    <span class="sl">Cara Kerja</span>
+                    <h2 class="st">3 langkah sederhana untuk mengurangi beban mental harian</h2>
+                    <p class="ss">Fokus ke anak Anda, bukan ke form yang panjang.</p>
+                </div>
+                <div class="hg">
+                    <article class="hc card rv d1">
+                        <div class="hn">1</div>
+                        <h3>Catat cepat</h3>
+                        <p>Tulis seperti chat biasa, tanpa isi form panjang. Cocok saat Anda sedang sibuk mengurus si kecil.</p>
+                    </article>
+                    <article class="hc card rv d2">
+                        <div class="hn">2</div>
+                        <h3>LangkahKecil merapikan otomatis</h3>
+                        <p>Catatan harian dirapikan menjadi data yang lebih jelas agar pola harian lebih mudah dipahami.</p>
+                    </article>
+                    <article class="hc card rv d3">
+                        <div class="hn">3</div>
+                        <h3>Lihat rangkuman dan pantauan</h3>
+                        <p>Buka rangkuman harian, grafik pertumbuhan, dan pengingat penting dalam satu tempat.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec feat" id="fitur">
+            <div class="c">
+                <div class="sh rv">
+                    <span class="sl">Manfaat Utama</span>
+                    <h2 class="st">Bukan sekadar catatan, tapi bantuan harian yang terasa</h2>
+                    <p class="ss">Setiap fitur dirancang agar Anda cepat paham kondisi harian si kecil dan lebih tenang mengambil keputusan.</p>
+                </div>
+                <div class="fg">
+                    <article class="fc rv d1">
+                        <div class="fi sk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+                            </svg></div>
+                        <h3>Tulis seperti chat biasa</h3>
+                        <p>Cukup catat aktivitas dengan bahasa natural, lalu lanjutkan aktivitas Anda tanpa hambatan.</p>
+                    </article>
+                    <article class="fc rv d2">
+                        <div class="fi pr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z" />
+                            </svg></div>
+                        <h3>Cukup catat, LangkahKecil yang merapikan</h3>
+                        <p>Lihat pola makan, tidur, dan aktivitas harian tanpa membaca catatan satu per satu.</p>
+                    </article>
+                    <article class="fc rv d3">
+                        <div class="fi rs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
                                 <rect width="8" height="4" x="8" y="2" rx="1" />
-                            </svg></span>Siapkan data lengkap sebelum ke dokter</li>
-                    <li><span class="id"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                                <path d="M9 14h6" />
+                                <path d="M9 18h6" />
+                            </svg></div>
+                        <h3>Siap untuk konsultasi</h3>
+                        <p>Riwayat harian tersusun lebih rapi sehingga lebih mudah dibagikan saat konsultasi dengan tenaga medis.</p>
+                    </article>
+                    <article class="fc rv d1">
+                        <div class="fi or"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                                <path d="M7 2v20" />
+                                <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+                            </svg></div>
+                        <h3>Pantau asupan lebih jelas</h3>
+                        <p>Amati pola makan dan minum dari waktu ke waktu agar Anda lebih mudah mengenali perubahan kebiasaan.</p>
+                    </article>
+                    <article class="fc rv d2">
+                        <div class="fi gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                            </svg></div>
+                        <h3>Pantauan pertumbuhan visual</h3>
+                        <p>Lihat tren berat, tinggi, dan catatan pertumbuhan dalam grafik yang mudah dibaca.</p>
+                    </article>
+                    <article class="fc rv d3">
+                        <div class="fi am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="m9 12 2 2 4-4" />
-                            </svg></span>Deteksi pola yang perlu diperhatikan</li>
-                </ul>
+                                <path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z" />
+                            </svg></div>
+                        <h3>Pengingat penting tetap terpantau</h3>
+                        <p>Gunakan pengingat untuk membantu menjaga rutinitas penting agar tidak mudah terlewat.</p>
+                    </article>
+                </div>
             </div>
-            <div class="ins-v rv d2">
-                <div class="igl"></div>
-                <img src="img/ss-summary.jpeg" alt="Rangkuman Pintar LangkahKecil" class="imk" />
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- STATS -->
-    <section class="stats" id="keunggulan">
-        <div class="c">
-            <div class="sh rv">
-                <span class="sl">💪 Kenapa LangkahKecil?</span>
-                <h2 class="st">Didesain untuk Orang Tua Modern</h2>
-                <p class="ss">Kami paham betapa berharganya waktu Mama dan Papa. Makanya kami bikin ini semudah dan
-                    seaman mungkin.</p>
-            </div>
-            <div class="sg">
-                <div class="sc rv d1">
-                    <div class="si pr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                        </svg></div>
-                    <div class="sn">100%</div>
-                    <div class="sla">Offline & Privat</div>
+        <section class="sec gal" id="galeri">
+            <div class="c">
+                <div class="sh rv">
+                    <span class="sl">Tampilan Aplikasi</span>
+                    <h2 class="st">Setiap layar punya tujuan yang jelas</h2>
+                    <p class="ss">Didesain agar mudah dibaca di ponsel, cepat dipahami, dan nyaman digunakan setiap hari.</p>
                 </div>
-                <div class="sc rv d2">
-                    <div class="si gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg></div>
-                    <div class="sn">0</div>
-                    <div class="sla">Iklan & Tracker</div>
-                </div>
-                <div class="sc rv d3">
-                    <div class="si or"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect width="20" height="14" x="2" y="5" rx="2" />
-                            <line x1="2" x2="22" y1="10" y2="10" />
-                        </svg></div>
-                    <div class="sn">Rp 0</div>
-                    <div class="sla">Sepenuhnya Gratis</div>
-                </div>
-                <div class="sc rv d4">
-                    <div class="si sk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
-                            <path d="M12 12v9" />
-                            <path d="m8 17 4 4 4-4" />
-                        </svg></div>
-                    <div class="sn">PWA</div>
-                    <div class="sla">Install Tanpa App Store</div>
+                <div class="gg">
+                    <article class="gc rv d1">
+                        <img src="img/ss-dashboard.jpeg" alt="Tampilan dashboard harian aplikasi LangkahKecil" />
+                        <div class="gc-l"><strong>Dashboard Harian</strong><span>Lihat ringkasan aktivitas si kecil dalam satu layar agar cepat tahu kondisi hari ini.</span></div>
+                    </article>
+                    <article class="gc rv d2">
+                        <img src="img/ss-food.jpeg" alt="Tampilan analisis asupan anak" />
+                        <div class="gc-l"><strong>Analisis Asupan</strong><span>Bantu pantau pola makan dan minum dengan tampilan yang lebih jelas dan terstruktur.</span></div>
+                    </article>
+                    <article class="gc rv d3">
+                        <img src="img/ss-sleep.jpeg" alt="Tampilan analisis tidur anak" />
+                        <div class="gc-l"><strong>Analisis Tidur</strong><span>Lihat perubahan pola tidur dari hari ke hari untuk membantu menata rutinitas istirahat.</span></div>
+                    </article>
+                    <article class="gc rv d1">
+                        <img src="img/ss-growth.jpeg" alt="Tampilan grafik pertumbuhan anak" />
+                        <div class="gc-l"><strong>Grafik Pertumbuhan</strong><span>Pantau tren berat dan tinggi secara visual agar progres lebih mudah diikuti.</span></div>
+                    </article>
+                    <article class="gc rv d2">
+                        <img src="img/ss-summary.jpeg" alt="Tampilan rangkuman pintar aktivitas anak" />
+                        <div class="gc-l"><strong>Rangkuman Pintar</strong><span>Siapkan ringkasan aktivitas sebelum konsultasi agar diskusi dengan dokter lebih fokus.</span></div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- HOW IT WORKS -->
-    <section class="how" id="cara-kerja">
-        <div class="c">
-            <div class="sh rv">
-                <span class="sl">🚀 Mudah Dimulai</span>
-                <h2 class="st">3 Langkah Menuju Parenting Lebih Teratur</h2>
-                <p class="ss">Tidak perlu download dari App Store. Buka, catat, dan pantau — langsung dari browser.</p>
+        <section class="sec trust" id="kepercayaan">
+            <div class="c">
+                <div class="card trust-wrap rv">
+                    <span class="sl">Privasi & Kejelasan</span>
+                    <h2 class="st">Dibuat untuk membantu orang tua, bukan menambah kekhawatiran</h2>
+                    <p class="ss">Mulai tanpa ribet, bisa langsung dipakai dari browser. Data tetap privat dan tidak digunakan untuk iklan.</p>
+                    <div class="trust-grid">
+                        <article class="trust-item">
+                            <h3>Privasi lebih terjaga</h3>
+                            <p>Catatan anak adalah hal sensitif. Karena itu LangkahKecil menempatkan privasi sebagai prinsip utama penggunaan.</p>
+                        </article>
+                        <article class="trust-item">
+                            <h3>Tanpa iklan</h3>
+                            <p>Tampilan fokus untuk pencatatan harian, tanpa gangguan iklan saat Anda sedang buru-buru.</p>
+                        </article>
+                        <article class="trust-item">
+                            <h3>Praktis di browser (PWA)</h3>
+                            <p>Bisa dibuka cepat dari browser ponsel dan dipasang ke layar utama untuk akses yang lebih mudah.</p>
+                        </article>
+                        <article class="trust-item">
+                            <h3>Referensi pertumbuhan</h3>
+                            <p>Grafik pertumbuhan membantu melihat tren. Untuk interpretasi klinis, tetap diskusikan dengan tenaga medis.</p>
+                        </article>
+                    </div>
+                    <p class="disclaimer"><strong>Catatan penting:</strong> LangkahKecil membantu pencatatan dan rangkuman, tetapi tidak menggantikan saran tenaga medis.</p>
+                </div>
             </div>
-            <div class="hg">
-                <div class="hc rv d1">
-                    <div class="hn">1</div>
-                    <h3>Buka & Daftar Gratis</h3>
-                    <p>Buka LangkahKecil di browser ponsel. Bisa langsung pakai tanpa akun — data tersimpan aman di
-                        perangkat Anda.</p>
-                </div>
-                <div class="hc rv d2">
-                    <div class="hn">2</div>
-                    <h3>Tambah Profil si Kecil</h3>
-                    <p>Masukkan nama dan tanggal lahir anak. Anda bisa menambahkan lebih dari satu anak dalam satu akun.
-                    </p>
-                </div>
-                <div class="hc rv d3">
-                    <div class="hn">3</div>
-                    <h3>Catat & Dapatkan Insight</h3>
-                    <p>Mulai catat aktivitas harian. Lihat rangkuman pintar, grafik pertumbuhan, dan analisa pola
-                        otomatis setiap hari.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- GALLERY -->
-    <section class="gal" id="galeri">
-        <div class="c">
-            <div class="sh rv">
-                <span class="sl">📱 Tampilan Aplikasi</span>
-                <h2 class="st">Bersih, Intuitif, Satu Tangan</h2>
-                <p class="ss">Dirancang agar Mama bisa mencatat dengan satu tangan — sambil menggendong si kecil.</p>
+        <section class="sec cta" id="mulai">
+            <div class="c cta-c rv">
+                <h2>Mulai catat hari ini, lebih tenang setiap hari.</h2>
+                <p>Semua catatan kecil hari ini bisa membantu Anda melihat pola penting si kecil dengan lebih jelas.</p>
+                <a href="https://langkahkecil-v-1.pages.dev" class="bw" aria-label="Coba gratis LangkahKecil di browser">Coba Gratis di Browser
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                    </svg>
+                </a>
             </div>
-            <div class="gg">
-                <div class="gc rv d1"><img src="img/ss-dashboard.jpeg" alt="Dashboard" />
-                    <div class="gc-l">Dashboard</div>
-                </div>
-                <div class="gc rv d2"><img src="img/ss-food.jpeg" alt="Analisa Asupan" />
-                    <div class="gc-l">Analisa Asupan</div>
-                </div>
-                <div class="gc rv d3"><img src="img/ss-sleep.jpeg" alt="Analisa Tidur" />
-                    <div class="gc-l">Analisa Tidur</div>
-                </div>
-                <div class="gc rv d1"><img src="img/ss-growth.jpeg" alt="Grafik Pertumbuhan" />
-                    <div class="gc-l">Grafik Pertumbuhan</div>
-                </div>
-                <div class="gc rv d2"><img src="img/ss-summary.jpeg" alt="Rangkuman Pintar" />
-                    <div class="gc-l">Rangkuman Pintar</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- CTA -->
-    <section class="cta">
-        <div class="c cta-c rv">
-            <h2>Mulai Langkah Kecil Hari Ini 💜</h2>
-            <p>Setiap catatan kecil hari ini adalah investasi besar untuk tumbuh kembang si buah hati esok hari.</p>
-            <a href="https://langkahkecil-v-1.pages.dev" class="bw">Mulai Sekarang — Gratis<svg viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2.5">
-                    <path d="M5 12h14" />
-                    <path d="m12 5 7 7-7 7" />
-                </svg></a>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer class="foot">
         <div class="c foot-i">
-            <div class="foot-l"><img src="brand/LangkahKecil_logo.png" alt="LangkahKecil" />LangkahKecil</div>
-            <p class="foot-t">&copy; 2025 LangkahKecil. Dibuat dengan 💜 untuk orang tua Indonesia.</p>
+            <div class="foot-l"><img src="brand/LangkahKecil_logo.png" alt="Logo LangkahKecil" />LangkahKecil</div>
+            <p class="foot-t">&copy; 2025 LangkahKecil. Dibuat untuk membantu orang tua Indonesia mencatat lebih tenang.</p>
             <ul class="foot-k">
-                <li><a href="#">Privasi</a></li>
-                <li><a href="#">Bantuan</a></li>
-                <li><a href="#">Kontak</a></li>
+                <li><a href="#kepercayaan">Privasi</a></li>
+                <li><a href="#cara-kerja">Cara Kerja</a></li>
+                <li><a href="https://langkahkecil-v-1.pages.dev">Coba Aplikasi</a></li>
             </ul>
         </div>
     </footer>
 
     <script>
-        function initReveal() { const r = document.querySelectorAll('.rv'); new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe && r.forEach(el => new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe(el)) }
-        function initNav() { const n = document.getElementById('navbar'); window.addEventListener('scroll', () => { n.classList.toggle('sc', scrollY > 50) }) }
-        function initMob() { const t = document.getElementById('navToggle'), l = document.getElementById('navLinks'); t.addEventListener('click', () => { l.classList.toggle('open'); const s = t.querySelectorAll('span'), o = l.classList.contains('open'); s[0].style.transform = o ? 'rotate(45deg) translate(5px,5px)' : ''; s[1].style.opacity = o ? '0' : ''; s[2].style.transform = o ? 'rotate(-45deg) translate(5px,-5px)' : '' }); l.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { l.classList.remove('open'); t.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = '' }) })) }
-        function scrollToApp() { location.href = 'https://langkahkecil-v-1.pages.dev' }
-        document.addEventListener('DOMContentLoaded', () => { initReveal(); initNav(); initMob() });
+        function initReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('vis');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            document.querySelectorAll('.rv').forEach((el) => observer.observe(el));
+        }
+
+        function initNav() {
+            const nav = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                nav.classList.toggle('sc', window.scrollY > 40);
+            });
+        }
+
+        function initMob() {
+            const t = document.getElementById('navToggle');
+            const l = document.getElementById('navLinks');
+            t.addEventListener('click', () => {
+                l.classList.toggle('open');
+                const s = t.querySelectorAll('span');
+                const open = l.classList.contains('open');
+                s[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
+                s[1].style.opacity = open ? '0' : '';
+                s[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
+            });
+
+            l.querySelectorAll('a').forEach((a) => {
+                a.addEventListener('click', () => {
+                    l.classList.remove('open');
+                    t.querySelectorAll('span').forEach((s) => {
+                        s.style.transform = '';
+                        s.style.opacity = '';
+                    });
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initReveal();
+            initNav();
+            initMob();
+        });
     </script>
 </body>
 
