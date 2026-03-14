@@ -1060,22 +1060,44 @@
         }
 
         @media(max-width:768px) {
+            .c {
+                padding: 0 16px
+            }
+
             .nav-k {
                 display: none;
                 position: absolute;
-                top: 64px;
-                left: 0;
-                right: 0;
+                top: 56px;
+                left: 12px;
+                right: 12px;
                 background: var(--w);
                 flex-direction: column;
-                padding: 20px;
-                gap: 14px;
-                border-bottom: 1px solid rgba(107, 85, 230, .1);
-                box-shadow: var(--s2)
+                padding: 16px;
+                gap: 10px;
+                border: 1px solid rgba(107, 85, 230, .1);
+                border-radius: 16px;
+                box-shadow: var(--s2);
+                max-height: calc(100dvh - 92px);
+                overflow-y: auto
             }
 
             .nav-k.open {
                 display: flex
+            }
+
+            .nav-k li,
+            .nav-k a {
+                width: 100%
+            }
+
+            .nav-k a {
+                padding: 10px 8px;
+                border-radius: 10px
+            }
+
+            .nav-k a.bn {
+                text-align: center;
+                padding: 12px 14px
             }
 
             .nav-t {
@@ -1098,6 +1120,45 @@
             .hmk,
             .imk {
                 width: 220px
+            }
+
+            .hero {
+                min-height: auto
+            }
+
+            .hbadge {
+                font-size: .72rem;
+                margin-bottom: 14px
+            }
+
+            .hsub {
+                margin-bottom: 24px;
+                line-height: 1.65
+            }
+
+            .htr {
+                margin-top: 18px;
+                justify-content: center
+            }
+
+            .fc,
+            .sc,
+            .hc {
+                padding: 24px 18px
+            }
+
+            .sh {
+                margin-bottom: 38px
+            }
+
+            .gg {
+                margin-top: 24px
+            }
+
+            .bw {
+                width: 100%;
+                justify-content: center;
+                max-width: 320px
             }
 
             .hd1,
@@ -1145,8 +1206,13 @@
         }
 
         @media(max-width:480px) {
+            .c {
+                padding: 0 14px
+            }
+
             .hero h1 {
-                font-size: 1.8rem
+                font-size: 1.7rem;
+                line-height: 1.2
             }
 
             .st {
@@ -1159,8 +1225,22 @@
             }
 
             .gg {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
                 gap: 10px
+            }
+
+            .sg {
+                grid-template-columns: 1fr
+            }
+
+            .hbadge {
+                width: 100%;
+                justify-content: center;
+                text-align: center
+            }
+
+            .tb {
+                font-size: .7rem
             }
 
             .sn {
@@ -1202,7 +1282,7 @@
                     </svg>
                     Offline-first · Gratis · Data aman di perangkatmu
                 </div>
-                <h1>Awali <span class="gt">Langkah Kecil</span> dengan Catatan yang Bermakna.</h1>
+                <h1>Awali <span class="gt">Langkah Kecil</span> dengan Catatan Cepat yang Bermakna.</h1>
                 <p class="hsub">Cukup catat aktivitas harian si kecil — makan, tidur, popok — lalu dapatkan
                     <strong>rangkuman cerdas & analisa otomatis</strong> untuk mengoptimalkan tumbuh kembangnya. Semudah
                     ketik, secepat satu sentuh.
