@@ -1480,6 +1480,45 @@
             color: var(--muted);
         }
 
+        .summary-day-group {
+            border: 1px solid rgba(107, 85, 230, 0.12);
+            border-radius: 12px;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .summary-day-head {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 10px 12px;
+            background: rgba(107, 85, 230, 0.06);
+            font-size: 0.84rem;
+            font-weight: 800;
+            color: var(--b6);
+        }
+
+        .summary-day-head::-webkit-details-marker { display: none; }
+
+        .summary-day-count {
+            font-size: 0.72rem;
+            color: var(--muted);
+            font-weight: 700;
+            background: #fff;
+            border-radius: 999px;
+            padding: 3px 8px;
+        }
+
+        .summary-day-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 8px;
+        }
+
         .summary-result {
             display: none;
             flex-direction: column;
@@ -1963,24 +2002,59 @@
                 <div class="summary-log-stage active" id="summaryLogsStage">
                     <div class="summary-head-note">Ditemukan log aktivitas selama <strong>1 minggu</strong> (18 log). Data dipadatkan agar tetap mudah dibaca sebelum dirangkum.</div>
                     <div class="summary-week-list">
-                        <div class="summary-week-item"><div class="summary-week-day">Sen</div><div class="summary-week-text">Minum susu formula 180 ml</div><div class="summary-week-time">07:10</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Sen</div><div class="summary-week-text">Makan bubur ayam 150 gr</div><div class="summary-week-time">12:05</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Sen</div><div class="summary-week-text">Tidur siang 35 menit</div><div class="summary-week-time">13:20</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Sel</div><div class="summary-week-text">Diaper / pup normal</div><div class="summary-week-time">08:00</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Sel</div><div class="summary-week-text">Minum susu 200 ml</div><div class="summary-week-time">10:40</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Sel</div><div class="summary-week-text">Vitamin D3 1 tetes</div><div class="summary-week-time">16:15</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Rab</div><div class="summary-week-text">Makan puree buah 120 gr</div><div class="summary-week-time">09:30</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Rab</div><div class="summary-week-text">Diaper / pipis</div><div class="summary-week-time">11:50</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Rab</div><div class="summary-week-text">Tidur siang 40 menit</div><div class="summary-week-time">14:05</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Kam</div><div class="summary-week-text">Minum susu 170 ml</div><div class="summary-week-time">07:25</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Kam</div><div class="summary-week-text">Makan nasi tim 160 gr</div><div class="summary-week-time">12:10</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Kam</div><div class="summary-week-text">Obat demam sesuai resep</div><div class="summary-week-time">20:00</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Jum</div><div class="summary-week-text">Diaper / pup normal</div><div class="summary-week-time">08:25</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Jum</div><div class="summary-week-text">Makan bubur 140 gr</div><div class="summary-week-time">11:55</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Sab</div><div class="summary-week-text">Minum susu 190 ml</div><div class="summary-week-time">07:00</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Sab</div><div class="summary-week-text">Tidur siang 30 menit</div><div class="summary-week-time">13:35</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Min</div><div class="summary-week-text">Makan pure kentang 150 gr</div><div class="summary-week-time">09:45</div></div>
-                        <div class="summary-week-item"><div class="summary-week-day">Min</div><div class="summary-week-text">Diaper / pipis</div><div class="summary-week-time">15:10</div></div>
+                        <details class="summary-day-group" open>
+                            <summary class="summary-day-head"><span>Senin</span><span class="summary-day-count">3 log</span></summary>
+                            <div class="summary-day-list">
+                                <div class="summary-week-item"><div class="summary-week-day">Sen</div><div class="summary-week-text">Minum susu formula 180 ml</div><div class="summary-week-time">07:10</div></div>
+                                <div class="summary-week-item"><div class="summary-week-day">Sen</div><div class="summary-week-text">Makan bubur ayam 150 gr</div><div class="summary-week-time">12:05</div></div>
+                                <div class="summary-week-item"><div class="summary-week-day">Sen</div><div class="summary-week-text">Tidur siang 35 menit</div><div class="summary-week-time">13:20</div></div>
+                            </div>
+                        </details>
+                        <details class="summary-day-group">
+                            <summary class="summary-day-head"><span>Selasa</span><span class="summary-day-count">3 log</span></summary>
+                            <div class="summary-day-list">
+                                <div class="summary-week-item"><div class="summary-week-day">Sel</div><div class="summary-week-text">Diaper / pup normal</div><div class="summary-week-time">08:00</div></div>
+                                <div class="summary-week-item"><div class="summary-week-day">Sel</div><div class="summary-week-text">Minum susu 200 ml</div><div class="summary-week-time">10:40</div></div>
+                                <div class="summary-week-item"><div class="summary-week-day">Sel</div><div class="summary-week-text">Vitamin D3 1 tetes</div><div class="summary-week-time">16:15</div></div>
+                            </div>
+                        </details>
+                        <details class="summary-day-group">
+                            <summary class="summary-day-head"><span>Rabu</span><span class="summary-day-count">3 log</span></summary>
+                            <div class="summary-day-list">
+                                <div class="summary-week-item"><div class="summary-week-day">Rab</div><div class="summary-week-text">Makan puree buah 120 gr</div><div class="summary-week-time">09:30</div></div>
+                                <div class="summary-week-item"><div class="summary-week-day">Rab</div><div class="summary-week-text">Diaper / pipis</div><div class="summary-week-time">11:50</div></div>
+                                <div class="summary-week-item"><div class="summary-week-day">Rab</div><div class="summary-week-text">Tidur siang 40 menit</div><div class="summary-week-time">14:05</div></div>
+                            </div>
+                        </details>
+                        <details class="summary-day-group">
+                            <summary class="summary-day-head"><span>Kamis</span><span class="summary-day-count">3 log</span></summary>
+                            <div class="summary-day-list">
+                                <div class="summary-week-item"><div class="summary-week-day">Kam</div><div class="summary-week-text">Minum susu 170 ml</div><div class="summary-week-time">07:25</div></div>
+                                <div class="summary-week-item"><div class="summary-week-day">Kam</div><div class="summary-week-text">Makan nasi tim 160 gr</div><div class="summary-week-time">12:10</div></div>
+                                <div class="summary-week-item"><div class="summary-week-day">Kam</div><div class="summary-week-text">Obat demam sesuai resep</div><div class="summary-week-time">20:00</div></div>
+                            </div>
+                        </details>
+                        <details class="summary-day-group">
+                            <summary class="summary-day-head"><span>Jumat</span><span class="summary-day-count">2 log</span></summary>
+                            <div class="summary-day-list">
+                                <div class="summary-week-item"><div class="summary-week-day">Jum</div><div class="summary-week-text">Diaper / pup normal</div><div class="summary-week-time">08:25</div></div>
+                                <div class="summary-week-item"><div class="summary-week-day">Jum</div><div class="summary-week-text">Makan bubur 140 gr</div><div class="summary-week-time">11:55</div></div>
+                            </div>
+                        </details>
+                        <details class="summary-day-group">
+                            <summary class="summary-day-head"><span>Sabtu</span><span class="summary-day-count">2 log</span></summary>
+                            <div class="summary-day-list">
+                                <div class="summary-week-item"><div class="summary-week-day">Sab</div><div class="summary-week-text">Minum susu 190 ml</div><div class="summary-week-time">07:00</div></div>
+                                <div class="summary-week-item"><div class="summary-week-day">Sab</div><div class="summary-week-text">Tidur siang 30 menit</div><div class="summary-week-time">13:35</div></div>
+                            </div>
+                        </details>
+                        <details class="summary-day-group">
+                            <summary class="summary-day-head"><span>Minggu</span><span class="summary-day-count">2 log</span></summary>
+                            <div class="summary-day-list">
+                                <div class="summary-week-item"><div class="summary-week-day">Min</div><div class="summary-week-text">Makan pure kentang 150 gr</div><div class="summary-week-time">09:45</div></div>
+                                <div class="summary-week-item"><div class="summary-week-day">Min</div><div class="summary-week-text">Diaper / pipis</div><div class="summary-week-time">15:10</div></div>
+                            </div>
+                        </details>
                     </div>
                     <div class="demo-actions" style="opacity:1; margin-top:0;">
                         <button class="btn-primary" onclick="startSummaryProcess()">Buat Rangkuman Pintar</button>
