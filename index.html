@@ -1438,6 +1438,48 @@
             min-height: 280px;
         }
 
+        .summary-week-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .summary-week-item {
+            display: grid;
+            grid-template-columns: 54px 1fr auto;
+            gap: 10px;
+            align-items: center;
+            background: var(--w);
+            border: 1px solid rgba(107, 85, 230, 0.08);
+            border-radius: 12px;
+            padding: 8px 10px;
+        }
+
+        .summary-week-day {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--b6);
+            background: rgba(107, 85, 230, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            padding: 4px 6px;
+        }
+
+        .summary-week-text {
+            font-size: 0.82rem;
+            color: var(--dark);
+            line-height: 1.35;
+        }
+
+        .summary-week-time {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--muted);
+        }
+
         .summary-result {
             display: none;
             flex-direction: column;
@@ -1919,48 +1961,26 @@
             </div>
             <div class="demo-body" id="summaryDemoBody">
                 <div class="summary-log-stage active" id="summaryLogsStage">
-                    <div class="summary-head-note">Ditemukan 8 log aktivitas harian. AI akan merangkumnya menjadi insight siap konsultasi.</div>
-                    <div class="log-cards" style="margin:0;">
-                        <div class="log-card" style="opacity:1; transform:none;">
-                            <div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div>
-                            <div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">200 ml susu formula</div></div>
-                            <div class="lc-time">07:00</div>
-                        </div>
-                        <div class="log-card" style="opacity:1; transform:none;">
-                            <div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div>
-                            <div class="lc-content"><div class="lc-title">Diaper / Pup</div><div class="lc-desc">Popok kotor, warna normal</div></div>
-                            <div class="lc-time">08:15</div>
-                        </div>
-                        <div class="log-card" style="opacity:1; transform:none;">
-                            <div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
-                            <div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Bubur ayam 150 gr</div></div>
-                            <div class="lc-time">09:40</div>
-                        </div>
-                        <div class="log-card" style="opacity:1; transform:none;">
-                            <div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div>
-                            <div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">120 ml</div></div>
-                            <div class="lc-time">11:10</div>
-                        </div>
-                        <div class="log-card" style="opacity:1; transform:none;">
-                            <div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div>
-                            <div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 30 menit</div></div>
-                            <div class="lc-time">13:10</div>
-                        </div>
-                        <div class="log-card" style="opacity:1; transform:none;">
-                            <div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div>
-                            <div class="lc-content"><div class="lc-title">Diaper / Pipis</div><div class="lc-desc">Popok basah</div></div>
-                            <div class="lc-time">14:00</div>
-                        </div>
-                        <div class="log-card" style="opacity:1; transform:none;">
-                            <div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
-                            <div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes setelah makan</div></div>
-                            <div class="lc-time">16:30</div>
-                        </div>
-                        <div class="log-card" style="opacity:1; transform:none;">
-                            <div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
-                            <div class="lc-content"><div class="lc-title">Makan Sore</div><div class="lc-desc">Puree buah 150 gr</div></div>
-                            <div class="lc-time">17:45</div>
-                        </div>
+                    <div class="summary-head-note">Ditemukan log aktivitas selama <strong>1 minggu</strong> (18 log). Data dipadatkan agar tetap mudah dibaca sebelum dirangkum.</div>
+                    <div class="summary-week-list">
+                        <div class="summary-week-item"><div class="summary-week-day">Sen</div><div class="summary-week-text">Minum susu formula 180 ml</div><div class="summary-week-time">07:10</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Sen</div><div class="summary-week-text">Makan bubur ayam 150 gr</div><div class="summary-week-time">12:05</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Sen</div><div class="summary-week-text">Tidur siang 35 menit</div><div class="summary-week-time">13:20</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Sel</div><div class="summary-week-text">Diaper / pup normal</div><div class="summary-week-time">08:00</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Sel</div><div class="summary-week-text">Minum susu 200 ml</div><div class="summary-week-time">10:40</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Sel</div><div class="summary-week-text">Vitamin D3 1 tetes</div><div class="summary-week-time">16:15</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Rab</div><div class="summary-week-text">Makan puree buah 120 gr</div><div class="summary-week-time">09:30</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Rab</div><div class="summary-week-text">Diaper / pipis</div><div class="summary-week-time">11:50</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Rab</div><div class="summary-week-text">Tidur siang 40 menit</div><div class="summary-week-time">14:05</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Kam</div><div class="summary-week-text">Minum susu 170 ml</div><div class="summary-week-time">07:25</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Kam</div><div class="summary-week-text">Makan nasi tim 160 gr</div><div class="summary-week-time">12:10</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Kam</div><div class="summary-week-text">Obat demam sesuai resep</div><div class="summary-week-time">20:00</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Jum</div><div class="summary-week-text">Diaper / pup normal</div><div class="summary-week-time">08:25</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Jum</div><div class="summary-week-text">Makan bubur 140 gr</div><div class="summary-week-time">11:55</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Sab</div><div class="summary-week-text">Minum susu 190 ml</div><div class="summary-week-time">07:00</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Sab</div><div class="summary-week-text">Tidur siang 30 menit</div><div class="summary-week-time">13:35</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Min</div><div class="summary-week-text">Makan pure kentang 150 gr</div><div class="summary-week-time">09:45</div></div>
+                        <div class="summary-week-item"><div class="summary-week-day">Min</div><div class="summary-week-text">Diaper / pipis</div><div class="summary-week-time">15:10</div></div>
                     </div>
                     <div class="demo-actions" style="opacity:1; margin-top:0;">
                         <button class="btn-primary" onclick="startSummaryProcess()">Buat Rangkuman Pintar</button>
