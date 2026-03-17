@@ -358,7 +358,15 @@
             display: flex;
             gap: 12px;
             align-items: center;
-            flex-wrap: wrap
+            flex-wrap: wrap;
+            max-width: 560px
+        }
+
+        .hcta-demo {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            width: 100%;
         }
 
         .bp {
@@ -389,14 +397,15 @@
         .bs {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 8px;
             background: var(--w);
             color: var(--b6);
-            padding: 15px 28px;
+            padding: 14px 16px;
             border-radius: 14px;
             font-weight: 800;
-            font-size: 1rem;
-            min-height: 52px;
+            font-size: 0.93rem;
+            min-height: 50px;
             border: 2px solid rgba(107, 85, 230, .2);
             transition: all .3s
         }
@@ -1114,7 +1123,12 @@
 
             .hcta {
                 flex-direction: column;
-                align-items: stretch
+                align-items: stretch;
+                gap: 10px
+            }
+
+            .hcta-demo {
+                grid-template-columns: 1fr;
             }
 
             .bp,
@@ -1393,8 +1407,29 @@
         .demo-actions.show { animation: slideUpCard 0.5s ease forwards; animation-delay: 0.6s; }
 
 
+        .summary-log-stage,
         .summary-demo-loading {
+            display: none;
+        }
+
+        .summary-log-stage.active,
+        .summary-demo-loading.active {
             display: flex;
+            flex-direction: column;
+        }
+
+        .summary-log-stage {
+            gap: 14px;
+        }
+
+        .summary-head-note {
+            text-align: left;
+            font-size: 0.92rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .summary-demo-loading {
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -1520,16 +1555,18 @@
                             <path d="M5 12h14" />
                             <path d="m12 5 7 7-7 7" />
                         </svg>Mulai Gratis</a>
-                    <button class="bs" onclick="openDemo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                        <line x1="12" x2="12" y1="19" y2="22"/>
-                    </svg>Demo Input Suara</button>
-                    <button class="bs" onclick="openSummaryDemo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 5h16"/>
-                        <path d="M4 12h16"/>
-                        <path d="M4 19h10"/>
-                    </svg>Demo Rangkuman Pintar</button>
+                    <div class="hcta-demo">
+                        <button class="bs" onclick="openDemo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" x2="12" y1="19" y2="22"/>
+                        </svg>Demo Input Suara</button>
+                        <button class="bs" onclick="openSummaryDemo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 5h16"/>
+                            <path d="M4 12h16"/>
+                            <path d="M4 19h10"/>
+                        </svg>Demo Rangkuman Pintar</button>
+                    </div>
                 </div>
                 <div class="htr">
                     <span class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1881,6 +1918,30 @@
                 <button class="demo-close" onclick="closeSummaryDemo()" aria-label="Tutup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
             </div>
             <div class="demo-body" id="summaryDemoBody">
+                <div class="summary-log-stage active" id="summaryLogsStage">
+                    <div class="summary-head-note">Data log aktivitas harian ditemukan. Lanjutkan untuk membuat rangkuman pintar.</div>
+                    <div class="log-cards" style="margin:0;">
+                        <div class="log-card" style="opacity:1; transform:none;">
+                            <div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div>
+                            <div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">200 ml susu formula</div></div>
+                            <div class="lc-time">07:00</div>
+                        </div>
+                        <div class="log-card" style="opacity:1; transform:none;">
+                            <div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
+                            <div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Bubur 300 gr</div></div>
+                            <div class="lc-time">12:00</div>
+                        </div>
+                        <div class="log-card" style="opacity:1; transform:none;">
+                            <div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div>
+                            <div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 30 menit</div></div>
+                            <div class="lc-time">13:10</div>
+                        </div>
+                    </div>
+                    <div class="demo-actions" style="opacity:1; margin-top:0;">
+                        <button class="btn-primary" onclick="startSummaryProcess()">Buat Rangkuman Pintar</button>
+                    </div>
+                </div>
+
                 <div class="summary-demo-loading" id="summaryLoading">
                     <div class="loader"></div>
                     <div class="demo-title">Menyusun Rangkuman Pintar...</div>
@@ -1978,12 +2039,21 @@
 
         function openSummaryDemo() {
             document.getElementById('summaryOverlay').classList.add('active');
-            document.getElementById('summaryLoading').style.display = 'flex';
+            document.getElementById('summaryLogsStage').classList.add('active');
+            document.getElementById('summaryLoading').classList.remove('active');
             document.getElementById('summaryResult').classList.remove('active');
             document.body.style.overflow = 'hidden';
             clearTimeout(summaryTimeout);
+            document.getElementById('summaryDemoBody').scrollTop = 0;
+        }
+
+        function startSummaryProcess() {
+            document.getElementById('summaryLogsStage').classList.remove('active');
+            document.getElementById('summaryLoading').classList.add('active');
+            document.getElementById('summaryResult').classList.remove('active');
+            clearTimeout(summaryTimeout);
             summaryTimeout = setTimeout(() => {
-                document.getElementById('summaryLoading').style.display = 'none';
+                document.getElementById('summaryLoading').classList.remove('active');
                 document.getElementById('summaryResult').classList.add('active');
                 document.getElementById('summaryDemoBody').scrollTop = 0;
             }, 2200);
