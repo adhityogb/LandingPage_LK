@@ -1438,14 +1438,39 @@
             min-height: 280px;
         }
 
+        .summary-list-controls {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .summary-size-btn {
+            border: 1px solid rgba(107, 85, 230, 0.2);
+            background: #fff;
+            color: var(--b6);
+            border-radius: 999px;
+            padding: 5px 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .summary-size-btn.active {
+            background: rgba(107, 85, 230, 0.12);
+            border-color: rgba(107, 85, 230, 0.4);
+        }
+
         .summary-week-list {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            max-height: 340px;
             overflow-y: auto;
             padding-right: 4px;
+            transition: max-height 0.2s ease;
         }
+
+        .summary-week-list.size-compact { max-height: 260px; }
+        .summary-week-list.size-default { max-height: 340px; }
+        .summary-week-list.size-expanded { max-height: 430px; }
 
         .summary-day-group {
             border: 1px solid rgba(107, 85, 230, 0.14);
@@ -1455,13 +1480,14 @@
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .summary-day-group[open] {
+        .summary-day-group.active {
             border-color: rgba(107, 85, 230, 0.3);
             box-shadow: 0 6px 16px rgba(107, 85, 230, 0.08);
         }
 
         .summary-day-head {
-            list-style: none;
+            width: 100%;
+            border: 0;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -1470,13 +1496,12 @@
             padding: 11px 12px;
             background: rgba(107, 85, 230, 0.06);
             color: var(--b6);
+            text-align: left;
         }
 
         .summary-day-head:hover {
             background: rgba(107, 85, 230, 0.1);
         }
-
-        .summary-day-head::-webkit-details-marker { display: none; }
 
         .summary-day-title {
             font-size: 0.85rem;
@@ -1508,10 +1533,13 @@
             margin-top: -3px;
         }
 
-        .summary-day-group[open] .summary-day-chevron {
+        .summary-day-group.active .summary-day-chevron {
             transform: rotate(-135deg);
             margin-top: 2px;
         }
+
+        .summary-day-panel { display: none; }
+        .summary-day-group.active .summary-day-panel { display: block; }
 
         .summary-day-list {
             display: flex;
@@ -2034,61 +2062,83 @@
             </div>
             <div class="demo-body" id="summaryDemoBody">
                 <div class="summary-log-stage active" id="summaryLogsStage">
-                    <div class="summary-head-note">Ditemukan log aktivitas selama <strong>1 minggu</strong> (18 log). Data dipadatkan agar tetap mudah dibaca sebelum dirangkum.</div>
-                    <div class="summary-week-list" id="summaryWeekList">
-                        <details class="summary-day-group" open>
-                            <summary class="summary-day-head"><span class="summary-day-title">Senin</span><span class="summary-day-meta"><span class="summary-day-count">3 log</span><span class="summary-day-chevron"></span></span></summary>
-                            <div class="summary-day-list">
+                    <div class="summary-head-note">Ditemukan <strong>35 log aktivitas selama 1 minggu</strong>. Senin terbuka default, hari lain bisa dibuka untuk melihat detail sebelum dirangkum.</div>
+                    <div class="summary-list-controls" id="summaryListControls">
+                        <button class="summary-size-btn" data-size="compact">Ringkas</button>
+                        <button class="summary-size-btn active" data-size="default">Sedang</button>
+                        <button class="summary-size-btn" data-size="expanded">Panjang</button>
+                    </div>
+                    <div class="summary-week-list size-default" id="summaryWeekList">
+                        <section class="summary-day-group active" data-day="senin">
+                            <button type="button" class="summary-day-head"><span class="summary-day-title">Senin</span><span class="summary-day-meta"><span class="summary-day-count">5 log</span><span class="summary-day-chevron"></span></span></button>
+                            <div class="summary-day-panel"><div class="summary-day-list">
                                 <div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 180 ml</div></div><div class="lc-time">07:10</div></div>
+                                <div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pup</div><div class="lc-desc">Kondisi normal</div></div><div class="lc-time">08:20</div></div>
                                 <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Bubur ayam 150 gr</div></div><div class="lc-time">12:05</div></div>
                                 <div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 35 menit</div></div><div class="lc-time">13:20</div></div>
-                            </div>
-                        </details>
-                        <details class="summary-day-group">
-                            <summary class="summary-day-head"><span class="summary-day-title">Selasa</span><span class="summary-day-meta"><span class="summary-day-count">3 log</span><span class="summary-day-chevron"></span></span></summary>
-                            <div class="summary-day-list">
-                                <div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pup</div><div class="lc-desc">Kondisi normal</div></div><div class="lc-time">08:00</div></div>
-                                <div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">200 ml</div></div><div class="lc-time">10:40</div></div>
-                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">16:15</div></div>
-                            </div>
-                        </details>
-                        <details class="summary-day-group">
-                            <summary class="summary-day-head"><span class="summary-day-title">Rabu</span><span class="summary-day-meta"><span class="summary-day-count">3 log</span><span class="summary-day-chevron"></span></span></summary>
-                            <div class="summary-day-list">
-                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Puree</div><div class="lc-desc">Buah 120 gr</div></div><div class="lc-time">09:30</div></div>
-                                <div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pipis</div><div class="lc-desc">Popok basah</div></div><div class="lc-time">11:50</div></div>
-                                <div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 40 menit</div></div><div class="lc-time">14:05</div></div>
-                            </div>
-                        </details>
-                        <details class="summary-day-group">
-                            <summary class="summary-day-head"><span class="summary-day-title">Kamis</span><span class="summary-day-meta"><span class="summary-day-count">3 log</span><span class="summary-day-chevron"></span></span></summary>
-                            <div class="summary-day-list">
-                                <div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">170 ml</div></div><div class="lc-time">07:25</div></div>
-                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Nasi Tim</div><div class="lc-desc">160 gr</div></div><div class="lc-time">12:10</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">16:10</div></div>
+                            </div></div>
+                        </section>
+                        <section class="summary-day-group" data-day="selasa">
+                            <button type="button" class="summary-day-head"><span class="summary-day-title">Selasa</span><span class="summary-day-meta"><span class="summary-day-count">5 log</span><span class="summary-day-chevron"></span></span></button>
+                            <div class="summary-day-panel"><div class="summary-day-list">
+                                <div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 200 ml</div></div><div class="lc-time">06:55</div></div>
+                                <div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pipis</div><div class="lc-desc">Popok basah</div></div><div class="lc-time">08:40</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Nasi tim 160 gr</div></div><div class="lc-time">11:50</div></div>
+                                <div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 40 menit</div></div><div class="lc-time">13:15</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">17:00</div></div>
+                            </div></div>
+                        </section>
+                        <section class="summary-day-group" data-day="rabu">
+                            <button type="button" class="summary-day-head"><span class="summary-day-title">Rabu</span><span class="summary-day-meta"><span class="summary-day-count">5 log</span><span class="summary-day-chevron"></span></span></button>
+                            <div class="summary-day-panel"><div class="summary-day-list">
+                                <div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 190 ml</div></div><div class="lc-time">07:05</div></div>
+                                <div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pup</div><div class="lc-desc">Kondisi normal</div></div><div class="lc-time">08:30</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Puree buah 150 gr</div></div><div class="lc-time">12:00</div></div>
+                                <div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 30 menit</div></div><div class="lc-time">13:40</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">16:20</div></div>
+                            </div></div>
+                        </section>
+                        <section class="summary-day-group" data-day="kamis">
+                            <button type="button" class="summary-day-head"><span class="summary-day-title">Kamis</span><span class="summary-day-meta"><span class="summary-day-count">5 log</span><span class="summary-day-chevron"></span></span></button>
+                            <div class="summary-day-panel"><div class="summary-day-list">
+                                <div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 170 ml</div></div><div class="lc-time">07:25</div></div>
+                                <div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pipis</div><div class="lc-desc">Popok basah</div></div><div class="lc-time">09:10</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Nasi tim 170 gr</div></div><div class="lc-time">12:15</div></div>
+                                <div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 45 menit</div></div><div class="lc-time">13:30</div></div>
                                 <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Obat Demam</div><div class="lc-desc">Sesuai resep dokter</div></div><div class="lc-time">20:00</div></div>
-                            </div>
-                        </details>
-                        <details class="summary-day-group">
-                            <summary class="summary-day-head"><span class="summary-day-title">Jumat</span><span class="summary-day-meta"><span class="summary-day-count">2 log</span><span class="summary-day-chevron"></span></span></summary>
-                            <div class="summary-day-list">
+                            </div></div>
+                        </section>
+                        <section class="summary-day-group" data-day="jumat">
+                            <button type="button" class="summary-day-head"><span class="summary-day-title">Jumat</span><span class="summary-day-meta"><span class="summary-day-count">5 log</span><span class="summary-day-chevron"></span></span></button>
+                            <div class="summary-day-panel"><div class="summary-day-list">
+                                <div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 180 ml</div></div><div class="lc-time">07:15</div></div>
                                 <div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pup</div><div class="lc-desc">Kondisi normal</div></div><div class="lc-time">08:25</div></div>
-                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Bubur</div><div class="lc-desc">140 gr</div></div><div class="lc-time">11:55</div></div>
-                            </div>
-                        </details>
-                        <details class="summary-day-group">
-                            <summary class="summary-day-head"><span class="summary-day-title">Sabtu</span><span class="summary-day-meta"><span class="summary-day-count">2 log</span><span class="summary-day-chevron"></span></span></summary>
-                            <div class="summary-day-list">
-                                <div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">190 ml</div></div><div class="lc-time">07:00</div></div>
-                                <div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 30 menit</div></div><div class="lc-time">13:35</div></div>
-                            </div>
-                        </details>
-                        <details class="summary-day-group">
-                            <summary class="summary-day-head"><span class="summary-day-title">Minggu</span><span class="summary-day-meta"><span class="summary-day-count">2 log</span><span class="summary-day-chevron"></span></span></summary>
-                            <div class="summary-day-list">
-                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Puree</div><div class="lc-desc">Kentang 150 gr</div></div><div class="lc-time">09:45</div></div>
-                                <div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pipis</div><div class="lc-desc">Popok basah</div></div><div class="lc-time">15:10</div></div>
-                            </div>
-                        </details>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Bubur 140 gr</div></div><div class="lc-time">11:55</div></div>
+                                <div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 35 menit</div></div><div class="lc-time">13:05</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">16:45</div></div>
+                            </div></div>
+                        </section>
+                        <section class="summary-day-group" data-day="sabtu">
+                            <button type="button" class="summary-day-head"><span class="summary-day-title">Sabtu</span><span class="summary-day-meta"><span class="summary-day-count">5 log</span><span class="summary-day-chevron"></span></span></button>
+                            <div class="summary-day-panel"><div class="summary-day-list">
+                                <div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 190 ml</div></div><div class="lc-time">07:00</div></div>
+                                <div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pipis</div><div class="lc-desc">Popok basah</div></div><div class="lc-time">08:45</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Nasi tim 160 gr</div></div><div class="lc-time">12:20</div></div>
+                                <div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 40 menit</div></div><div class="lc-time">13:35</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">17:10</div></div>
+                            </div></div>
+                        </section>
+                        <section class="summary-day-group" data-day="minggu">
+                            <button type="button" class="summary-day-head"><span class="summary-day-title">Minggu</span><span class="summary-day-meta"><span class="summary-day-count">5 log</span><span class="summary-day-chevron"></span></span></button>
+                            <div class="summary-day-panel"><div class="summary-day-list">
+                                <div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 200 ml</div></div><div class="lc-time">07:20</div></div>
+                                <div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pup</div><div class="lc-desc">Kondisi normal</div></div><div class="lc-time">09:00</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Puree kentang 150 gr</div></div><div class="lc-time">12:00</div></div>
+                                <div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 30 menit</div></div><div class="lc-time">13:50</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">16:50</div></div>
+                            </div></div>
+                        </section>
                     </div>
                     <div class="demo-actions" style="opacity:1; margin-top:0;">
                         <button class="btn-primary" onclick="startSummaryProcess()">Buat Rangkuman Pintar</button>
@@ -2104,19 +2154,19 @@
                 <div class="summary-result" id="summaryResult">
                     <div class="summary-card info">
                         <div class="summary-label">ℹ️ INFO RENTANG</div>
-                        <p>- <strong>Periode:</strong> 02 Maret 2026 s/d 02 Maret 2026 (1 hari)</p>
-                        <p>- <strong>Ketersediaan data:</strong> Terdapat data tidur, makan/minum, diaper, dan kesehatan (obat). Tidak ada data growth, milestone, dan vaksin.</p>
+                        <p>- <strong>Periode:</strong> 24 Februari 2026 s/d 02 Maret 2026 (7 hari)</p>
+                        <p>- <strong>Ketersediaan data:</strong> Terdapat data tidur, makan/minum, diaper, dan kesehatan (vitamin/obat) secara konsisten selama 7 hari. Belum ada data growth, milestone, dan vaksin pada rentang ini.</p>
                     </div>
                     <div class="summary-card main">
                         <div class="summary-label">✨ RINGKASAN UTAMA</div>
-                        <p>- <strong>Asupan nutrisi</strong> Rezda hari ini mencakup 300gr makanan padat dan 200ml susu formula.</p>
-                        <p>- <strong>Durasi tidur siang</strong> tercatat sangat singkat (30 menit), perlu dipantau apakah Rezda menunjukkan tanda kelelahan.</p>
-                        <p>- <strong>Pemberian vitamin D3</strong> telah dilakukan sesuai jadwal pada pagi hari.</p>
-                        <p>- <strong>Aktivitas eliminasi</strong> terpantau dengan 3 kali ganti popok tanpa catatan keluhan pada feses atau urin.</p>
+                        <p>- <strong>Asupan nutrisi mingguan</strong> mencakup total 1.080gr makanan padat dan 1.310ml susu formula (rerata harian stabil).</p>
+                        <p>- <strong>Pola tidur siang</strong> berada di rentang 30–45 menit per hari (total 255 menit/minggu), cenderung stabil namun tetap relatif singkat.</p>
+                        <p>- <strong>Pemberian vitamin/obat</strong> tercatat rutin 1x per hari, sesuai jadwal keluarga.</p>
+                        <p>- <strong>Aktivitas eliminasi</strong> terpantau harian (7 catatan utama) tanpa keluhan berarti pada feses maupun urin.</p>
                     </div>
                     <div class="summary-card table">
                         <div class="summary-label">📊 ANGKA RINGKAS (TABEL)</div>
-                        <p><strong>Makan padat:</strong> 300 gr • <strong>Susu:</strong> 200 ml • <strong>Tidur siang:</strong> 30 menit • <strong>Popok:</strong> 3x</p>
+                        <p><strong>Makan padat:</strong> 1.080 gr • <strong>Susu:</strong> 1.310 ml • <strong>Tidur siang:</strong> 255 menit • <strong>Eliminasi:</strong> 7 catatan • <strong>Total log:</strong> 35</p>
                     </div>
                 </div>
             </div>
@@ -2197,6 +2247,17 @@
             document.getElementById('summaryResult').classList.remove('active');
             document.body.style.overflow = 'hidden';
             clearTimeout(summaryTimeout);
+
+            const groups = document.querySelectorAll('#summaryWeekList .summary-day-group');
+            groups.forEach((group, index) => group.classList.toggle('active', index === 0));
+
+            const weekList = document.getElementById('summaryWeekList');
+            weekList.classList.remove('size-compact', 'size-expanded');
+            weekList.classList.add('size-default');
+            document.querySelectorAll('#summaryListControls .summary-size-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.size === 'default');
+            });
+
             document.getElementById('summaryDemoBody').scrollTop = 0;
         }
 
@@ -2217,16 +2278,27 @@
             document.body.style.overflow = '';
             clearTimeout(summaryTimeout);
         }
-
-
         function initSummaryAccordion() {
             const groups = document.querySelectorAll('#summaryWeekList .summary-day-group');
+            const sizeButtons = document.querySelectorAll('#summaryListControls .summary-size-btn');
+            const weekList = document.getElementById('summaryWeekList');
+
+            function openDay(targetGroup) {
+                groups.forEach((group) => group.classList.remove('active'));
+                targetGroup.classList.add('active');
+            }
+
             groups.forEach((group) => {
-                group.addEventListener('toggle', () => {
-                    if (!group.open) return;
-                    groups.forEach((other) => {
-                        if (other !== group) other.open = false;
-                    });
+                const head = group.querySelector('.summary-day-head');
+                head.addEventListener('click', () => openDay(group));
+            });
+
+            sizeButtons.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    sizeButtons.forEach((b) => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    weekList.classList.remove('size-compact', 'size-default', 'size-expanded');
+                    weekList.classList.add(`size-${btn.dataset.size}`);
                 });
             });
         }
