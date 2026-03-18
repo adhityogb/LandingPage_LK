@@ -1429,6 +1429,77 @@
             font-weight: 600;
         }
 
+        .summary-intro-card {
+            background: linear-gradient(180deg, rgba(107, 85, 230, 0.12), rgba(107, 85, 230, 0.05));
+            border: 1px solid rgba(107, 85, 230, 0.14);
+            border-radius: 20px;
+            padding: 16px;
+            display: grid;
+            gap: 14px;
+        }
+
+        .summary-intro-copy {
+            display: grid;
+            gap: 8px;
+        }
+
+        .summary-intro-kicker {
+            display: inline-flex;
+            width: fit-content;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.82);
+            color: var(--b6);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .summary-intro-title {
+            font-size: 1.12rem;
+            font-weight: 900;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .summary-intro-desc {
+            font-size: 0.86rem;
+            line-height: 1.55;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .summary-intro-points {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .summary-intro-point {
+            background: rgba(255, 255, 255, 0.86);
+            border-radius: 16px;
+            padding: 12px;
+            border: 1px solid rgba(107, 85, 230, 0.08);
+            display: grid;
+            gap: 4px;
+        }
+
+        .summary-intro-point strong {
+            font-size: 0.82rem;
+            color: var(--dark);
+        }
+
+        .summary-intro-point span {
+            font-size: 0.76rem;
+            line-height: 1.45;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
         .summary-demo-loading {
             flex-direction: column;
             align-items: center;
@@ -1436,35 +1507,6 @@
             gap: 10px;
             text-align: center;
             min-height: 280px;
-        }
-
-        .summary-overview {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 10px;
-            margin: 4px 0 14px;
-        }
-
-        .summary-overview-card {
-            background: #fff;
-            border: 1px solid rgba(107, 85, 230, 0.12);
-            border-radius: 14px;
-            padding: 12px 10px;
-            text-align: center;
-        }
-
-        .summary-overview-value {
-            font-size: 1rem;
-            font-weight: 900;
-            color: var(--b6);
-            margin-bottom: 4px;
-        }
-
-        .summary-overview-label {
-            font-size: 0.72rem;
-            color: var(--muted);
-            font-weight: 700;
-            line-height: 1.35;
         }
 
         .summary-week-list {
@@ -1606,7 +1648,11 @@
         }
 
         @media(max-width:480px) {
-            .summary-overview {
+            .summary-intro-card {
+                padding: 14px;
+            }
+
+            .summary-intro-points {
                 grid-template-columns: 1fr;
             }
 
@@ -2101,10 +2147,22 @@
             <div class="demo-body" id="summaryDemoBody">
                 <div class="summary-log-stage active" id="summaryLogsStage">
                     <div class="summary-head-note">Preview data log 1 minggu sebelum AI menyusun <strong>Rangkuman Pintar</strong>. Dibuat lebih ringkas agar cepat dipindai di layar ponsel.</div>
-                    <div class="summary-overview">
-                        <div class="summary-overview-card"><div class="summary-overview-value">7 Hari</div><div class="summary-overview-label">Periode log</div></div>
-                        <div class="summary-overview-card"><div class="summary-overview-value">35</div><div class="summary-overview-label">Total aktivitas</div></div>
-                        <div class="summary-overview-card"><div class="summary-overview-value">5/hari</div><div class="summary-overview-label">Rata-rata log</div></div>
+                    <div class="summary-intro-card">
+                        <div class="summary-intro-copy">
+                            <div class="summary-intro-kicker">Preview 1 minggu terakhir</div>
+                            <div class="summary-intro-title">Buka detail per hari untuk melihat pola makan, tidur, diaper, dan catatan kesehatan tanpa terasa penuh.</div>
+                            <p class="summary-intro-desc">Setiap kartu harian sudah diringkas menjadi insight singkat supaya orang tua bisa langsung fokus ke perubahan rutinitas sebelum menekan tombol rangkum.</p>
+                        </div>
+                        <div class="summary-intro-points">
+                            <div class="summary-intro-point">
+                                <strong>Lebih mudah dipindai</strong>
+                                <span>Ringkasan harian muncul di header, detail log tetap bisa dibuka saat dibutuhkan.</span>
+                            </div>
+                            <div class="summary-intro-point">
+                                <strong>Lebih jelas langkah berikutnya</strong>
+                                <span>Setelah cek data mingguan, pengguna tinggal lanjut ke tombol <em>Buat Rangkuman Pintar</em>.</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="summary-week-list" id="summaryWeekList">
                         <section class="summary-day-group active" data-day="senin">
