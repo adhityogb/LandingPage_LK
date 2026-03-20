@@ -918,6 +918,196 @@
             line-height: 1.65
         }
 
+        /* PRICING */
+        .pricing {
+            padding: 100px 0;
+            background: var(--w)
+        }
+
+        .pricing-wrap {
+            display: grid;
+            gap: 28px
+        }
+
+        .pricing-compare {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px
+        }
+
+        .price-card {
+            background: var(--w);
+            border: 1px solid rgba(107, 85, 230, .12);
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: var(--s2);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            position: relative
+        }
+
+        .price-card.plus {
+            background: linear-gradient(180deg, rgba(79, 56, 189, .06), rgba(255, 255, 255, 1));
+            border-color: rgba(79, 56, 189, .24);
+            box-shadow: var(--s3)
+        }
+
+        .price-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .01em
+        }
+
+        .price-badge.free {
+            background: rgba(52, 211, 153, .14);
+            color: #047857
+        }
+
+        .price-badge.plus {
+            background: rgba(79, 56, 189, .12);
+            color: var(--b6)
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            line-height: 1.2
+        }
+
+        .price-copy {
+            font-size: .95rem;
+            color: var(--muted);
+            line-height: 1.7
+        }
+
+        .price-main {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .price-main strong {
+            font-size: 2.4rem;
+            line-height: 1;
+            color: var(--dark)
+        }
+
+        .price-main span {
+            font-size: .95rem;
+            color: var(--muted);
+            font-weight: 700
+        }
+
+        .price-list {
+            list-style: none;
+            display: grid;
+            gap: 10px
+        }
+
+        .price-list li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            color: var(--dark);
+            font-size: .92rem;
+            line-height: 1.6
+        }
+
+        .price-list li::before {
+            content: '✓';
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(52, 211, 153, .14);
+            color: #047857;
+            font-size: .78rem;
+            font-weight: 900;
+            margin-top: 2px
+        }
+
+        .price-card.plus .price-list li::before {
+            background: rgba(79, 56, 189, .12);
+            color: var(--b6)
+        }
+
+        .price-note {
+            background: rgba(251, 191, 36, .14);
+            color: #92400E;
+            border-radius: 16px;
+            padding: 14px 16px;
+            font-size: .88rem;
+            font-weight: 700;
+            line-height: 1.6
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .package-card {
+            background: var(--bg);
+            border-radius: 22px;
+            padding: 22px 18px;
+            border: 1px solid rgba(107, 85, 230, .12);
+            display: grid;
+            gap: 8px;
+            text-align: center;
+            transition: all .3s
+        }
+
+        .package-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--s2)
+        }
+
+        .package-card.featured {
+            background: linear-gradient(180deg, rgba(79, 56, 189, .08), rgba(248, 247, 255, 1));
+            border-color: rgba(79, 56, 189, .26)
+        }
+
+        .package-duration {
+            font-size: .92rem;
+            font-weight: 800;
+            color: var(--b6)
+        }
+
+        .package-price {
+            font-size: 1.8rem;
+            line-height: 1.1;
+            font-weight: 900;
+            color: var(--dark)
+        }
+
+        .package-meta {
+            font-size: .85rem;
+            color: var(--muted);
+            line-height: 1.55
+        }
+
+        .package-save {
+            font-size: .78rem;
+            font-weight: 800;
+            color: #047857;
+            background: rgba(52, 211, 153, .14);
+            border-radius: 999px;
+            padding: 6px 10px;
+            justify-self: center
+        }
+
         /* CTA */
         .cta {
             padding: 100px 0;
@@ -1093,11 +1283,13 @@
             }
 
             .fg,
-            .hg {
+            .hg,
+            .pricing-compare {
                 grid-template-columns: 1fr
             }
 
-            .sg {
+            .sg,
+            .package-grid {
                 grid-template-columns: repeat(2, 1fr)
             }
 
@@ -1141,6 +1333,7 @@
             .feat,
             .ins,
             .stats,
+            .pricing,
             .gal,
             .cta,
             .how {
@@ -1175,9 +1368,20 @@
                 width: 200px
             }
 
-            .gg {
+            .gg,
+            .package-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 10px
+            }
+
+            .price-card,
+            .package-card {
+                padding: 18px 16px
+            }
+
+            .price-main strong,
+            .package-price {
+                font-size: 1.55rem
             }
 
             .sn {
@@ -1653,6 +1857,7 @@
                 <li><a href="#fitur">Fitur</a></li>
                 <li><a href="#insight">Insight Pintar</a></li>
                 <li><a href="#keunggulan">Keunggulan</a></li>
+                <li><a href="#paket">Paket</a></li>
                 <li><a href="https://langkahkecil-v-1.pages.dev" class="bn">Mulai Sekarang</a></li>
             </ul>
             <button class="nav-t" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -1887,6 +2092,89 @@
                     <h3>Catat & Dapatkan Insight</h3>
                     <p>Mulai catat aktivitas harian. Lihat rangkuman pintar, grafik pertumbuhan, dan analisa pola
                         otomatis setiap hari.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="paket">
+        <div class="c pricing-wrap">
+            <div class="sh rv">
+                <span class="sl">💎 Pilih yang Paling Cocok</span>
+                <h2 class="st">Basic tetap enak dipakai,<br />LangkahPlus bantu lebih jauh</h2>
+                <p class="ss">Kalau mau yang simpel, versi Basic sudah cukup untuk catat hal-hal penting setiap hari. Kalau mau dibantu AI biar lebih hemat waktu, tinggal naik ke LangkahPlus.</p>
+            </div>
+
+            <div class="pricing-compare">
+                <article class="price-card rv d1">
+                    <span class="price-badge free">Basic · Gratis</span>
+                    <div>
+                        <h3>LangkahKecil Basic</h3>
+                        <p class="price-copy">Cocok untuk orang tua yang ingin tetap rapi mencatat kebutuhan harian tanpa biaya tambahan.</p>
+                    </div>
+                    <div class="price-main">
+                        <strong>Rp 0</strong>
+                        <span>selamanya</span>
+                    </div>
+                    <ul class="price-list">
+                        <li>Jadwal vaksin tetap bisa dipantau gratis.</li>
+                        <li>Catatan makan dan feeding rules tetap bisa dipakai gratis.</li>
+                        <li>Catatan popok juga tetap gratis setiap hari.</li>
+                        <li>Cocok kalau kebutuhan utamanya masih pencatatan dasar.</li>
+                    </ul>
+                </article>
+
+                <article class="price-card plus rv d2">
+                    <span class="price-badge plus">LangkahPlus · Premium</span>
+                    <div>
+                        <h3>LangkahPlus</h3>
+                        <p class="price-copy">Buat yang ingin proses mencatat jadi lebih ringan, lebih cepat, dan lebih siap saat perlu ngobrol ke dokter.</p>
+                    </div>
+                    <div class="price-main">
+                        <strong>Rp 39.000</strong>
+                        <span>per bulan</span>
+                    </div>
+                    <ul class="price-list">
+                        <li>Parsing log otomatis dengan AI dari catatan yang kamu masukkan.</li>
+                        <li>Rangkuman pintar biar pola harian lebih gampang dipahami.</li>
+                        <li>Bekal konsultasi dengan AI supaya lebih siap saat ke dokter.</li>
+                        <li>Analisa detail makan dan tidur untuk bantu lihat pola lebih jelas.</li>
+                    </ul>
+                    <div class="price-note">Fitur gratis seperti jadwal vaksin, feeding rules, dan catatan popok tetap bisa dipakai semua pengguna.</div>
+                </article>
+            </div>
+
+            <div class="rv d3">
+                <div class="sh" style="margin-bottom:24px;">
+                    <span class="sl">🧾 Paket LangkahPlus</span>
+                    <h3 class="st" style="font-size:clamp(1.5rem,3vw,2.1rem); margin-bottom:10px;">Mau lebih hemat? Bisa pilih paket yang pas.</h3>
+                    <p class="ss">Semua paket punya fitur premium yang sama. Bedanya cuma durasi dan total hematnya.</p>
+                </div>
+                <div class="package-grid">
+                    <article class="package-card">
+                        <div class="package-duration">1 Bulan</div>
+                        <div class="package-price">Rp 39.000</div>
+                        <div class="package-meta">Pas untuk coba dulu dan lihat apakah cocok dengan rutinitas harianmu.</div>
+                    </article>
+                    <article class="package-card featured">
+                        <div class="package-duration">3 Bulan</div>
+                        <div class="package-price">Rp 105.000</div>
+                        <div class="package-save">Hemat Rp 12.000</div>
+                        <div class="package-meta">Pilihan aman kalau sudah mulai rutin dipakai setiap minggu.</div>
+                    </article>
+                    <article class="package-card">
+                        <div class="package-duration">6 Bulan</div>
+                        <div class="package-price">Rp 199.000</div>
+                        <div class="package-save">Hemat Rp 35.000</div>
+                        <div class="package-meta">Lebih tenang untuk fase MPASI, tidur, dan kontrol tumbuh kembang.</div>
+                    </article>
+                    <article class="package-card">
+                        <div class="package-duration">1 Tahun</div>
+                        <div class="package-price">Rp 359.000</div>
+                        <div class="package-save">Hemat Rp 109.000</div>
+                        <div class="package-meta">Paling hemat untuk pendampingan yang panjang dan konsisten.</div>
+                    </article>
                 </div>
             </div>
         </div>
