@@ -932,12 +932,17 @@
             margin-top: 40px
         }
 
+        .gg::-webkit-scrollbar {
+            display: none
+        }
+
         .gc {
             border-radius: var(--rlg);
             overflow: hidden;
             box-shadow: var(--s2);
             transition: all .4s;
-            background: var(--bg)
+            background: var(--bg);
+            scroll-snap-align: start
         }
 
         .gc:hover {
@@ -958,6 +963,18 @@
             color: var(--b6);
             text-align: center;
             background: var(--w)
+        }
+
+        .gallery-mobile-hint {
+            display: none;
+            margin: 14px auto 0;
+            width: fit-content;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(107, 85, 230, .08);
+            color: var(--b6);
+            font-size: .78rem;
+            font-weight: 700
         }
 
         /* HOW */
@@ -1551,6 +1568,12 @@
         }
 
         @media(max-width:768px) {
+            .rv {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
             .nav-k {
                 display: none;
                 position: absolute;
@@ -1590,18 +1613,49 @@
             }
 
             .gg {
-                grid-template-columns: repeat(2, 1fr)
+                display: grid;
+                grid-auto-flow: column;
+                grid-auto-columns: minmax(78vw, 78vw);
+                grid-template-columns: none;
+                gap: 12px;
+                margin-top: 24px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 4px 4px 12px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                overscroll-behavior-x: contain;
+                scrollbar-width: none
             }
 
             .hmk,
             .imk {
-                width: 220px
+                width: 220px;
+                animation: none
             }
 
             .hd1,
             .hd2,
             .hd3 {
                 display: none
+            }
+
+            .fc,
+            .sc,
+            .price-card,
+            .package-card,
+            .testimonial-card,
+            .gc {
+                box-shadow: 0 8px 18px rgba(15, 23, 42, .06);
+            }
+
+            .fc:hover,
+            .sc:hover,
+            .gc:hover,
+            .package-card:hover,
+            .price-card.plus,
+            .package-card.featured {
+                transform: none;
             }
 
             .foot-i {
@@ -1647,6 +1701,12 @@
                 padding: 8px 12px
             }
 
+            .gallery-mobile-hint {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+            }
+
             .nav-i {
                 height: 56px
             }
@@ -1664,11 +1724,6 @@
             .hmk,
             .imk {
                 width: 200px
-            }
-
-            .gg {
-                grid-template-columns: 1fr;
-                gap: 10px
             }
 
             .price-card,
@@ -2404,6 +2459,7 @@
                 <span class="sl">📱 Tampilan Aplikasi</span>
                 <h2 class="st">Bersih, Intuitif, Satu Tangan</h2>
                 <p class="ss">Dirancang agar Mama bisa mencatat dengan satu tangan — sambil menggendong si kecil.</p>
+                <div class="gallery-mobile-hint">↔️ Geser untuk lihat semua screenshot</div>
             </div>
             <div class="gg">
                 <div class="gc rv d1"><img src="img/ss-dashboard.jpeg" alt="Dashboard" />
@@ -2839,7 +2895,14 @@
             clearTimeout(summaryTimeout);
         }
         // Base Logic
-        function initReveal() { const r = document.querySelectorAll('.rv'); new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe && r.forEach(el => new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe(el)) }
+        function initReveal() {
+            const r = document.querySelectorAll('.rv');
+            if (window.innerWidth <= 768) {
+                r.forEach(el => el.classList.add('vis'));
+                return;
+            }
+            new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe && r.forEach(el => new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe(el))
+        }
         function initNav() { const n = document.getElementById('navbar'); if (!n) return; const onScroll = () => n.classList.toggle('sc', window.scrollY > 8); onScroll(); window.addEventListener('scroll', onScroll, { passive: true }) }
         function initMob() {
             const t = document.getElementById('navToggle'), l = document.getElementById('navLinks');
