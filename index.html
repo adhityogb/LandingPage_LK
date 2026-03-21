@@ -286,7 +286,7 @@
             min-height: calc(100dvh - 64px);
             display: flex;
             align-items: center;
-            padding: 56px 0 60px;
+            padding: 48px 0 32px;
             overflow: hidden;
             background: linear-gradient(160deg, #F8F7FF 0%, #EDE9FE 40%, #DDD6FE 100%)
         }
@@ -336,9 +336,9 @@
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-size: 1.875rem;
             font-weight: 900;
-            line-height: 1.15;
+            line-height: 1.25;
             margin-bottom: 18px
         }
 
@@ -352,7 +352,7 @@
         }
 
         .hsub {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--muted);
             line-height: 1.75;
             margin-bottom: 32px;
@@ -361,10 +361,12 @@
 
         .hcta {
             display: flex;
+            flex-direction: column;
             gap: 12px;
             align-items: center;
             flex-wrap: wrap;
-            max-width: 560px
+            max-width: 560px;
+            width: 100%
         }
 
         .hcta-demo {
@@ -516,6 +518,9 @@
             position: relative;
             display: flex;
             justify-content: center;
+            width: 100%;
+            max-width: 90vw;
+            margin: 0 auto;
             animation: slideR 1s cubic-bezier(.16, 1, .3, 1) .2s both
         }
 
@@ -788,7 +793,7 @@
 
         .il li {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
             font-size: .95rem;
             font-weight: 600;
@@ -815,7 +820,10 @@
         .ins-v {
             display: flex;
             justify-content: center;
-            position: relative
+            position: relative;
+            width: 100%;
+            max-width: 90vw;
+            margin: 0 auto
         }
 
         .imk {
@@ -851,7 +859,7 @@
 
         .sc {
             text-align: center;
-            padding: 28px 20px;
+            padding: 16px;
             background: var(--w);
             border-radius: var(--rlg);
             border: 1px solid rgba(107, 85, 189, .08);
@@ -904,7 +912,7 @@
         }
 
         .sla {
-            font-size: 1.1rem;
+            font-size: .95rem;
             color: var(--dark);
             font-weight: 800;
             line-height: 1.4
@@ -1019,7 +1027,7 @@
             background: var(--w);
             border: 1px solid #E5E7EB;
             border-radius: 24px;
-            padding: 32px;
+            padding: 24px;
             box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
             display: flex;
             flex-direction: column;
@@ -1276,6 +1284,48 @@
             color: var(--muted)
         }
 
+        .mobile-bottom-cta {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, .98);
+            border-top: 1px solid #F3F4F6;
+            padding: 16px;
+            box-shadow: 0 -10px 15px -3px rgba(0, 0, 0, 0.05);
+            z-index: 50;
+            transition: transform .3s ease;
+        }
+
+        .mobile-bottom-cta-label {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-bottom-cta-label small {
+            font-size: 10px;
+            color: #6B7280;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .mobile-bottom-cta-label strong {
+            font-size: .875rem;
+            color: #111827;
+            font-weight: 700;
+            line-height: 1;
+            margin-top: 4px;
+        }
+
+        .mobile-bottom-cta-button {
+            flex-shrink: 0;
+        }
+
         /* CTA */
         .cta {
             padding: 100px 0;
@@ -1344,7 +1394,7 @@
 
         /* FOOTER */
         .foot {
-            padding: 40px 0;
+            padding: 40px 0 96px;
             background: var(--dark);
             color: rgba(255, 255, 255, .6)
         }
@@ -1391,7 +1441,48 @@
             color: var(--w)
         }
 
+        @media(min-width:640px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+        }
+
         @media(min-width:768px) {
+            .hero {
+                padding: 96px 0;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                line-height: 1.1;
+            }
+
+            .hsub {
+                font-size: 1.125rem;
+            }
+
+            .hcta {
+                flex-direction: row;
+                width: auto;
+            }
+
+            .hv,
+            .ins-v {
+                max-width: 28rem;
+            }
+
+            .sc {
+                padding: 24px;
+            }
+
+            .sla {
+                font-size: 1rem;
+            }
+
+            .price-card {
+                padding: 32px;
+            }
+
             .price-card.plus {
                 transform: scale(1.05)
             }
@@ -1399,9 +1490,21 @@
             .testimonial-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr))
             }
+
+            .mobile-bottom-cta {
+                display: none;
+            }
+
+            .foot {
+                padding: 40px 0;
+            }
         }
 
         @media(min-width:1024px) {
+            .hero h1 {
+                font-size: 3.75rem;
+            }
+
             .package-card.featured {
                 transform: scale(1.05)
             }
@@ -1536,7 +1639,7 @@
             .hero {
                 min-height: calc(100vh - 56px);
                 min-height: calc(100dvh - 56px);
-                padding: 48px 0 48px
+                padding: 48px 0 32px
             }
 
             .gc-l {
@@ -1563,8 +1666,7 @@
                 width: 200px
             }
 
-            .gg,
-            .package-grid {
+            .gg {
                 grid-template-columns: 1fr;
                 gap: 10px
             }
@@ -2041,7 +2143,7 @@
     </style>
 </head>
 
-<body>
+<body class="overflow-x-hidden">
 
     <!-- NAV -->
     <nav class="nav" id="navbar">
@@ -2060,7 +2162,7 @@
     </nav>
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero pt-12 pb-8 md:py-24">
         <div class="c hero-i">
             <div class="hero-c">
                 <div class="hbadge">
@@ -2070,10 +2172,10 @@
                     </svg>
                     ✨ Mulai Gratis · Asisten Cerdas untuk Setiap Orang Tua
                 </div>
-                <h1>Catat Praktis. Temukan Makna di Setiap <span class="gt">Langkah Kecil</span> Buah Hati.</h1>
-                <p class="hsub">Jangan biarkan momen penting terlewat karena lupa. Pahami pola si kecil untuk optimalkan pertumbuhannya:</p>
-                <div class="hcta">
-                    <a href="https://langkahkecil-v-1.pages.dev" class="bp bg-purple-600 text-white font-bold rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 px-8 py-3"><svg viewBox="0 0 24 24" fill="none"
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">Catat Praktis. Temukan Makna di Setiap <span class="gt">Langkah Kecil</span> Buah Hati.</h1>
+                <p class="hsub text-base md:text-lg">Jangan biarkan momen penting terlewat karena lupa. Pahami pola si kecil untuk optimalkan pertumbuhannya:</p>
+                <div class="hcta flex flex-col md:flex-row w-full md:w-auto gap-3 md:gap-4">
+                    <a href="https://langkahkecil-v-1.pages.dev" class="bp bg-purple-600 text-white font-bold rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 px-8 py-3 w-full md:w-auto text-center"><svg viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5">
                             <path d="M5 12h14" />
                             <path d="m12 5 7 7-7 7" />
@@ -2101,7 +2203,7 @@
                         </svg>Tanpa Iklan</span>
                 </div>
             </div>
-            <div class="hv">
+            <div class="hv w-full max-w-[90vw] md:max-w-md mx-auto">
                 <div class="hd1"></div>
                 <div class="hd2"></div>
                 <div class="hd3"></div>
@@ -2211,7 +2313,7 @@
                             </svg></span>Deteksi pola yang perlu diperhatikan</li>
                 </ul>
             </div>
-            <div class="ins-v rv d2">
+            <div class="ins-v rv d2 w-full max-w-[90vw] md:max-w-md mx-auto">
                 <div class="igl"></div>
                 <img src="img/ss-summary.jpeg" alt="Rangkuman Pintar LangkahKecil" class="imk" />
             </div>
@@ -2226,15 +2328,15 @@
                 <h2 class="st">Dirancang dengan Hati, Menemani Setiap Hari.</h2>
                 <p class="ss">Mengasuh si kecil adalah perjalanan besar. Nikmati ruang mencatat yang tenang, ringan di memori, dan selalu ada di genggaman saat Anda membutuhkannya.</p>
             </div>
-            <div class="sg">
-                <div class="sc rv d1 h-full flex flex-col">
+            <div class="sg grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+                <div class="sc rv d1 h-full flex flex-col p-4 md:p-6 text-sm md:text-base">
                     <div class="si pr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                             <path d="m9 12 2 2 4-4" />
                         </svg></div>
                     <div class="sla">100% Aman</div>
                 </div>
-                <div class="sc rv d2 h-full flex flex-col">
+                <div class="sc rv d2 h-full flex flex-col p-4 md:p-6 text-sm md:text-base">
                     <div class="si gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10" />
                             <path d="m15 9-6 6" />
@@ -2242,7 +2344,7 @@
                         </svg></div>
                     <div class="sla">0 Iklan</div>
                 </div>
-                <div class="sc rv d3 h-full flex flex-col">
+                <div class="sc rv d3 h-full flex flex-col p-4 md:p-6 text-sm md:text-base">
                     <div class="si or"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 2v20" />
                             <path d="M8 6h8" />
@@ -2251,7 +2353,7 @@
                         </svg></div>
                     <div class="sla">Mulai Gratis</div>
                 </div>
-                <div class="sc rv d4 h-full flex flex-col">
+                <div class="sc rv d4 h-full flex flex-col p-4 md:p-6 text-sm md:text-base">
                     <div class="si sk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="7" y="2" width="10" height="20" rx="2" />
                             <path d="M11 18h2" />
@@ -2328,7 +2430,7 @@
         <div class="c cta-c rv">
             <h2>Mulai Langkah Kecil Hari Ini 💜</h2>
             <p>Setiap catatan kecil hari ini adalah investasi besar untuk tumbuh kembang si buah hati esok hari.</p>
-            <a href="https://langkahkecil-v-1.pages.dev" class="bw bg-purple-600 text-white font-bold rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 px-8 py-3">Mulai Sekarang — Gratis<svg viewBox="0 0 24 24" fill="none"
+            <a href="https://langkahkecil-v-1.pages.dev" class="bw bg-purple-600 text-white font-bold rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 px-8 py-3 w-full md:w-auto text-center">Mulai Sekarang — Gratis<svg viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2.5">
                     <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
@@ -2372,7 +2474,7 @@
             </div>
 
             <div class="pricing-compare grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <article class="price-card rv d1 bg-white rounded-2xl p-8 flex flex-col h-full border border-gray-200 shadow-sm">
+                <article class="price-card rv d1 bg-white rounded-2xl p-6 md:p-8 flex flex-col h-full border border-gray-200 shadow-sm">
                     <span class="price-badge free">Basic · Gratis</span>
                     <div>
                         <h3>LangkahKecil Basic</h3>
@@ -2392,7 +2494,7 @@
                     <a href="https://langkahkecil-v-1.pages.dev" class="bg-purple-600 text-white font-bold rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 px-8 py-3 w-full text-center mt-auto">Mulai Gratis</a>
                 </article>
 
-                <article class="price-card plus rv d2 bg-white rounded-2xl p-8 flex flex-col h-full border-2 border-purple-500 shadow-xl relative z-10 scale-100 md:scale-105">
+                <article class="price-card plus rv d2 bg-white rounded-2xl p-6 md:p-8 flex flex-col h-full border-2 border-purple-500 shadow-xl relative z-10 scale-100 md:scale-105">
                     <div class="best-badge">✨ Pilihan Terbaik</div>
                     <span class="price-badge plus">LangkahPlus · Premium</span>
                     <div>
@@ -2420,7 +2522,7 @@
                     <h3 class="st" style="font-size:clamp(1.5rem,3vw,2.1rem); margin-bottom:10px;">Mau lebih hemat? Bisa pilih paket yang pas.</h3>
                     <p class="ss">Semua paket punya fitur premium yang sama. Bedanya cuma durasi dan total hematnya.</p>
                 </div>
-                <div class="package-grid">
+                <div class="package-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <article class="package-card h-full flex flex-col">
                         <div class="package-duration">1 Bulan</div>
                         <div class="package-price">Rp 39.000</div>
@@ -2452,7 +2554,7 @@
 
 
     <!-- FOOTER -->
-    <footer class="foot">
+    <footer class="foot pb-24 md:pb-8">
         <div class="c foot-i">
             <div class="foot-l"><img src="brand/LangkahKecil_logo.png" alt="LangkahKecil" />LangkahKecil</div>
             <p class="foot-t">&copy; 2025 LangkahKecil. Dibuat dengan 💜 untuk orang tua Indonesia.</p>
@@ -2632,6 +2734,16 @@
         </div>
     </div>
 
+
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-4 shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)] z-50 md:hidden flex justify-between items-center transition-transform duration-300 mobile-bottom-cta">
+      <div class="flex flex-col mobile-bottom-cta-label">
+        <span class="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Asisten Pintar AI</span>
+        <span class="text-sm font-bold text-gray-900 leading-none mt-1">Mulai Catat Gratis</span>
+      </div>
+      <a href="https://langkahkecil-v-1.pages.dev" class="bg-purple-600 text-white font-bold py-2.5 px-6 rounded-full shadow-md hover:bg-purple-700 active:scale-95 transition-all text-sm mobile-bottom-cta-button">
+        Buka Aplikasi
+      </a>
+    </div>
 
     <script>
         // Demo Logic
