@@ -51,11 +51,16 @@
         body {
             font-family: 'Nunito', sans-serif;
             color: var(--dark);
-            background: var(--w);
+            background: var(--bg);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             -webkit-text-size-adjust: 100%
+        }
+
+        section[id] {
+            scroll-margin-top: 92px;
         }
 
         img {
@@ -186,7 +191,7 @@
 
         /* NAV */
         .nav {
-            position: fixed;
+            position: sticky;
             top: 0;
             left: 0;
             right: 0;
@@ -277,11 +282,11 @@
         /* HERO */
         .hero {
             position: relative;
-            min-height: 100vh;
-            min-height: 100dvh;
+            min-height: calc(100vh - 64px);
+            min-height: calc(100dvh - 64px);
             display: flex;
             align-items: center;
-            padding: 100px 0 60px;
+            padding: 56px 0 60px;
             overflow: hidden;
             background: linear-gradient(160deg, #F8F7FF 0%, #EDE9FE 40%, #DDD6FE 100%)
         }
@@ -1446,15 +1451,19 @@
             .nav-k {
                 display: none;
                 position: absolute;
-                top: 64px;
+                top: 56px;
                 left: 0;
                 right: 0;
-                background: var(--w);
+                background: rgba(255, 255, 255, .98);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
                 flex-direction: column;
                 padding: 20px;
                 gap: 14px;
                 border-bottom: 1px solid rgba(107, 85, 230, .1);
-                box-shadow: var(--s2)
+                box-shadow: var(--s2);
+                max-height: calc(100vh - 64px);
+                overflow-y: auto
             }
 
             .nav-k.open {
@@ -1525,7 +1534,9 @@
             }
 
             .hero {
-                padding: 90px 0 48px
+                min-height: calc(100vh - 56px);
+                min-height: calc(100dvh - 56px);
+                padding: 48px 0 48px
             }
 
             .gc-l {
@@ -2717,8 +2728,26 @@
         }
         // Base Logic
         function initReveal() { const r = document.querySelectorAll('.rv'); new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe && r.forEach(el => new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe(el)) }
-        function initNav() { const n = document.getElementById('navbar'); window.addEventListener('scroll', () => { n.classList.toggle('sc', scrollY > 50) }) }
-        function initMob() { const t = document.getElementById('navToggle'), l = document.getElementById('navLinks'); t.addEventListener('click', () => { l.classList.toggle('open'); const s = t.querySelectorAll('span'), o = l.classList.contains('open'); s[0].style.transform = o ? 'rotate(45deg) translate(5px,5px)' : ''; s[1].style.opacity = o ? '0' : ''; s[2].style.transform = o ? 'rotate(-45deg) translate(5px,-5px)' : '' }); l.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { l.classList.remove('open'); t.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = '' }) })) }
+        function initNav() { const n = document.getElementById('navbar'); if (!n) return; const onScroll = () => n.classList.toggle('sc', window.scrollY > 8); onScroll(); window.addEventListener('scroll', onScroll, { passive: true }) }
+        function initMob() {
+            const t = document.getElementById('navToggle'), l = document.getElementById('navLinks');
+            if (!t || !l) return;
+            const spans = t.querySelectorAll('span');
+            const closeMenu = () => {
+                l.classList.remove('open');
+                spans.forEach(s => { s.style.transform = ''; s.style.opacity = '' });
+            };
+            t.addEventListener('click', () => {
+                l.classList.toggle('open');
+                const o = l.classList.contains('open');
+                spans[0].style.transform = o ? 'rotate(45deg) translate(5px,5px)' : '';
+                spans[1].style.opacity = o ? '0' : '';
+                spans[2].style.transform = o ? 'rotate(-45deg) translate(5px,-5px)' : '';
+            });
+            l.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+            window.addEventListener('scroll', () => { if (l.classList.contains('open')) closeMenu() }, { passive: true });
+            window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu() });
+        }
         function scrollToApp() { location.href = 'https://langkahkecil-v-1.pages.dev' }
         document.addEventListener('DOMContentLoaded', () => { initReveal(); initNav(); initMob(); });
     </script>
