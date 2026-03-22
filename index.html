@@ -549,6 +549,43 @@
             max-width: 220px !important;
         }
 
+        .w-\[260px\] {
+            width: 260px !important;
+        }
+
+        .max-w-\[260px\] {
+            max-width: 260px !important;
+        }
+
+        .rounded-\[2\.5rem\] {
+            border-radius: 2.5rem !important;
+        }
+
+        .border-4 {
+            border-width: 4px !important;
+            border-style: solid !important;
+        }
+
+        .border-slate-900 {
+            border-color: #0F172A !important;
+        }
+
+        .p-2 {
+            padding: .5rem !important;
+        }
+
+        .shadow-2xl {
+            box-shadow: 0 24px 48px rgba(15, 23, 42, .18) !important;
+        }
+
+        .bg-slate-950 {
+            background: #020617 !important;
+        }
+
+        .overflow-hidden {
+            overflow: hidden !important;
+        }
+
         .w-full {
             width: 100%;
         }
@@ -572,9 +609,9 @@
         }
 
         .hmk {
-            width: 300px;
-            border-radius: 24px;
-            box-shadow: var(--s4);
+            width: 100%;
+            border-radius: 2rem;
+            box-shadow: none;
             animation: float 6s ease-in-out infinite;
             position: relative;
             z-index: 2
@@ -985,11 +1022,15 @@
 
         .gc {
             border-radius: var(--rlg);
-            overflow: hidden;
-            box-shadow: var(--s2);
+            overflow: visible;
+            box-shadow: none;
             transition: all .4s;
-            background: var(--bg);
-            scroll-snap-align: start
+            background: transparent;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px
         }
 
         .gc:hover {
@@ -1000,16 +1041,18 @@
         .gc img {
             width: 100%;
             height: auto;
-            object-fit: cover
+            object-fit: cover;
+            border-radius: 2rem;
+            display: block
         }
 
         .gc-l {
-            padding: 10px 16px;
+            padding: 0;
             font-size: .8rem;
             font-weight: 700;
             color: var(--b6);
             text-align: center;
-            background: var(--w)
+            background: transparent
         }
 
         .gallery-mobile-hint {
@@ -1655,9 +1698,6 @@
                 grid-template-columns: repeat(2, minmax(0, 1fr))
             }
 
-            .hmk {
-                width: 260px
-            }
         }
 
         @media(max-width:768px) {
@@ -1740,15 +1780,18 @@
                 margin-top: 24px;
                 overflow-x: auto;
                 overflow-y: hidden;
-                padding: 4px max(16px, calc((100vw - 220px) / 2)) 12px;
-                scroll-padding-inline: max(16px, calc((100vw - 220px) / 2));
+                padding: 4px max(16px, calc((100vw - 260px) / 2)) 12px;
+                scroll-padding-inline: max(16px, calc((100vw - 260px) / 2));
                 scroll-snap-type: x mandatory;
                 -webkit-overflow-scrolling: touch;
                 overscroll-behavior-x: contain;
                 scrollbar-width: none
             }
 
-            .hmk,
+            .hmk {
+                animation: none
+            }
+
             .imk {
                 width: 220px;
                 animation: none
@@ -1860,8 +1903,8 @@
 
         @media(max-width:480px) {
             .gg {
-                padding-inline: max(16px, calc((100vw - 200px) / 2));
-                scroll-padding-inline: max(16px, calc((100vw - 200px) / 2));
+                padding-inline: max(16px, calc((100vw - 220px) / 2));
+                scroll-padding-inline: max(16px, calc((100vw - 220px) / 2));
             }
 
             .w-\[220px\] {
@@ -1872,6 +1915,14 @@
                 max-width: 200px !important;
             }
 
+            .w-\[260px\] {
+                width: 220px !important;
+            }
+
+            .max-w-\[260px\] {
+                max-width: 220px !important;
+            }
+
             .hero h1 {
                 font-size: 1.8rem
             }
@@ -1880,7 +1931,6 @@
                 font-size: 1.5rem
             }
 
-            .hmk,
             .imk {
                 width: 200px
             }
@@ -2361,6 +2411,14 @@
             .md\:max-w-none {
                 max-width: none !important;
             }
+
+            .md\:w-\[300px\] {
+                width: 300px !important;
+            }
+
+            .md\:max-w-\[300px\] {
+                max-width: 300px !important;
+            }
         }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -2436,7 +2494,7 @@
                 <div class="hd1"></div>
                 <div class="hd2"></div>
                 <div class="hd3"></div>
-                <img src="img/ss-dashboard.jpeg" alt="LangkahKecil Dashboard" class="hmk" />
+                <div class="w-[260px] max-w-[260px] md:w-[300px] md:max-w-[300px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-dashboard.jpeg" alt="LangkahKecil Dashboard" class="hmk" /></div>
             </div>
         </div>
     </section>
@@ -2551,7 +2609,7 @@
             <div class="sh rv">
                 <span class="sl">💜 Mengapa LangkahKecil?</span>
                 <h2 class="st">Dirancang dengan Hati, Menemani Setiap Hari.</h2>
-                <p class="ss">Mengasuh si kecil adalah perjalanan besar. Nikmati ruang mencatat yang tenang, ringan di memori, dan selalu ada di genggaman saat Anda membutuhkannya.</p>
+                <p class="ss">Fokus nikmati momen berharga bersama buah hati, biarkan kami yang mengingat dan merapikan catatannya untuk Anda.</p>
             </div>
             <div class="sg grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
                 <div class="sc rv d1 h-full flex flex-col items-center text-center p-4 md:p-6 text-sm md:text-base">
@@ -2633,19 +2691,24 @@
                 <div class="gallery-mobile-hint">↔️ Geser untuk lihat semua screenshot</div>
             </div>
             <div class="gg">
-                <div class="gc rv d1 w-[220px] max-w-[220px] md:w-auto md:max-w-none mx-auto"><img src="img/ss-dashboard.jpeg" alt="Dashboard" />
+                <div class="gc rv d1 mx-auto">
+                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-dashboard.jpeg" alt="Dashboard" /></div>
                     <div class="gc-l">Dashboard</div>
                 </div>
-                <div class="gc rv d2 w-[220px] max-w-[220px] md:w-auto md:max-w-none mx-auto"><img src="img/ss-food.jpeg" alt="Analisa Asupan" />
+                <div class="gc rv d2 mx-auto">
+                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-food.jpeg" alt="Analisa Asupan" /></div>
                     <div class="gc-l">Analisa Asupan</div>
                 </div>
-                <div class="gc rv d3 w-[220px] max-w-[220px] md:w-auto md:max-w-none mx-auto"><img src="img/ss-sleep.jpeg" alt="Analisa Tidur" />
+                <div class="gc rv d3 mx-auto">
+                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-sleep.jpeg" alt="Analisa Tidur" /></div>
                     <div class="gc-l">Analisa Tidur</div>
                 </div>
-                <div class="gc rv d1 w-[220px] max-w-[220px] md:w-auto md:max-w-none mx-auto"><img src="img/ss-growth.jpeg" alt="Grafik Pertumbuhan" />
+                <div class="gc rv d1 mx-auto">
+                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-growth.jpeg" alt="Grafik Pertumbuhan" /></div>
                     <div class="gc-l">Grafik Pertumbuhan</div>
                 </div>
-                <div class="gc rv d2 w-[220px] max-w-[220px] md:w-auto md:max-w-none mx-auto"><img src="img/ss-summary.jpeg" alt="Rangkuman Pintar" />
+                <div class="gc rv d2 mx-auto">
+                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-summary.jpeg" alt="Rangkuman Pintar" /></div>
                     <div class="gc-l">Rangkuman Pintar</div>
                 </div>
             </div>
