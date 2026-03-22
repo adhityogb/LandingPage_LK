@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
         rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         *,
         *::before,
@@ -135,6 +136,28 @@
 
             100% {
                 background-position: 0 50%
+            }
+        }
+
+        @keyframes hero-device-float {
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(-1.4deg) rotateZ(-1deg);
+            }
+
+            50% {
+                transform: translate3d(0, -10px, 0) rotateX(1deg) rotateY(1.8deg) rotateZ(1.1deg);
+            }
+        }
+
+        @keyframes hero-screen-breathe {
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate3d(0, -4px, 0) scale(1.015);
             }
         }
 
@@ -605,6 +628,7 @@
             width: 100%;
             max-width: 90vw;
             margin: 0 auto;
+            perspective: 1400px;
             animation: slideR 1s cubic-bezier(.16, 1, .3, 1) .2s both
         }
 
@@ -612,9 +636,10 @@
             width: 100%;
             border-radius: 2rem;
             box-shadow: none;
-            animation: float 6s ease-in-out infinite;
+            animation: hero-screen-breathe 7s ease-in-out infinite;
             position: relative;
-            z-index: 2
+            z-index: 2;
+            transform-origin: center center
         }
 
         .hd1 {
@@ -911,10 +936,10 @@
         }
 
         .imk {
-            width: 300px;
+            width: 100%;
             border-radius: 20px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, .3);
-            animation: float 7s ease-in-out infinite
+            box-shadow: none;
+            animation: hero-screen-breathe 8s ease-in-out infinite
         }
 
         .igl {
@@ -1011,9 +1036,18 @@
 
         .gg {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(220px, 260px);
             gap: 16px;
-            margin-top: 40px
+            margin-top: 40px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 4px 20px 18px;
+            scroll-padding-inline: 20px;
+            scroll-snap-type: x proximity;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+            scrollbar-width: none
         }
 
         .gg::-webkit-scrollbar {
@@ -1026,11 +1060,12 @@
             box-shadow: none;
             transition: all .4s;
             background: transparent;
-            scroll-snap-align: start;
+            scroll-snap-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px
+            gap: 12px;
+            width: 100%
         }
 
         .gc:hover {
@@ -1691,7 +1726,7 @@
             }
 
             .gg {
-                grid-template-columns: repeat(3, 1fr)
+                grid-auto-columns: minmax(220px, 250px)
             }
 
             .testimonial-grid {
@@ -1771,30 +1806,16 @@
             }
 
             .gg {
-                display: grid;
-                grid-auto-flow: column;
-                grid-auto-columns: max-content;
-                grid-template-columns: none;
-                justify-content: flex-start;
+                grid-auto-columns: minmax(220px, 240px);
                 gap: 12px;
                 margin-top: 24px;
-                overflow-x: auto;
-                overflow-y: hidden;
-                padding: 4px max(16px, calc((100vw - 260px) / 2)) 12px;
-                scroll-padding-inline: max(16px, calc((100vw - 260px) / 2));
+                padding: 4px max(16px, calc((100vw - 240px) / 2)) 12px;
+                scroll-padding-inline: max(16px, calc((100vw - 240px) / 2));
                 scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                overscroll-behavior-x: contain;
-                scrollbar-width: none
-            }
-
-            .hmk {
-                animation: none
             }
 
             .imk {
-                width: 220px;
-                animation: none
+                width: 100%;
             }
 
             .hd1,
@@ -1905,6 +1926,7 @@
             .gg {
                 padding-inline: max(16px, calc((100vw - 220px) / 2));
                 scroll-padding-inline: max(16px, calc((100vw - 220px) / 2));
+                grid-auto-columns: minmax(200px, 220px);
             }
 
             .w-\[220px\] {
@@ -2494,7 +2516,15 @@
                 <div class="hd1"></div>
                 <div class="hd2"></div>
                 <div class="hd3"></div>
-                <div class="w-[260px] max-w-[260px] md:w-[300px] md:max-w-[300px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-dashboard.jpeg" alt="LangkahKecil Dashboard" class="hmk" /></div>
+                <div class="hero-device-shell group relative mx-auto w-64 max-w-[260px] md:w-[300px] md:max-w-[300px] [transform-style:preserve-3d] [animation:hero-device-float_7s_ease-in-out_infinite] transition-transform duration-700 ease-out will-change-transform">
+                    <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
+                    <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
+                        <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
+                        <div class="overflow-hidden rounded-[2.15rem] bg-white">
+                            <img src="img/ss-dashboard.jpeg" alt="LangkahKecil Dashboard" class="hmk w-full rounded-[2.15rem] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2598,7 +2628,15 @@
             </div>
             <div class="ins-v rv d2 w-full max-w-[90vw] md:max-w-md mx-auto">
                 <div class="igl"></div>
-                <img src="img/ss-summary.jpeg" alt="Rangkuman Pintar LangkahKecil" class="imk" />
+                <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] [transform-style:preserve-3d] transition-transform duration-700 ease-out hover:-translate-y-1">
+                    <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/20 blur-2xl"></div>
+                    <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
+                        <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
+                        <div class="overflow-hidden rounded-[2.15rem] bg-white">
+                            <img src="img/ss-summary.jpeg" alt="Rangkuman Pintar LangkahKecil" class="imk w-full rounded-[2.15rem] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2692,23 +2730,63 @@
             </div>
             <div class="gg">
                 <div class="gc rv d1 mx-auto">
-                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-dashboard.jpeg" alt="Dashboard" /></div>
+                    <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] transition-transform duration-500 ease-out hover:-translate-y-1">
+                        <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
+                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
+                            <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
+                            <div class="overflow-hidden rounded-[2.15rem] bg-white">
+                                <img src="img/ss-dashboard.jpeg" alt="Dashboard" class="w-full rounded-[2.15rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
+                            </div>
+                        </div>
+                    </div>
                     <div class="gc-l">Dashboard</div>
                 </div>
                 <div class="gc rv d2 mx-auto">
-                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-food.jpeg" alt="Analisa Asupan" /></div>
+                    <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] transition-transform duration-500 ease-out hover:-translate-y-1">
+                        <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
+                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
+                            <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
+                            <div class="overflow-hidden rounded-[2.15rem] bg-white">
+                                <img src="img/ss-food.jpeg" alt="Analisa Asupan" class="w-full rounded-[2.15rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
+                            </div>
+                        </div>
+                    </div>
                     <div class="gc-l">Analisa Asupan</div>
                 </div>
                 <div class="gc rv d3 mx-auto">
-                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-sleep.jpeg" alt="Analisa Tidur" /></div>
+                    <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] transition-transform duration-500 ease-out hover:-translate-y-1">
+                        <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
+                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
+                            <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
+                            <div class="overflow-hidden rounded-[2.15rem] bg-white">
+                                <img src="img/ss-sleep.jpeg" alt="Analisa Tidur" class="w-full rounded-[2.15rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
+                            </div>
+                        </div>
+                    </div>
                     <div class="gc-l">Analisa Tidur</div>
                 </div>
                 <div class="gc rv d1 mx-auto">
-                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-growth.jpeg" alt="Grafik Pertumbuhan" /></div>
+                    <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] transition-transform duration-500 ease-out hover:-translate-y-1">
+                        <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
+                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
+                            <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
+                            <div class="overflow-hidden rounded-[2.15rem] bg-white">
+                                <img src="img/ss-growth.jpeg" alt="Grafik Pertumbuhan" class="w-full rounded-[2.15rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
+                            </div>
+                        </div>
+                    </div>
                     <div class="gc-l">Grafik Pertumbuhan</div>
                 </div>
                 <div class="gc rv d2 mx-auto">
-                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-summary.jpeg" alt="Rangkuman Pintar" /></div>
+                    <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] transition-transform duration-500 ease-out hover:-translate-y-1">
+                        <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
+                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
+                            <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
+                            <div class="overflow-hidden rounded-[2.15rem] bg-white">
+                                <img src="img/ss-summary.jpeg" alt="Rangkuman Pintar" class="w-full rounded-[2.15rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
+                            </div>
+                        </div>
+                    </div>
                     <div class="gc-l">Rangkuman Pintar</div>
                 </div>
             </div>
