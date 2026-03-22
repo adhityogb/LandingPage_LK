@@ -139,17 +139,6 @@
             }
         }
 
-        @keyframes hero-device-float {
-            0%,
-            100% {
-                transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(-1.4deg) rotateZ(-1deg);
-            }
-
-            50% {
-                transform: translate3d(0, -10px, 0) rotateX(1deg) rotateY(1.8deg) rotateZ(1.1deg);
-            }
-        }
-
         @keyframes hero-screen-breathe {
             0%,
             100% {
@@ -628,7 +617,6 @@
             width: 100%;
             max-width: 90vw;
             margin: 0 auto;
-            perspective: 1400px;
             animation: slideR 1s cubic-bezier(.16, 1, .3, 1) .2s both
         }
 
@@ -2516,13 +2504,10 @@
                 <div class="hd1"></div>
                 <div class="hd2"></div>
                 <div class="hd3"></div>
-                <div class="hero-device-shell group relative mx-auto w-64 max-w-[260px] md:w-[300px] md:max-w-[300px] [transform-style:preserve-3d] [animation:hero-device-float_7s_ease-in-out_infinite] transition-transform duration-700 ease-out will-change-transform">
-                    <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
-                    <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
-                        <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
-                        <div class="overflow-hidden rounded-[2.15rem] bg-white">
-                            <img src="img/ss-dashboard.jpeg" alt="LangkahKecil Dashboard" class="hmk w-full rounded-[2.15rem] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
-                        </div>
+                <div class="group relative mx-auto w-72 max-w-[280px] sm:w-80 sm:max-w-[320px] md:w-[360px] md:max-w-[360px] transition-transform duration-700 ease-out hover:-translate-y-1">
+                    <div class="pointer-events-none absolute inset-x-8 -bottom-6 h-10 rounded-full bg-indigo-950/15 blur-3xl"></div>
+                    <div class="overflow-hidden rounded-[2rem] border border-white/70 bg-white/70 p-2 shadow-[0_24px_60px_rgba(79,56,189,0.18)] backdrop-blur-sm">
+                        <img src="img/ss-dashboard.jpeg" alt="LangkahKecil Dashboard" class="hmk w-full rounded-[1.5rem] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
                     </div>
                 </div>
             </div>
@@ -2628,12 +2613,11 @@
             </div>
             <div class="ins-v rv d2 w-full max-w-[90vw] md:max-w-md mx-auto">
                 <div class="igl"></div>
-                <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] [transform-style:preserve-3d] transition-transform duration-700 ease-out hover:-translate-y-1">
+                <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] transition-transform duration-700 ease-out hover:-translate-y-1">
                     <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/20 blur-2xl"></div>
-                    <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
-                        <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
-                        <div class="overflow-hidden rounded-[2.15rem] bg-white">
-                            <img src="img/ss-summary.jpeg" alt="Rangkuman Pintar LangkahKecil" class="imk w-full rounded-[2.15rem] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
+                    <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2.5 shadow-2xl">
+                        <div class="overflow-hidden rounded-[2.2rem] bg-white">
+                            <img src="img/ss-summary.jpeg" alt="Rangkuman Pintar LangkahKecil" class="imk w-full rounded-[2.2rem] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]" />
                         </div>
                     </div>
                 </div>
@@ -2732,10 +2716,9 @@
                 <div class="gc rv d1 mx-auto">
                     <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] transition-transform duration-500 ease-out hover:-translate-y-1">
                         <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
-                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
-                            <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
-                            <div class="overflow-hidden rounded-[2.15rem] bg-white">
-                                <img src="img/ss-dashboard.jpeg" alt="Dashboard" class="w-full rounded-[2.15rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
+                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2.5 shadow-2xl">
+                            <div class="overflow-hidden rounded-[2.2rem] bg-white">
+                                <img src="img/ss-dashboard.jpeg" alt="Dashboard" class="w-full rounded-[2.2rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
                             </div>
                         </div>
                     </div>
@@ -2744,10 +2727,9 @@
                 <div class="gc rv d2 mx-auto">
                     <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] transition-transform duration-500 ease-out hover:-translate-y-1">
                         <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
-                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
-                            <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
-                            <div class="overflow-hidden rounded-[2.15rem] bg-white">
-                                <img src="img/ss-food.jpeg" alt="Analisa Asupan" class="w-full rounded-[2.15rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
+                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2.5 shadow-2xl">
+                            <div class="overflow-hidden rounded-[2.2rem] bg-white">
+                                <img src="img/ss-food.jpeg" alt="Analisa Asupan" class="w-full rounded-[2.2rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
                             </div>
                         </div>
                     </div>
@@ -2756,10 +2738,9 @@
                 <div class="gc rv d3 mx-auto">
                     <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] transition-transform duration-500 ease-out hover:-translate-y-1">
                         <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
-                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
-                            <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
-                            <div class="overflow-hidden rounded-[2.15rem] bg-white">
-                                <img src="img/ss-sleep.jpeg" alt="Analisa Tidur" class="w-full rounded-[2.15rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
+                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2.5 shadow-2xl">
+                            <div class="overflow-hidden rounded-[2.2rem] bg-white">
+                                <img src="img/ss-sleep.jpeg" alt="Analisa Tidur" class="w-full rounded-[2.2rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
                             </div>
                         </div>
                     </div>
@@ -2768,10 +2749,9 @@
                 <div class="gc rv d1 mx-auto">
                     <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] transition-transform duration-500 ease-out hover:-translate-y-1">
                         <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
-                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
-                            <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
-                            <div class="overflow-hidden rounded-[2.15rem] bg-white">
-                                <img src="img/ss-growth.jpeg" alt="Grafik Pertumbuhan" class="w-full rounded-[2.15rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
+                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2.5 shadow-2xl">
+                            <div class="overflow-hidden rounded-[2.2rem] bg-white">
+                                <img src="img/ss-growth.jpeg" alt="Grafik Pertumbuhan" class="w-full rounded-[2.2rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
                             </div>
                         </div>
                     </div>
@@ -2780,10 +2760,9 @@
                 <div class="gc rv d2 mx-auto">
                     <div class="group relative mx-auto w-56 max-w-[220px] sm:w-64 sm:max-w-[260px] transition-transform duration-500 ease-out hover:-translate-y-1">
                         <div class="pointer-events-none absolute inset-x-5 -bottom-5 h-8 rounded-full bg-slate-950/15 blur-2xl"></div>
-                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2 shadow-2xl">
-                            <div class="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-slate-900/95 ring-1 ring-white/10"></div>
-                            <div class="overflow-hidden rounded-[2.15rem] bg-white">
-                                <img src="img/ss-summary.jpeg" alt="Rangkuman Pintar" class="w-full rounded-[2.15rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
+                        <div class="relative overflow-hidden rounded-[2.75rem] border-4 border-slate-900 bg-slate-950 p-2.5 shadow-2xl">
+                            <div class="overflow-hidden rounded-[2.2rem] bg-white">
+                                <img src="img/ss-summary.jpeg" alt="Rangkuman Pintar" class="w-full rounded-[2.2rem] object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
                             </div>
                         </div>
                     </div>
