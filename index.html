@@ -1312,7 +1312,7 @@
             gap: 12px;
             background: rgba(255, 255, 255, .98);
             border-top: 1px solid #F3F4F6;
-            padding: 16px;
+            padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
             box-shadow: 0 -10px 15px -3px rgba(0, 0, 0, 0.05);
             z-index: 50;
             transition: transform .3s ease;
@@ -1321,26 +1321,32 @@
         .mobile-bottom-cta-label {
             display: flex;
             flex-direction: column;
+            min-width: 0;
+            flex: 1;
         }
 
         .mobile-bottom-cta-label small {
-            font-size: 10px;
             color: #6B7280;
             font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: .08em;
+            font-size: .82rem;
+            line-height: 1.35;
         }
 
         .mobile-bottom-cta-label strong {
             font-size: .875rem;
             color: #111827;
             font-weight: 700;
-            line-height: 1;
-            margin-top: 4px;
+            line-height: 1.2;
+            margin-top: 2px;
         }
 
         .mobile-bottom-cta-button {
             flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 124px;
+            white-space: nowrap;
         }
 
         /* CTA */
@@ -1568,10 +1574,35 @@
         }
 
         @media(max-width:768px) {
+            .c {
+                padding: 0 16px;
+            }
+
             .rv {
                 opacity: 1;
                 transform: none;
                 transition: none;
+            }
+
+            .sl {
+                font-size: .72rem;
+                padding: 7px 14px;
+                margin-bottom: 12px;
+            }
+
+            .st {
+                font-size: 1.55rem;
+                line-height: 1.25;
+                margin-bottom: 12px;
+            }
+
+            .ss {
+                font-size: .95rem;
+                line-height: 1.65;
+            }
+
+            .sh {
+                margin-bottom: 36px;
             }
 
             .nav-k {
@@ -1686,8 +1717,9 @@
             .pricing,
             .gal,
             .cta,
-            .how {
-                padding: 72px 0
+            .how,
+            .testimonials {
+                padding: 60px 0
             }
 
             .hero {
@@ -1709,6 +1741,19 @@
 
             .nav-i {
                 height: 56px
+            }
+        }
+
+        @media(max-width:380px) {
+            .mobile-bottom-cta {
+                gap: 10px;
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .mobile-bottom-cta-button {
+                width: 100%;
+                min-width: 0;
             }
         }
 
@@ -2793,8 +2838,7 @@
 
     <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-4 shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)] z-50 md:hidden flex justify-between items-center transition-transform duration-300 mobile-bottom-cta">
       <div class="flex flex-col mobile-bottom-cta-label">
-        <span class="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Asisten Pintar AI</span>
-        <span class="text-sm font-bold text-gray-900 leading-none mt-1">Mulai Catat Gratis</span>
+        <span class="text-sm font-bold text-gray-900 leading-none mt-1">Mulai Gratis dengan Asisten Pintar</span>
       </div>
       <a href="https://langkahkecil-v-1.pages.dev" class="bg-purple-600 text-white font-bold py-2.5 px-6 rounded-full shadow-md hover:bg-purple-700 active:scale-95 transition-all text-sm mobile-bottom-cta-button">
         Buka Aplikasi
