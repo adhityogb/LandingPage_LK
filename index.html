@@ -536,6 +536,19 @@
             line-height: 1.375 !important;
         }
 
+        .mx-auto {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .w-\[220px\] {
+            width: 220px !important;
+        }
+
+        .max-w-\[220px\] {
+            max-width: 220px !important;
+        }
+
         .w-full {
             width: 100%;
         }
@@ -1720,13 +1733,15 @@
             .gg {
                 display: grid;
                 grid-auto-flow: column;
-                grid-auto-columns: minmax(78vw, 78vw);
+                grid-auto-columns: max-content;
                 grid-template-columns: none;
+                justify-content: flex-start;
                 gap: 12px;
                 margin-top: 24px;
                 overflow-x: auto;
                 overflow-y: hidden;
-                padding: 4px 4px 12px;
+                padding: 4px max(16px, calc((100vw - 220px) / 2)) 12px;
+                scroll-padding-inline: max(16px, calc((100vw - 220px) / 2));
                 scroll-snap-type: x mandatory;
                 -webkit-overflow-scrolling: touch;
                 overscroll-behavior-x: contain;
@@ -1844,6 +1859,19 @@
         }
 
         @media(max-width:480px) {
+            .gg {
+                padding-inline: max(16px, calc((100vw - 200px) / 2));
+                scroll-padding-inline: max(16px, calc((100vw - 200px) / 2));
+            }
+
+            .w-\[220px\] {
+                width: 200px !important;
+            }
+
+            .max-w-\[220px\] {
+                max-width: 200px !important;
+            }
+
             .hero h1 {
                 font-size: 1.8rem
             }
@@ -2325,6 +2353,14 @@
                 font-size: .875rem !important;
                 line-height: 1.25rem !important;
             }
+
+            .md\:w-auto {
+                width: auto !important;
+            }
+
+            .md\:max-w-none {
+                max-width: none !important;
+            }
         }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -2597,19 +2633,19 @@
                 <div class="gallery-mobile-hint">↔️ Geser untuk lihat semua screenshot</div>
             </div>
             <div class="gg">
-                <div class="gc rv d1"><img src="img/ss-dashboard.jpeg" alt="Dashboard" />
+                <div class="gc rv d1 w-[220px] max-w-[220px] md:w-auto md:max-w-none mx-auto"><img src="img/ss-dashboard.jpeg" alt="Dashboard" />
                     <div class="gc-l">Dashboard</div>
                 </div>
-                <div class="gc rv d2"><img src="img/ss-food.jpeg" alt="Analisa Asupan" />
+                <div class="gc rv d2 w-[220px] max-w-[220px] md:w-auto md:max-w-none mx-auto"><img src="img/ss-food.jpeg" alt="Analisa Asupan" />
                     <div class="gc-l">Analisa Asupan</div>
                 </div>
-                <div class="gc rv d3"><img src="img/ss-sleep.jpeg" alt="Analisa Tidur" />
+                <div class="gc rv d3 w-[220px] max-w-[220px] md:w-auto md:max-w-none mx-auto"><img src="img/ss-sleep.jpeg" alt="Analisa Tidur" />
                     <div class="gc-l">Analisa Tidur</div>
                 </div>
-                <div class="gc rv d1"><img src="img/ss-growth.jpeg" alt="Grafik Pertumbuhan" />
+                <div class="gc rv d1 w-[220px] max-w-[220px] md:w-auto md:max-w-none mx-auto"><img src="img/ss-growth.jpeg" alt="Grafik Pertumbuhan" />
                     <div class="gc-l">Grafik Pertumbuhan</div>
                 </div>
-                <div class="gc rv d2"><img src="img/ss-summary.jpeg" alt="Rangkuman Pintar" />
+                <div class="gc rv d2 w-[220px] max-w-[220px] md:w-auto md:max-w-none mx-auto"><img src="img/ss-summary.jpeg" alt="Rangkuman Pintar" />
                     <div class="gc-l">Rangkuman Pintar</div>
                 </div>
             </div>
