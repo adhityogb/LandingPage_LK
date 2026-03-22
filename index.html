@@ -1183,8 +1183,9 @@
             border: 1px solid #E5E7EB;
             display: flex;
             flex-direction: column;
-            gap: 10px;
             align-items: center;
+            justify-content: center;
+            gap: 10px;
             text-align: center;
             transition: all .3s;
             position: relative;
@@ -1220,6 +1221,42 @@
             text-transform: uppercase;
             letter-spacing: .08em;
             white-space: nowrap
+        }
+
+        .package-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(107, 85, 230, .1);
+            color: var(--b6)
+        }
+
+        .package-card-icon svg {
+            width: 28px;
+            height: 28px
+        }
+
+        .package-card:nth-child(1) .package-card-icon {
+            background: rgba(56, 189, 248, .12);
+            color: #0284C7
+        }
+
+        .package-card:nth-child(2) .package-card-icon {
+            background: rgba(52, 211, 153, .12);
+            color: #059669
+        }
+
+        .package-card:nth-child(3) .package-card-icon {
+            background: rgba(251, 191, 36, .16);
+            color: #D97706
+        }
+
+        .package-card:nth-child(4) .package-card-icon {
+            background: rgba(251, 113, 133, .12);
+            color: #E11D48
         }
 
         .package-duration {
@@ -2329,7 +2366,7 @@
             <div class="sh rv">
                 <span class="sl">⚡ Fitur Unggulan</span>
                 <h2 class="st">Temukan Makna di Setiap Catatan,<br />dengan Insight yang Menenangkan</h2>
-                <p class="ss">Semua aktivitas penting si kecil dirapikan menjadi jurnal yang mudah dipahami, agar Ayah dan Ibu bisa fokus pada hal yang paling berarti.</p>
+                <p class="ss">Semua aktivitas penting si kecil dirapikan menjadi jurnal yang mudah dipahami, agar Bunda dan Ayah bisa fokus pada hal yang paling berarti.</p>
             </div>
             <div class="fg">
                 <div class="fc rv d1 h-full flex flex-col">
@@ -2355,15 +2392,11 @@
                 <div class="fc rv d3 h-full flex flex-col">
                     <div class="fc-head">
                         <div class="fi rs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 6h16a4 4 0 0 1 4 4v8" />
-                                <path d="M2 18h20" />
-                                <path d="M6 6v12" />
-                                <path d="M15 3h6" />
-                                <path d="m18 1 3 2-3 2" />
+                                <path d="m12 3 1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z" />
                             </svg></div>
                         <h3>Pahami ritme tidur & makan si kecil.</h3>
                     </div>
-                    <p>Analisa detail <strong>pola tidur</strong> agar Ibu dan Ayah juga bisa ikut istirahat, serta pastikan <strong>asupan nutrisinya selalu terjaga</strong>.</p>
+                    <p>Analisa detail <strong>pola tidur</strong> agar Bunda dan Ayah juga bisa ikut istirahat, serta pastikan <strong>asupan nutrisinya selalu terjaga</strong>.</p>
                 </div>
                 <div class="fc rv d1 h-full flex flex-col">
                     <div class="fc-head">
@@ -2590,7 +2623,7 @@
                     <span class="price-badge free">Basic · Gratis</span>
                     <div>
                         <h3>LangkahKecil Basic</h3>
-                        <p class="price-copy">Cocok untuk Ibu dan Ayah yang rajin mencatat mandiri secara rapi dan terstruktur tanpa biaya tambahan.</p>
+                        <p class="price-copy">Cocok untuk Bunda dan Ayah yang rajin mencatat mandiri secara rapi dan terstruktur tanpa biaya tambahan.</p>
                     </div>
                     <div class="price-main">
                         <strong>Rp 0</strong>
@@ -2636,28 +2669,32 @@
                 </div>
                 <div class="package-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <article class="package-card h-full flex flex-col">
+                        <div class="package-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v12" /><path d="M6 12h12" /><path d="M7 7h.01" /><path d="M17 7h.01" /><path d="M7 17h.01" /><path d="M17 17h.01" /></svg></div>
                         <div class="package-duration">1 Bulan</div>
                         <div class="package-price">Rp 39.000</div>
-                        <div class="package-meta">Pas untuk coba dulu dan lihat apakah cocok dengan rutinitas harianmu.</div>
+                        <div class="package-meta">Mulai ringan untuk coba fitur premium tanpa komitmen panjang.</div>
                     </article>
                     <article class="package-card h-full flex flex-col">
+                        <div class="package-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v8" /><path d="M8 12h8" /><circle cx="12" cy="12" r="9" /></svg></div>
                         <div class="package-duration">3 Bulan</div>
                         <div class="package-price">Rp 105.000</div>
                         <div class="package-save">Hemat Rp 12.000</div>
-                        <div class="package-meta">Pilihan aman kalau sudah mulai rutin dipakai setiap minggu.</div>
+                        <div class="package-meta">Pilihan aman untuk keluarga yang mulai rutin mencatat tiap minggu.</div>
                     </article>
                     <article class="package-card featured h-full flex flex-col">
                         <span class="package-badge">Paling Populer</span>
+                        <div class="package-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z" /></svg></div>
                         <div class="package-duration">6 Bulan</div>
                         <div class="package-price">Rp 199.000</div>
                         <div class="package-save">Hemat Rp 35.000</div>
-                        <div class="package-meta">Lebih tenang untuk fase MPASI, tidur, dan kontrol tumbuh kembang.</div>
+                        <div class="package-meta">Paling pas untuk fase MPASI, pola tidur, dan kontrol tumbuh kembang.</div>
                     </article>
                     <article class="package-card h-full flex flex-col">
+                        <div class="package-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18" /><path d="M7 8h8a4 4 0 0 1 0 8H9" /></svg></div>
                         <div class="package-duration">1 Tahun</div>
                         <div class="package-price">Rp 359.000</div>
                         <div class="package-save">Hemat Rp 109.000</div>
-                        <div class="package-meta">Paling hemat untuk pendampingan yang panjang dan konsisten.</div>
+                        <div class="package-meta">Pendampingan paling hemat untuk perjalanan panjang yang konsisten.</div>
                     </article>
                 </div>
             </div>
