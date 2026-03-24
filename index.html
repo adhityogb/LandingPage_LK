@@ -51,11 +51,16 @@
         body {
             font-family: 'Nunito', sans-serif;
             color: var(--dark);
-            background: var(--w);
+            background: var(--bg);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             -webkit-text-size-adjust: 100%
+        }
+
+        section[id] {
+            scroll-margin-top: 92px;
         }
 
         img {
@@ -186,7 +191,7 @@
 
         /* NAV */
         .nav {
-            position: fixed;
+            position: sticky;
             top: 0;
             left: 0;
             right: 0;
@@ -277,11 +282,11 @@
         /* HERO */
         .hero {
             position: relative;
-            min-height: 100vh;
-            min-height: 100dvh;
+            min-height: calc(100vh - 64px);
+            min-height: calc(100dvh - 64px);
             display: flex;
             align-items: center;
-            padding: 100px 0 60px;
+            padding: 48px 0 32px;
             overflow: hidden;
             background: linear-gradient(160deg, #F8F7FF 0%, #EDE9FE 40%, #DDD6FE 100%)
         }
@@ -331,34 +336,40 @@
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-size: 1.875rem;
             font-weight: 900;
-            line-height: 1.15;
+            line-height: 1.25;
             margin-bottom: 18px
         }
 
         .hero h1 .gt {
-            background: linear-gradient(135deg, var(--b5), var(--b7), var(--orange));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gshift 4s ease-in-out infinite
+            color: var(--b6)
         }
 
         .hsub {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--muted);
-            line-height: 1.75;
+            line-height: 1.6;
             margin-bottom: 32px;
-            max-width: 480px
+            max-width: 480px;
+            padding: 0 16px
         }
 
         .hcta {
             display: flex;
+            flex-direction: column;
             gap: 12px;
             align-items: center;
-            flex-wrap: wrap
+            flex-wrap: wrap;
+            max-width: 560px;
+            width: 100%
+        }
+
+        .hcta-demo {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            width: 100%;
         }
 
         .bp {
@@ -389,13 +400,15 @@
         .bs {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             background: var(--w);
             color: var(--b6);
-            padding: 14px 24px;
+            padding: 14px 16px;
             border-radius: 14px;
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 800;
+            font-size: 0.93rem;
+            min-height: 50px;
             border: 2px solid rgba(107, 85, 230, .2);
             transition: all .3s
         }
@@ -430,20 +443,183 @@
             height: 12px
         }
 
+        /* Utility classes */
+        .bg-purple-600 {
+            background: #7C3AED !important;
+        }
+
+        .text-white {
+            color: #FFF !important;
+        }
+
+        .font-bold {
+            font-weight: 700 !important;
+        }
+
+        .rounded-full {
+            border-radius: 9999px !important;
+        }
+
+        .shadow-lg {
+            box-shadow: 0 18px 36px rgba(124, 58, 237, .24) !important;
+        }
+
+        .hover\:bg-purple-700:hover {
+            background: #6D28D9 !important;
+        }
+
+        .transition-all {
+            transition: all .3s ease !important;
+        }
+
+        .duration-300 {
+            transition-duration: .3s !important;
+        }
+
+        .px-8 {
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+        }
+
+        .py-3 {
+            padding-top: .75rem !important;
+            padding-bottom: .75rem !important;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center !important;
+        }
+
+        .justify-center {
+            justify-content: center !important;
+        }
+
+        .h-full {
+            height: 100%;
+        }
+
+        .mt-2 {
+            margin-top: .5rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem !important;
+        }
+
+        .text-xs {
+            font-size: .75rem !important;
+            line-height: 1rem !important;
+        }
+
+        .text-sm {
+            font-size: .875rem !important;
+            line-height: 1.25rem !important;
+        }
+
+        .text-gray-500 {
+            color: #6B7280 !important;
+        }
+
+        .font-medium {
+            font-weight: 500 !important;
+        }
+
+        .leading-snug {
+            line-height: 1.375 !important;
+        }
+
+        .mx-auto {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .w-\[220px\] {
+            width: 220px !important;
+        }
+
+        .max-w-\[220px\] {
+            max-width: 220px !important;
+        }
+
+        .w-\[260px\] {
+            width: 260px !important;
+        }
+
+        .max-w-\[260px\] {
+            max-width: 260px !important;
+        }
+
+        .rounded-\[2\.5rem\] {
+            border-radius: 2.5rem !important;
+        }
+
+        .border-4 {
+            border-width: 4px !important;
+            border-style: solid !important;
+        }
+
+        .border-slate-900 {
+            border-color: #0F172A !important;
+        }
+
+        .p-2 {
+            padding: .5rem !important;
+        }
+
+        .shadow-2xl {
+            box-shadow: 0 24px 48px rgba(15, 23, 42, .18) !important;
+        }
+
+        .bg-slate-950 {
+            background: #020617 !important;
+        }
+
+        .overflow-hidden {
+            overflow: hidden !important;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-auto {
+            margin-top: auto;
+        }
+
         .hv {
             position: relative;
             display: flex;
             justify-content: center;
+            width: 100%;
+            max-width: 90vw;
+            margin: 0 auto;
             animation: slideR 1s cubic-bezier(.16, 1, .3, 1) .2s both
         }
 
         .hmk {
-            width: 300px;
-            border-radius: 24px;
-            box-shadow: var(--s4);
-            animation: float 6s ease-in-out infinite;
+            width: 100%;
+            border-radius: 2rem;
+            box-shadow: none;
             position: relative;
             z-index: 2
+        }
+
+        .hero-phone {
+            animation: float 6s ease-in-out infinite;
+            transform-origin: center bottom;
+            will-change: transform;
         }
 
         .hd1 {
@@ -590,6 +766,13 @@
             background: linear-gradient(90deg, var(--amber), #F59E0B)
         }
 
+        .fc-head {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 18px
+        }
+
         .fi {
             width: 52px;
             height: 52px;
@@ -597,7 +780,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 16px
+            flex-shrink: 0
         }
 
         .fi svg {
@@ -638,7 +821,7 @@
         .fc h3 {
             font-size: 1.1rem;
             font-weight: 800;
-            margin-bottom: 8px;
+            line-height: 1.45;
             color: var(--dark)
         }
 
@@ -699,7 +882,7 @@
 
         .il li {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
             font-size: .95rem;
             font-weight: 600;
@@ -726,7 +909,10 @@
         .ins-v {
             display: flex;
             justify-content: center;
-            position: relative
+            position: relative;
+            width: 100%;
+            max-width: 90vw;
+            margin: 0 auto
         }
 
         .imk {
@@ -762,11 +948,16 @@
 
         .sc {
             text-align: center;
-            padding: 32px 16px;
+            padding: 16px;
             background: var(--w);
             border-radius: var(--rlg);
-            border: 1px solid rgba(107, 85, 189, .06);
-            transition: all .3s
+            border: 1px solid rgba(107, 85, 189, .08);
+            transition: all .3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100%
         }
 
         .sc:hover {
@@ -775,9 +966,9 @@
         }
 
         .si {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 56px;
+            height: 56px;
+            border-radius: 9999px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -790,36 +981,30 @@
         }
 
         .si.pr {
-            background: rgba(107, 85, 230, .1);
-            color: var(--b6)
+            background: #EDE9FE;
+            color: #7C3AED
         }
 
         .si.gr {
-            background: rgba(52, 211, 153, .1);
+            background: #DCFCE7;
             color: #059669
         }
 
         .si.or {
-            background: rgba(245, 158, 66, .1);
-            color: #EA580C
+            background: #FEF3C7;
+            color: #D97706
         }
 
         .si.sk {
-            background: rgba(56, 189, 248, .1);
-            color: #0284C7
-        }
-
-        .sn {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--dark);
-            margin-bottom: 2px
+            background: #DBEAFE;
+            color: #2563EB
         }
 
         .sla {
-            font-size: .85rem;
-            color: var(--muted);
-            font-weight: 600
+            font-size: .95rem;
+            color: var(--dark);
+            font-weight: 800;
+            line-height: 1.4
         }
 
         /* GALLERY */
@@ -836,12 +1021,21 @@
             margin-top: 40px
         }
 
+        .gg::-webkit-scrollbar {
+            display: none
+        }
+
         .gc {
             border-radius: var(--rlg);
-            overflow: hidden;
-            box-shadow: var(--s2);
+            overflow: visible;
+            box-shadow: none;
             transition: all .4s;
-            background: var(--bg)
+            background: transparent;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px
         }
 
         .gc:hover {
@@ -852,16 +1046,30 @@
         .gc img {
             width: 100%;
             height: auto;
-            object-fit: cover
+            object-fit: cover;
+            border-radius: 2rem;
+            display: block
         }
 
         .gc-l {
-            padding: 10px 16px;
+            padding: 0;
             font-size: .8rem;
             font-weight: 700;
             color: var(--b6);
             text-align: center;
-            background: var(--w)
+            background: transparent
+        }
+
+        .gallery-mobile-hint {
+            display: none;
+            margin: 14px auto 0;
+            width: fit-content;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(107, 85, 230, .08);
+            color: var(--b6);
+            font-size: .78rem;
+            font-weight: 700
         }
 
         /* HOW */
@@ -906,6 +1114,371 @@
             font-size: .9rem;
             color: var(--muted);
             line-height: 1.65
+        }
+
+        /* PRICING */
+        .pricing {
+            padding: 100px 0;
+            background: var(--w)
+        }
+
+        .pricing-wrap {
+            display: grid;
+            gap: 28px
+        }
+
+        .pricing-compare {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 32px;
+            max-width: 64rem;
+            margin: 0 auto
+        }
+
+        .price-card {
+            background: var(--w);
+            border: 1px solid #E5E7EB;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            position: relative;
+            height: 100%
+        }
+
+        .price-card.plus {
+            background: linear-gradient(180deg, rgba(245, 243, 255, 1), rgba(255, 255, 255, 1));
+            border: 2px solid #8B5CF6;
+            box-shadow: 0 24px 60px rgba(79, 56, 189, .18);
+            z-index: 10;
+            transform: scale(1)
+        }
+
+        .price-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .01em
+        }
+
+        .price-badge.free {
+            background: rgba(52, 211, 153, .14);
+            color: #047857
+        }
+
+        .price-badge.plus {
+            background: rgba(79, 56, 189, .12);
+            color: var(--b6)
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            line-height: 1.2
+        }
+
+        .price-copy {
+            font-size: .95rem;
+            color: var(--muted);
+            line-height: 1.7
+        }
+
+        .price-main {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .price-main strong {
+            font-size: 2.4rem;
+            line-height: 1;
+            color: var(--dark)
+        }
+
+        .price-main span {
+            font-size: .95rem;
+            color: var(--muted);
+            font-weight: 700
+        }
+
+        .price-subnote {
+            font-size: .875rem;
+            color: #6B7280;
+            margin-top: 8px;
+            font-weight: 600
+        }
+
+        .price-list {
+            list-style: none;
+            display: grid;
+            gap: 10px
+        }
+
+        .price-list li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            color: var(--dark);
+            font-size: .92rem;
+            line-height: 1.6
+        }
+
+        .price-list li::before {
+            content: '✓';
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(52, 211, 153, .14);
+            color: #047857;
+            font-size: .78rem;
+            font-weight: 900;
+            margin-top: 2px
+        }
+
+        .price-card.plus .price-list li::before {
+            background: rgba(79, 56, 189, .12);
+            color: var(--b6)
+        }
+
+        .best-badge {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #8B5CF6, #6366F1);
+            color: #FFF;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: .875rem;
+            font-weight: 700;
+            box-shadow: 0 12px 32px rgba(79, 56, 189, .2);
+            white-space: nowrap
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            max-width: 80rem;
+            margin: 32px auto 0
+        }
+
+        .package-card {
+            background: #FFF;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid #E5E7EB;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+            transition: all .3s;
+            position: relative;
+            cursor: pointer;
+            min-height: 100%;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, .06)
+        }
+
+        .package-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(15, 23, 42, .1)
+        }
+
+        .package-card.featured {
+            background: #F5F3FF;
+            border: 2px solid #8B5CF6;
+            box-shadow: 0 16px 36px rgba(79, 56, 189, .14);
+            z-index: 10;
+            transform: scale(1)
+        }
+
+        .package-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #8B5CF6;
+            color: #FFF;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            white-space: nowrap
+        }
+
+        .package-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(107, 85, 230, .1);
+            color: var(--b6)
+        }
+
+        .package-card-icon svg {
+            width: 28px;
+            height: 28px
+        }
+
+        .package-card:nth-child(1) .package-card-icon {
+            background: rgba(56, 189, 248, .12);
+            color: #0284C7
+        }
+
+        .package-card:nth-child(2) .package-card-icon {
+            background: rgba(52, 211, 153, .12);
+            color: #059669
+        }
+
+        .package-card:nth-child(3) .package-card-icon {
+            background: rgba(251, 191, 36, .16);
+            color: #D97706
+        }
+
+        .package-card:nth-child(4) .package-card-icon {
+            background: rgba(251, 113, 133, .12);
+            color: #E11D48
+        }
+
+        .package-duration {
+            font-size: .92rem;
+            font-weight: 800;
+            color: var(--b6)
+        }
+
+        .package-price {
+            font-size: 1.8rem;
+            line-height: 1.1;
+            font-weight: 900;
+            color: var(--dark)
+        }
+
+        .package-meta {
+            font-size: .85rem;
+            color: var(--muted);
+            line-height: 1.55
+        }
+
+        .package-save {
+            font-size: .78rem;
+            font-weight: 800;
+            color: #047857;
+            background: rgba(52, 211, 153, .14);
+            border-radius: 999px;
+            padding: 6px 10px;
+            justify-self: center
+        }
+
+        .testimonials {
+            padding: 64px 0;
+            background: rgba(249, 250, 251, .5)
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            max-width: 72rem;
+            margin: 40px auto 0;
+            padding: 0 16px
+        }
+
+        .testimonial-card {
+            background: #FFF;
+            padding: 24px;
+            border-radius: 24px;
+            border: 1px solid #F3F4F6;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            height: 100%
+        }
+
+        .testimonial-quote {
+            font-size: 2.2rem;
+            line-height: 1;
+            color: #D1D5DB;
+            font-weight: 900
+        }
+
+        .testimonial-card p {
+            font-size: .95rem;
+            color: var(--dark);
+            line-height: 1.75
+        }
+
+        .testimonial-author {
+            margin-top: auto;
+            font-size: .88rem;
+            font-weight: 800;
+            color: var(--muted)
+        }
+
+        .mobile-bottom-cta {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, .98);
+            border-top: 1px solid #F3F4F6;
+            padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+            box-shadow: 0 -10px 15px -3px rgba(0, 0, 0, 0.05);
+            z-index: 50;
+            transition: transform .3s ease;
+        }
+
+        .mobile-bottom-cta-label {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .mobile-bottom-cta-label small {
+            color: #6B7280;
+            font-weight: 500;
+            font-size: .82rem;
+            line-height: 1.35;
+        }
+
+        .mobile-bottom-cta-label strong {
+            font-size: .875rem;
+            color: #111827;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-top: 2px;
+        }
+
+        .mobile-bottom-cta-button {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 124px;
+            white-space: nowrap;
         }
 
         /* CTA */
@@ -976,7 +1549,7 @@
 
         /* FOOTER */
         .foot {
-            padding: 40px 0;
+            padding: 40px 0 96px;
             background: var(--dark);
             color: rgba(255, 255, 255, .6)
         }
@@ -1023,6 +1596,78 @@
             color: var(--w)
         }
 
+        @media(min-width:640px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+        }
+
+        @media(min-width:768px) {
+            .hero {
+                padding: 96px 0;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                line-height: 1.1;
+            }
+
+            .hsub {
+                font-size: 1.125rem;
+                line-height: 1.75;
+                padding: 0;
+            }
+
+            .hcta {
+                flex-direction: row;
+                width: auto;
+                max-width: 100%;
+            }
+
+            .hv,
+            .ins-v {
+                max-width: 28rem;
+            }
+
+            .sc {
+                padding: 24px;
+            }
+
+            .sla {
+                font-size: 1rem;
+            }
+
+            .price-card {
+                padding: 32px;
+            }
+
+            .price-card.plus {
+                transform: scale(1.05)
+            }
+
+            .testimonial-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+
+            .mobile-bottom-cta {
+                display: none;
+            }
+
+            .foot {
+                padding: 40px 0;
+            }
+        }
+
+        @media(min-width:1024px) {
+            .hero h1 {
+                font-size: 3.75rem;
+            }
+
+            .package-card.featured {
+                transform: scale(1.05)
+            }
+        }
+
         /* RESPONSIVE */
         @media(max-width:1024px) {
 
@@ -1054,24 +1699,60 @@
                 grid-template-columns: repeat(3, 1fr)
             }
 
-            .hmk {
-                width: 260px
+            .testimonial-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
             }
+
         }
 
         @media(max-width:768px) {
+            .c {
+                padding: 0 16px;
+            }
+
+            .rv {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            .sl {
+                font-size: .72rem;
+                padding: 7px 14px;
+                margin-bottom: 12px;
+            }
+
+            .st {
+                font-size: 1.55rem;
+                line-height: 1.25;
+                margin-bottom: 12px;
+            }
+
+            .ss {
+                font-size: .95rem;
+                line-height: 1.65;
+            }
+
+            .sh {
+                margin-bottom: 36px;
+            }
+
             .nav-k {
                 display: none;
                 position: absolute;
-                top: 64px;
+                top: 56px;
                 left: 0;
                 right: 0;
-                background: var(--w);
+                background: rgba(255, 255, 255, .98);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
                 flex-direction: column;
                 padding: 20px;
                 gap: 14px;
                 border-bottom: 1px solid rgba(107, 85, 230, .1);
-                box-shadow: var(--s2)
+                box-shadow: var(--s2);
+                max-height: calc(100vh - 64px);
+                overflow-y: auto
             }
 
             .nav-k.open {
@@ -1083,27 +1764,66 @@
             }
 
             .fg,
-            .hg {
+            .hg,
+            .pricing-compare,
+            .testimonial-grid {
                 grid-template-columns: 1fr
             }
 
-            .sg {
+            .sg,
+            .package-grid {
                 grid-template-columns: repeat(2, 1fr)
             }
 
             .gg {
-                grid-template-columns: repeat(2, 1fr)
+                display: grid;
+                grid-auto-flow: column;
+                grid-auto-columns: max-content;
+                grid-template-columns: none;
+                justify-content: flex-start;
+                gap: 12px;
+                margin-top: 24px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 4px max(16px, calc((100vw - 260px) / 2)) 12px;
+                scroll-padding-inline: max(16px, calc((100vw - 260px) / 2));
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                overscroll-behavior-x: contain;
+                scrollbar-width: none
             }
 
-            .hmk,
+            .hmk {
+                animation: none
+            }
+
             .imk {
-                width: 220px
+                width: 220px;
+                animation: none
             }
 
             .hd1,
             .hd2,
             .hd3 {
                 display: none
+            }
+
+            .fc,
+            .sc,
+            .price-card,
+            .package-card,
+            .testimonial-card,
+            .gc {
+                box-shadow: 0 8px 18px rgba(15, 23, 42, .06);
+            }
+
+            .fc:hover,
+            .sc:hover,
+            .gc:hover,
+            .package-card:hover,
+            .price-card.plus,
+            .package-card.featured {
+                transform: none;
             }
 
             .foot-i {
@@ -1113,25 +1833,44 @@
 
             .hcta {
                 flex-direction: column;
-                align-items: stretch
+                align-items: stretch;
+                gap: 10px;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+
+            .hcta-demo {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
             }
 
             .bp,
             .bs {
-                justify-content: center
+                justify-content: center;
+                min-height: 52px;
+                width: 100%
+            }
+
+            .bs {
+                font-size: .85rem;
+                padding: 12px 10px;
             }
 
             .feat,
             .ins,
             .stats,
+            .pricing,
             .gal,
             .cta,
-            .how {
-                padding: 72px 0
+            .how,
+            .testimonials {
+                padding: 60px 0
             }
 
             .hero {
-                padding: 90px 0 48px
+                min-height: calc(100vh - 56px);
+                min-height: calc(100dvh - 56px);
+                padding: 48px 0 32px
             }
 
             .gc-l {
@@ -1139,12 +1878,56 @@
                 padding: 8px 12px
             }
 
+            .gallery-mobile-hint {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+            }
+
             .nav-i {
                 height: 56px
             }
         }
 
+        @media(max-width:380px) {
+            .mobile-bottom-cta {
+                gap: 10px;
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .mobile-bottom-cta-button {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .hcta-demo {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media(max-width:480px) {
+            .gg {
+                padding-inline: max(16px, calc((100vw - 220px) / 2));
+                scroll-padding-inline: max(16px, calc((100vw - 220px) / 2));
+            }
+
+            .w-\[220px\] {
+                width: 200px !important;
+            }
+
+            .max-w-\[220px\] {
+                max-width: 200px !important;
+            }
+
+            .w-\[260px\] {
+                width: 220px !important;
+            }
+
+            .max-w-\[260px\] {
+                max-width: 220px !important;
+            }
+
             .hero h1 {
                 font-size: 1.8rem
             }
@@ -1153,28 +1936,506 @@
                 font-size: 1.5rem
             }
 
-            .hmk,
             .imk {
                 width: 200px
             }
 
-            .gg {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px
+            .price-card,
+            .package-card {
+                padding: 18px 16px
+            }
+
+            .price-main strong,
+            .package-price {
+                font-size: 1.55rem
             }
 
             .sn {
-                font-size: 1.6rem
+                font-size: .92rem
             }
 
             .hsub {
                 font-size: .95rem
             }
         }
+
+        /* DEMO MODAL */
+        .demo-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 12, 41, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .demo-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .demo-modal {
+            width: 100%;
+            max-width: 400px;
+            height: 85vh;
+            max-height: 800px;
+            background: #F8F7FF;
+            border-radius: 32px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+            position: relative;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media(max-width: 480px) {
+            .demo-overlay { align-items: flex-end; }
+            .demo-modal { 
+                height: 90vh; 
+                border-radius: 32px 32px 0 0;
+                transform: translateY(100%);
+            }
+        }
+
+        .demo-overlay.active .demo-modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .demo-head {
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #FFF;
+            border-bottom: 1px solid rgba(107, 85, 230, 0.08);
+            z-index: 10;
+        }
+
+        .demo-title {
+            font-weight: 800;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .demo-close {
+            background: rgba(107, 85, 230, 0.08);
+            color: var(--muted);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .demo-close:hover { background: rgba(107, 85, 230, 0.15); color: var(--b6); }
+
+        .demo-body {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+        }
+
+        /* Demo States */
+        .ds-idle, .ds-listening, .ds-parsing, .ds-result {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .ds-idle.active, .ds-listening.active, .ds-parsing.active, .ds-result.active {
+            display: flex;
+        }
+
+        .ds-result.active {
+            justify-content: flex-start;
+        }
+
+        /* Mic Button */
+        .mic-btn {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--b5), var(--b6));
+            color: var(--w);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(79, 56, 189, 0.3);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .mic-btn svg { width: 36px; height: 36px; }
+        
+        .mic-rings {
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(107, 85, 230, 0.2) 0%, transparent 70%);
+            z-index: 1;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .ds-listening .mic-rings {
+            animation: pulse-ring 1.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .ds-listening .mic-btn {
+            animation: pulse-core 1.5s infinite;
+        }
+
+        .demo-hint { font-size: 1rem; color: var(--muted); font-weight: 600; }
+        .demo-transcript {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.5;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+        }
+        .demo-transcript.show { opacity: 1; transform: translateY(0); }
+
+        /* Loader */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 4px solid rgba(107, 85, 230, 0.1);
+            border-top-color: var(--b6);
+            animation: spin 1s infinite linear;
+            margin-bottom: 20px;
+        }
+
+        /* Results */
+        .log-cards { width: 100%; display: flex; flex-direction: column; gap: 12px; margin-top: 10px; margin-bottom: 24px; }
+        
+        .log-card {
+            background: var(--w);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid rgba(107,85,230,0.06);
+            opacity: 0;
+            transform: translateY(20px);
+            text-align: left;
+        }
+
+        .lc-anim.show {
+            animation: slideUpCard 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .lc-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .lc-icon svg { width: 22px; height: 22px; }
+        
+        .lc-icon.sus { background: rgba(56, 189, 248, 0.1); color: #0284C7; }
+        .lc-icon.pup { background: rgba(245, 158, 66, 0.1); color: #EA580C; }
+        .lc-icon.tdr { background: rgba(107, 85, 230, 0.1); color: var(--b6); }
+        .lc-icon.mkn { background: rgba(52, 211, 153, 0.1); color: #059669; }
+
+        .lc-content { flex: 1; }
+        .lc-title { font-weight: 800; color: var(--dark); font-size: 0.95rem; margin-bottom: 2px; }
+        .lc-desc { font-size: 0.85rem; color: var(--muted); }
+        .lc-time { font-weight: 700; color: var(--dark); font-size: 0.85rem; background: var(--bg); padding: 4px 8px; border-radius: 6px; }
+
+        .demo-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            opacity: 0;
+            margin-top: auto;
+        }
+        .demo-actions.show { animation: slideUpCard 0.5s ease forwards; animation-delay: 0.6s; }
+
+
+        .summary-log-stage,
+        .summary-demo-loading {
+            display: none;
+        }
+
+        .summary-log-stage.active,
+        .summary-demo-loading.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .summary-log-stage {
+            gap: 14px;
+        }
+
+        .summary-head-note {
+            text-align: left;
+            font-size: 0.92rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .summary-demo-loading {
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+            min-height: 280px;
+        }
+
+        .summary-week-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 430px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .summary-day-group {
+            border: 1px solid rgba(107, 85, 230, 0.14);
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,247,255,0.96));
+            padding: 14px;
+            display: grid;
+            gap: 12px;
+            box-shadow: 0 8px 20px rgba(107, 85, 230, 0.08);
+        }
+
+        .summary-day-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(107, 85, 230, 0.08);
+            color: var(--dark);
+            text-align: left;
+        }
+
+        .summary-day-main {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .summary-day-title {
+            font-size: 0.95rem;
+            font-weight: 900;
+            letter-spacing: -0.01em;
+            color: var(--b6);
+        }
+
+        .summary-day-sub {
+            font-size: 0.76rem;
+            color: var(--muted);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .summary-day-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+
+        .summary-day-count {
+            font-size: 0.72rem;
+            color: var(--muted);
+            font-weight: 700;
+            background: #fff;
+            border-radius: 999px;
+            padding: 4px 8px;
+        }
+
+        .summary-day-panel {
+            display: block;
+        }
+
+        .summary-day-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .summary-day-list .log-card {
+            opacity: 1;
+            transform: none;
+            padding: 11px 12px;
+            gap: 10px;
+            box-shadow: none;
+            border-radius: 12px;
+            border-color: rgba(107,85,230,0.08);
+        }
+
+        .summary-day-list .lc-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+        }
+
+        .summary-day-list .lc-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .summary-day-list .lc-title {
+            font-size: 0.84rem;
+            margin-bottom: 1px;
+        }
+
+        .summary-day-list .lc-desc {
+            font-size: 0.78rem;
+        }
+
+        .summary-day-list .lc-time {
+            font-size: 0.73rem;
+            padding: 3px 6px;
+        }
+
+        @media(max-width:480px) {
+            .summary-week-list {
+                max-height: 380px;
+            }
+
+            .summary-day-group {
+                padding: 12px;
+            }
+
+            .summary-day-head {
+                gap: 10px;
+            }
+        }
+
+        .summary-result {
+            display: none;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .summary-result.active {
+            display: flex;
+        }
+
+        .summary-card {
+            border-radius: 18px;
+            padding: 18px;
+            text-align: left;
+            border: 1px solid rgba(107, 85, 230, 0.1);
+        }
+
+        .summary-card.info { background: #EAF3FF; }
+        .summary-card.main { background: #F1ECFF; }
+        .summary-card.table { background: #EAFBF2; }
+
+        .summary-label {
+            font-size: 1.1rem;
+            font-weight: 900;
+            letter-spacing: 0.02em;
+            margin-bottom: 10px;
+        }
+
+        .summary-card p {
+            margin: 0 0 10px;
+            font-size: 0.98rem;
+            line-height: 1.55;
+            color: var(--dark);
+        }
+
+        .summary-card p:last-child { margin-bottom: 0; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--b5), var(--b6));
+            color: var(--w);
+            padding: 16px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--b6);
+            padding: 14px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            width: 100%;
+            border: 2px solid rgba(107, 85, 230, 0.2);
+        }
+
+        /* Result Transcript shrink */
+        .shrinky-text {
+            font-size: 0.95rem;
+            color: var(--muted);
+            font-style: italic;
+            background: rgba(107,85,230,0.05);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--b5);
+            text-align: left;
+        }
+
+        @media (min-width: 768px) {
+            .md\:text-sm {
+                font-size: .875rem !important;
+                line-height: 1.25rem !important;
+            }
+
+            .md\:w-auto {
+                width: auto !important;
+            }
+
+            .md\:max-w-none {
+                max-width: none !important;
+            }
+
+            .md\:w-\[300px\] {
+                width: 300px !important;
+            }
+
+            .md\:max-w-\[300px\] {
+                max-width: 300px !important;
+            }
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes pulse-ring { 0% { transform: scale(0.8); opacity: 0; } 50% { opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
+        @keyframes pulse-core { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes slideUpCard { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
     </style>
 </head>
 
-<body>
+<body class="overflow-x-hidden">
 
     <!-- NAV -->
     <nav class="nav" id="navbar">
@@ -1185,14 +2446,15 @@
                 <li><a href="#fitur">Fitur</a></li>
                 <li><a href="#insight">Insight Pintar</a></li>
                 <li><a href="#keunggulan">Keunggulan</a></li>
-                <li><a href="https://langkahkecil-v-1.pages.dev" class="bn">Mulai Sekarang</a></li>
+                <li><a href="#paket">Paket</a></li>
+                <li><a href="https://langkahkecil-v-1.pages.dev" class="bn bg-purple-600 text-white font-bold rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 px-8 py-3">Mulai Sekarang</a></li>
             </ul>
             <button class="nav-t" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero pt-12 pb-8 md:py-24">
         <div class="c hero-i">
             <div class="hero-c">
                 <div class="hbadge">
@@ -1200,20 +2462,28 @@
                         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
                         <path d="m9 12 2 2 4-4" />
                     </svg>
-                    Offline-first · Gratis · Data aman di perangkatmu
+                    ✨ Mulai Gratis · Asisten Cerdas untuk Bunda dan Ayah
                 </div>
-                <h1>Awali <span class="gt">Langkah Kecil</span> dengan Catatan yang Bermakna.</h1>
-                <p class="hsub">Cukup catat aktivitas harian si kecil — makan, tidur, popok — lalu dapatkan
-                    <strong>rangkuman cerdas & analisa otomatis</strong> untuk mengoptimalkan tumbuh kembangnya. Semudah
-                    ketik, secepat satu sentuh.
-                </p>
-                <div class="hcta">
-                    <a href="https://langkahkecil-v-1.pages.dev" class="bp"><svg viewBox="0 0 24 24" fill="none"
+                <h1 class="text-3xl leading-tight md:text-5xl lg:text-6xl">Catat Praktis. Temukan Makna di Setiap <span class="gt">Langkah Kecil</span> Buah Hati.</h1>
+                <p class="hsub px-4 md:px-0 text-base md:text-lg">Jangan biarkan momen penting terlewat karena lupa. Pahami pola si kecil untuk optimalkan pertumbuhannya:</p>
+                <div class="hcta flex flex-col w-full md:w-auto gap-3 md:gap-4">
+                    <a href="https://langkahkecil-v-1.pages.dev" class="bp bg-purple-600 text-white font-bold rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 px-8 py-3 w-full md:w-auto text-center"><svg viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5">
                             <path d="M5 12h14" />
                             <path d="m12 5 7 7-7 7" />
-                        </svg>Mulai Gratis Sekarang</a>
-                    <a href="#fitur" class="bs">Pelajari Fitur</a>
+                        </svg>🚀 Mulai Catat Sekarang</a>
+                    <div class="hcta-demo grid grid-cols-2 gap-3 w-full max-w-sm md:max-w-full mx-auto">
+                        <button class="bs" onclick="openDemo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" x2="12" y1="19" y2="22"/>
+                        </svg>Demo Catat Cepat via Suara</button>
+                        <button class="bs" onclick="openSummaryDemo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 5h16"/>
+                            <path d="M4 12h16"/>
+                            <path d="M4 19h10"/>
+                        </svg>Demo Rangkuman Pintar</button>
+                    </div>
                 </div>
                 <div class="htr">
                     <span class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1225,11 +2495,11 @@
                         </svg>Tanpa Iklan</span>
                 </div>
             </div>
-            <div class="hv">
+            <div class="hv w-full max-w-[90vw] md:max-w-md mx-auto">
                 <div class="hd1"></div>
                 <div class="hd2"></div>
                 <div class="hd3"></div>
-                <img src="img/ss-dashboard.jpeg" alt="LangkahKecil Dashboard" class="hmk" />
+                <div class="hero-phone w-[260px] max-w-[260px] md:w-[300px] md:max-w-[300px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-dashboard.jpeg" alt="LangkahKecil Dashboard" class="hmk" /></div>
             </div>
         </div>
     </section>
@@ -1239,66 +2509,68 @@
         <div class="c">
             <div class="sh rv">
                 <span class="sl">⚡ Fitur Unggulan</span>
-                <h2 class="st">Catat Cepat, Pantau Otomatis,<br />Keputusan Lebih Tepat</h2>
-                <p class="ss">Dirancang untuk orang tua sibuk yang ingin memastikan setiap aspek tumbuh kembang si kecil
-                    terpantau tanpa ribet.</p>
+                <h2 class="st">Temukan Makna di Setiap Catatan,<br />dengan Insight yang Menenangkan</h2>
+                <p class="ss">Semua aktivitas penting si kecil dirapikan menjadi jurnal yang mudah dipahami, agar Bunda dan Ayah bisa fokus pada hal yang paling berarti.</p>
             </div>
             <div class="fg">
-                <div class="fc rv d1">
-                    <div class="fi sk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
-                        </svg></div>
-                    <h3>Input Cepat & Parsing Otomatis</h3>
-                    <p>Ketik &#8220;makan nasi 200gr jam 12&#8221; dan data langsung tersimpan rapi. Parsing cerdas
-                        memahami waktu, kategori, dan jumlah — tanpa isi form manual.</p>
+                <div class="fc rv d1 h-full flex flex-col">
+                    <div class="fc-head">
+                        <div class="fi sk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                                <line x1="12" x2="12" y1="19" y2="22" />
+                            </svg></div>
+                        <h3>Catat kesehariannya, semudah sedang curhat.</h3>
+                    </div>
+                    <p>Cukup ceritakan aktivitas <strong>makan, tidur, atau ganti popok</strong> lewat suara. Sistem cerdas kami akan otomatis <strong>merapikannya ke dalam jurnal</strong>. <strong>Tanpa ngetik, tanpa repot.</strong></p>
                 </div>
-                <div class="fc rv d2">
-                    <div class="fi pr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path
-                                d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z" />
-                        </svg></div>
-                    <h3>Rangkuman Pintar</h3>
-                    <p>Lihat ringkasan harian yang insightful — pola asupan, durasi tidur, pertumbuhan, dan insight
-                        penting si kecil terangkum dalam satu tampilan.</p>
+                <div class="fc rv d2 h-full flex flex-col">
+                    <div class="fc-head">
+                        <div class="fi pr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z" />
+                            </svg></div>
+                        <h3>Ubah rutinitas jadi insight yang menenangkan.</h3>
+                    </div>
+                    <p>Tidak ada lagi <strong>data acak</strong>. Catatan harian Anda langsung diolah menjadi <strong>ringkasan cerdas yang mudah dipahami</strong> dan <strong>siap dibawa konsultasi</strong>.</p>
                 </div>
-                <div class="fc rv d3">
-                    <div class="fi rs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-                            <rect width="8" height="4" x="8" y="2" rx="1" />
-                            <path d="M9 14h6" />
-                            <path d="M9 18h6" />
-                        </svg></div>
-                    <h3>Catatan Konsultasi Dokter</h3>
-                    <p>Data pertumbuhan, pola makan, riwayat vaksin, dan catatan kesehatan — tersusun rapi siap dibawa
-                        saat konsultasi ke dokter anak.</p>
+                <div class="fc rv d3 h-full flex flex-col">
+                    <div class="fc-head">
+                        <div class="fi rs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m12 3 1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z" />
+                            </svg></div>
+                        <h3>Pahami ritme tidur & makan si kecil.</h3>
+                    </div>
+                    <p>Analisa detail <strong>pola tidur</strong> agar Bunda dan Ayah juga bisa ikut istirahat, serta pastikan <strong>asupan nutrisinya selalu terjaga</strong>.</p>
                 </div>
-                <div class="fc rv d1">
-                    <div class="fi or"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
-                            <path d="M7 2v20" />
-                            <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
-                        </svg></div>
-                    <h3>Pantau Makan & ASI</h3>
-                    <p>Log ASI, susu formula, MPASI, dan makanan padat. Lacak volume, waktu, dan pola makan harian si
-                        kecil dengan analisa visual otomatis.</p>
+                <div class="fc rv d1 h-full flex flex-col">
+                    <div class="fc-head">
+                        <div class="fi or"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5" />
+                                <path d="M9 17a3 3 0 0 0 6 0" />
+                            </svg></div>
+                        <h3>Bangun kebiasaan baik sejak dini.</h3>
+                    </div>
+                    <p>Terapkan <strong>feeding rules tanpa pusing</strong>, dan dapatkan <strong>pengingat ganti popok tepat waktu</strong> agar kulitnya selalu nyaman dan bebas ruam.</p>
                 </div>
-                <div class="fc rv d2">
-                    <div class="fi gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                        </svg></div>
-                    <h3>Grafik Pertumbuhan WHO</h3>
-                    <p>Pantau berat, tinggi, dan lingkar kepala si kecil dengan grafik standar WHO. Lihat tren
-                        pertumbuhannya secara visual dan akurat.</p>
+                <div class="fc rv d2 h-full flex flex-col">
+                    <div class="fc-head">
+                        <div class="fi gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 3v18h18" />
+                                <path d="m7 15 4-4 3 3 5-7" />
+                            </svg></div>
+                        <h3>Pantau tumbuh kembang tanpa rasa cemas.</h3>
+                    </div>
+                    <p>Pantau <strong>berat, panjang, dan lingkar kepala</strong> si kecil dengan grafik otomatis yang selalu merujuk pada <strong>standar resmi WHO</strong>.</p>
                 </div>
-                <div class="fc rv d3">
-                    <div class="fi am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="m9 12 2 2 4-4" />
-                            <path
-                                d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z" />
-                        </svg></div>
-                    <h3>Vaksin & Reminder</h3>
-                    <p>Jadwal vaksinasi lengkap sesuai IDAI. Pengingat otomatis memastikan tidak ada jadwal vaksin yang
-                        terlewat.</p>
+                <div class="fc rv d3 h-full flex flex-col">
+                    <div class="fc-head">
+                        <div class="fi am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+                                <path d="m9 12 2 2 4-4" />
+                            </svg></div>
+                        <h3>Tak ada lagi jadwal imunisasi yang terlewat.</h3>
+                    </div>
+                    <p>Dapatkan <strong>panduan dan pengingat jadwal vaksinasi</strong> yang lengkap untuk memastikan <strong>perlindungan maksimal</strong> bagi sang buah hati.</p>
                 </div>
             </div>
         </div>
@@ -1329,7 +2601,7 @@
                             </svg></span>Deteksi pola yang perlu diperhatikan</li>
                 </ul>
             </div>
-            <div class="ins-v rv d2">
+            <div class="ins-v rv d2 w-full max-w-[90vw] md:max-w-md mx-auto">
                 <div class="igl"></div>
                 <img src="img/ss-summary.jpeg" alt="Rangkuman Pintar LangkahKecil" class="imk" />
             </div>
@@ -1340,43 +2612,44 @@
     <section class="stats" id="keunggulan">
         <div class="c">
             <div class="sh rv">
-                <span class="sl">💪 Kenapa LangkahKecil?</span>
-                <h2 class="st">Didesain untuk Orang Tua Modern</h2>
-                <p class="ss">Kami paham betapa berharganya waktu Mama dan Papa. Makanya kami bikin ini semudah dan
-                    seaman mungkin.</p>
+                <span class="sl">💜 Mengapa LangkahKecil?</span>
+                <h2 class="st">Dirancang dengan Hati, Menemani Setiap Hari.</h2>
+                <p class="ss">Fokus nikmati momen berharga bersama buah hati, biarkan kami yang mengingat dan merapikan catatannya untuk Anda.</p>
             </div>
-            <div class="sg">
-                <div class="sc rv d1">
-                    <div class="si pr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                        </svg></div>
-                    <div class="sn">100%</div>
-                    <div class="sla">Offline & Privat</div>
-                </div>
-                <div class="sc rv d2">
-                    <div class="si gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="sg grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+                <div class="sc rv d1 h-full flex flex-col items-center text-center p-4 md:p-6 text-sm md:text-base">
+                    <div class="si pr w-14 h-14 rounded-full flex items-center justify-center mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="m9 12 2 2 4-4" />
                         </svg></div>
-                    <div class="sn">0</div>
-                    <div class="sla">Iklan & Tracker</div>
+                    <div class="sla">100% Aman</div>
+                    <p class="mt-2 text-xs md:text-sm text-gray-500 font-medium leading-snug">Data si kecil tersimpan privat, bebas khawatir.</p>
                 </div>
-                <div class="sc rv d3">
-                    <div class="si or"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect width="20" height="14" x="2" y="5" rx="2" />
-                            <line x1="2" x2="22" y1="10" y2="10" />
+                <div class="sc rv d2 h-full flex flex-col items-center text-center p-4 md:p-6 text-sm md:text-base">
+                    <div class="si gr w-14 h-14 rounded-full flex items-center justify-center mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m15 9-6 6" />
+                            <path d="m9 9 6 6" />
                         </svg></div>
-                    <div class="sn">Rp 0</div>
-                    <div class="sla">Sepenuhnya Gratis</div>
+                    <div class="sla">0 Iklan</div>
+                    <p class="mt-2 text-xs md:text-sm text-gray-500 font-medium leading-snug">Ruang mencatat yang tenang tanpa pop-up mengganggu.</p>
                 </div>
-                <div class="sc rv d4">
-                    <div class="si sk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
-                            <path d="M12 12v9" />
-                            <path d="m8 17 4 4 4-4" />
+                <div class="sc rv d3 h-full flex flex-col items-center text-center p-4 md:p-6 text-sm md:text-base">
+                    <div class="si or w-14 h-14 rounded-full flex items-center justify-center mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m12 3 1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z" />
                         </svg></div>
-                    <div class="sn">PWA</div>
-                    <div class="sla">Install Tanpa App Store</div>
+                    <div class="sla">Mulai Gratis</div>
+                    <p class="mt-2 text-xs md:text-sm text-gray-500 font-medium leading-snug">Nikmati fitur esensial tanpa biaya tersembunyi.</p>
+                </div>
+                <div class="sc rv d4 h-full flex flex-col items-center text-center p-4 md:p-6 text-sm md:text-base">
+                    <div class="si sk w-14 h-14 rounded-full flex items-center justify-center mb-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="7" y="2" width="10" height="20" rx="2" />
+                            <path d="M11 18h2" />
+                            <path d="M5 6h2" />
+                            <path d="M17 6h2" />
+                        </svg></div>
+                    <div class="sla">Full Akses & Ringan</div>
+                    <p class="mt-2 text-xs md:text-sm text-gray-500 font-medium leading-snug">Buka dari HP apa saja tanpa penuhi memori.</p>
                 </div>
             </div>
         </div>
@@ -1419,22 +2692,28 @@
             <div class="sh rv">
                 <span class="sl">📱 Tampilan Aplikasi</span>
                 <h2 class="st">Bersih, Intuitif, Satu Tangan</h2>
-                <p class="ss">Dirancang agar Mama bisa mencatat dengan satu tangan — sambil menggendong si kecil.</p>
+                <p class="ss">Dirancang agar Bunda bisa mencatat dengan satu tangan — sambil menggendong si kecil.</p>
+                <div class="gallery-mobile-hint">↔️ Geser untuk lihat semua screenshot</div>
             </div>
             <div class="gg">
-                <div class="gc rv d1"><img src="img/ss-dashboard.jpeg" alt="Dashboard" />
+                <div class="gc rv d1 mx-auto">
+                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-dashboard.jpeg" alt="Dashboard" /></div>
                     <div class="gc-l">Dashboard</div>
                 </div>
-                <div class="gc rv d2"><img src="img/ss-food.jpeg" alt="Analisa Asupan" />
+                <div class="gc rv d2 mx-auto">
+                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-food.jpeg" alt="Analisa Asupan" /></div>
                     <div class="gc-l">Analisa Asupan</div>
                 </div>
-                <div class="gc rv d3"><img src="img/ss-sleep.jpeg" alt="Analisa Tidur" />
+                <div class="gc rv d3 mx-auto">
+                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-sleep.jpeg" alt="Analisa Tidur" /></div>
                     <div class="gc-l">Analisa Tidur</div>
                 </div>
-                <div class="gc rv d1"><img src="img/ss-growth.jpeg" alt="Grafik Pertumbuhan" />
+                <div class="gc rv d1 mx-auto">
+                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-growth.jpeg" alt="Grafik Pertumbuhan" /></div>
                     <div class="gc-l">Grafik Pertumbuhan</div>
                 </div>
-                <div class="gc rv d2"><img src="img/ss-summary.jpeg" alt="Rangkuman Pintar" />
+                <div class="gc rv d2 mx-auto">
+                    <div class="w-[260px] max-w-[260px] mx-auto rounded-[2.5rem] border-4 border-slate-900 p-2 shadow-2xl bg-slate-950 overflow-hidden"><img src="img/ss-summary.jpeg" alt="Rangkuman Pintar" /></div>
                     <div class="gc-l">Rangkuman Pintar</div>
                 </div>
             </div>
@@ -1446,7 +2725,7 @@
         <div class="c cta-c rv">
             <h2>Mulai Langkah Kecil Hari Ini 💜</h2>
             <p>Setiap catatan kecil hari ini adalah investasi besar untuk tumbuh kembang si buah hati esok hari.</p>
-            <a href="https://langkahkecil-v-1.pages.dev" class="bw">Mulai Sekarang — Gratis<svg viewBox="0 0 24 24" fill="none"
+            <a href="https://langkahkecil-v-1.pages.dev" class="bw bg-purple-600 text-white font-bold rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 px-8 py-3 w-full md:w-auto text-center">Mulai Sekarang — Gratis<svg viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2.5">
                     <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
@@ -1454,25 +2733,441 @@
         </div>
     </section>
 
+    <section class="testimonials py-16 bg-gray-50/50">
+        <div class="c">
+            <div class="sh rv">
+                <h2 class="st">Apa Kata Bunda & Ayah</h2>
+                <p class="ss">Bergabung dengan orang tua modern lainnya yang sudah lebih tenang merawat si kecil.</p>
+            </div>
+            <div class="testimonial-grid grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 mt-10">
+                <article class="testimonial-card">
+                    <div class="testimonial-quote">”</div>
+                    <p>Dulu stres banget tiap DSA nanya 'pupnya berapa kali sehari?'. Sejak pakai LangkahKecil, tinggal kasih lihat Rangkuman Pintar. Sangat ngebantu!</p>
+                    <div class="testimonial-author">Bunda Risa, 1 anak</div>
+                </article>
+                <article class="testimonial-card">
+                    <div class="testimonial-quote">”</div>
+                    <p>Fitur jurnal suaranya juara! Sering banget lagi repot gendong anak nggak bisa ngetik, tinggal ngomong aja langsung kecatat rapi.</p>
+                    <div class="testimonial-author">Bunda Dinda, bayi 4 bulan</div>
+                </article>
+                <article class="testimonial-card">
+                    <div class="testimonial-quote">”</div>
+                    <p>Akhirnya gampang bagi tugas pantau anak sama istri. Datanya sinkron, dan pengingat jadwal vaksinnya bikin kita nggak pernah kelewat lagi.</p>
+                    <div class="testimonial-author">Ayah Dimas, 2 anak</div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="paket">
+        <div class="c pricing-wrap">
+            <div class="sh rv">
+                <span class="sl">💎 PILIH PAKET SESUAI KEBUTUHAN</span>
+                <h2 class="st">Mencatat Manual Tanpa Biaya,<br />atau Serahkan Sepenuhnya pada AI.</h2>
+                <p class="ss">Versi Basic selalu gratis untuk kebutuhan pencatatan dasar Anda. Ingin lebih hemat waktu dengan asisten suara dan analisa cerdas? LangkahPlus jawabannya.</p>
+            </div>
+
+            <div class="pricing-compare grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <article class="price-card rv d1 bg-white rounded-2xl p-6 md:p-8 flex flex-col h-full border border-gray-200 shadow-sm">
+                    <span class="price-badge free">Basic · Gratis</span>
+                    <div>
+                        <h3>LangkahKecil Basic</h3>
+                        <p class="price-copy">Cocok untuk Bunda dan Ayah yang rajin mencatat mandiri secara rapi dan terstruktur tanpa biaya tambahan.</p>
+                    </div>
+                    <div class="price-main">
+                        <strong>Rp 0</strong>
+                        <span>selamanya</span>
+                    </div>
+                    <p class="price-subnote">Daftar dalam 1 menit, tanpa perlu kartu kredit.</p>
+                    <ul class="price-list">
+                        <li>Catat manual aktivitas makan, tidur, dan ganti popok.</li>
+                        <li>Panduan dan pengingat jadwal vaksinasi.</li>
+                        <li>Akses panduan dasar feeding rules.</li>
+                        <li>Pemantauan grafik tumbuh kembang standar WHO.</li>
+                    </ul>
+                    <a href="https://langkahkecil-v-1.pages.dev" class="bg-purple-600 text-white font-bold rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 px-8 py-3 w-full text-center mt-auto">Mulai Gratis</a>
+                </article>
+
+                <article class="price-card plus rv d2 bg-white rounded-2xl p-6 md:p-8 flex flex-col h-full border-2 border-purple-500 shadow-xl relative z-10 scale-100 md:scale-105">
+                    <div class="best-badge">✨ Pilihan Terbaik</div>
+                    <span class="price-badge plus">LangkahPlus · Premium</span>
+                    <div>
+                        <h3>LangkahPlus</h3>
+                        <p class="price-copy">Solusi bebas repot. Hemat lebih banyak waktu dan dapatkan insight mendalam untuk mengoptimalkan tumbuh kembang si kecil.</p>
+                    </div>
+                    <div class="price-main">
+                        <strong>Rp 39.000</strong>
+                        <span>per bulan</span>
+                    </div>
+                    <ul class="price-list">
+                        <li>Mencakup SEMUA fitur Basic, ditambah:</li>
+                        <li>Jurnal Suara AI: Catat rutinitas cukup lewat suara seolah sedang curhat, tanpa ngetik.</li>
+                        <li>Ringkasan Pintar: Ubah catatan harian menjadi insight yang mudah dipahami.</li>
+                        <li>Analisa Pola Mendalam: Deteksi ritme tidur & nutrisi si kecil secara lebih akurat.</li>
+                        <li>Asisten Konsultasi: Laporan kesehatan cerdas yang rapi dan siap ditunjukkan ke dokter anak (DSA).</li>
+                    </ul>
+                    <a href="https://langkahkecil-v-1.pages.dev" class="bg-purple-600 text-white font-bold rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 px-8 py-3 w-full text-center mt-auto">Pilih LangkahPlus</a>
+                </article>
+            </div>
+
+            <div class="rv d3">
+                <div class="sh" style="margin-bottom:24px;">
+                    <span class="sl">🧾 Paket LangkahPlus</span>
+                    <h3 class="st" style="font-size:clamp(1.5rem,3vw,2.1rem); margin-bottom:10px;">Mau lebih hemat? Bisa pilih paket yang pas.</h3>
+                    <p class="ss">Semua paket punya fitur premium yang sama. Bedanya cuma durasi dan total hematnya.</p>
+                </div>
+                <div class="package-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <article class="package-card h-full flex flex-col">
+                        <div class="package-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v12" /><path d="M6 12h12" /><path d="M7 7h.01" /><path d="M17 7h.01" /><path d="M7 17h.01" /><path d="M17 17h.01" /></svg></div>
+                        <div class="package-duration">1 Bulan</div>
+                        <div class="package-price">Rp 39.000</div>
+                        <div class="package-meta">Mulai ringan untuk coba fitur premium tanpa komitmen panjang.</div>
+                    </article>
+                    <article class="package-card h-full flex flex-col">
+                        <div class="package-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v8" /><path d="M8 12h8" /><circle cx="12" cy="12" r="9" /></svg></div>
+                        <div class="package-duration">3 Bulan</div>
+                        <div class="package-price">Rp 105.000</div>
+                        <div class="package-save">Hemat Rp 12.000</div>
+                        <div class="package-meta">Pilihan aman untuk keluarga yang mulai rutin mencatat tiap minggu.</div>
+                    </article>
+                    <article class="package-card featured h-full flex flex-col">
+                        <span class="package-badge">Paling Populer</span>
+                        <div class="package-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z" /></svg></div>
+                        <div class="package-duration">6 Bulan</div>
+                        <div class="package-price">Rp 199.000</div>
+                        <div class="package-save">Hemat Rp 35.000</div>
+                        <div class="package-meta">Paling pas untuk fase MPASI, pola tidur, dan kontrol tumbuh kembang.</div>
+                    </article>
+                    <article class="package-card h-full flex flex-col">
+                        <div class="package-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18" /><path d="M7 8h8a4 4 0 0 1 0 8H9" /></svg></div>
+                        <div class="package-duration">1 Tahun</div>
+                        <div class="package-price">Rp 359.000</div>
+                        <div class="package-save">Hemat Rp 109.000</div>
+                        <div class="package-meta">Pendampingan paling hemat untuk perjalanan panjang yang konsisten.</div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- FOOTER -->
-    <footer class="foot">
+    <footer class="foot pb-24 md:pb-8">
         <div class="c foot-i">
             <div class="foot-l"><img src="brand/LangkahKecil_logo.png" alt="LangkahKecil" />LangkahKecil</div>
             <p class="foot-t">&copy; 2025 LangkahKecil. Dibuat dengan 💜 untuk orang tua Indonesia.</p>
             <ul class="foot-k">
-                <li><a href="#">Privasi</a></li>
-                <li><a href="#">Bantuan</a></li>
-                <li><a href="#">Kontak</a></li>
+                <li><a href="privacy-policy.html">Privasi</a></li>
+                <li><a href="terms-and-conditions.html">Syarat &amp; Ketentuan</a></li>
+                <li><a href="refund-policy.html">Kebijakan Pengembalian Dana</a></li>
             </ul>
         </div>
     </footer>
 
+    <!-- DEMO OVERLAY -->
+    <div class="demo-overlay" id="demoOverlay">
+        <div class="demo-modal">
+            <div class="demo-head">
+                <div class="demo-title">Demo Catat Cepat via Suara</div>
+                <button class="demo-close" onclick="closeDemo()" aria-label="Tutup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="demo-body" id="demoBody">
+                
+                <!-- State 1: Idle -->
+                <div class="ds-idle active" id="dsIdle">
+                    <button class="mic-btn" onclick="startDemoRecording()">
+                        <div class="mic-rings"></div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                    </button>
+                    <div class="demo-hint">Sentuh mic untuk mencoba</div>
+                </div>
+
+                <!-- State 2: Listening & Transcript -->
+                <div class="ds-listening" id="dsListen">
+                    <div style="position:relative; margin-bottom: 24px;">
+                        <div class="mic-rings"></div>
+                        <div class="mic-btn" style="margin-bottom:0;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                        </div>
+                    </div>
+                    <div class="demo-hint" id="listenStatus">Mendengarkan...</div>
+                    <div class="demo-transcript" id="liveTranscript">"Hari ini Rezda jam 7 pagi minum susu 180 ml, jam 8 pup, jam 12 tidur siang sekitar 1 jam 20 menit, lalu jam 1 siang makan bubur ayam setengah mangkok."</div>
+                </div>
+
+                <!-- State 3: Parsing -->
+                <div class="ds-parsing" id="dsParse">
+                    <div class="loader"></div>
+                    <div class="demo-title">AI sedang memproses catatanmu...</div>
+                    <div class="demo-hint" style="margin-top:8px;">Memecah suara jadi beberapa logs</div>
+                </div>
+
+                <!-- State 4: Results -->
+                <div class="ds-result" id="dsResult">
+                    <div class="shrinky-text">"Hari ini Rezda jam 7 pagi minum susu 180 ml, jam 8 pup, jam 12 tidur siang sekitar 1 jam 20 mnt, lalu jam 1 siang makan bubur..."</div>
+                    
+                    <div class="log-cards">
+                        <!-- Card 1 -->
+                        <div class="log-card lc-anim" style="animation-delay: 0.1s;">
+                            <div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div>
+                            <div class="lc-content">
+                                <div class="lc-title">Minum Susu</div>
+                                <div class="lc-desc">180 ml</div>
+                            </div>
+                            <div class="lc-time">07:00</div>
+                        </div>
+                        
+                        <!-- Card 2 -->
+                        <div class="log-card lc-anim" style="animation-delay: 0.2s;">
+                            <div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div>
+                            <div class="lc-content">
+                                <div class="lc-title">Popok / Pup</div>
+                                <div class="lc-desc">Kotor/Pup</div>
+                            </div>
+                            <div class="lc-time">08:00</div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="log-card lc-anim" style="animation-delay: 0.3s;">
+                            <div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div>
+                            <div class="lc-content">
+                                <div class="lc-title">Tidur Siang</div>
+                                <div class="lc-desc">Durasi: 1 jam 20 mnt</div>
+                            </div>
+                            <div class="lc-time">12:00</div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="log-card lc-anim" style="animation-delay: 0.4s;">
+                            <div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
+                            <div class="lc-content">
+                                <div class="lc-title">Makan Padat</div>
+                                <div class="lc-desc">Bubur ayam 1/2 porsi</div>
+                            </div>
+                            <div class="lc-time">13:00</div>
+                        </div>
+                    </div>
+
+                    <div class="demo-actions" id="demoActions">
+                        <button class="btn-primary" onclick="closeDemo()">Simpan 4 log</button>
+                        <button class="btn-secondary" onclick="closeDemo()">Edit hasil log</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SUMMARY DEMO OVERLAY -->
+    <div class="demo-overlay" id="summaryOverlay">
+        <div class="demo-modal">
+            <div class="demo-head">
+                <div class="demo-title">Hasil Rangkuman Pintar</div>
+                <button class="demo-close" onclick="closeSummaryDemo()" aria-label="Tutup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="demo-body" id="summaryDemoBody">
+                <div class="summary-log-stage active" id="summaryLogsStage">
+                    <div class="summary-head-note">Scroll untuk melihat seluruh log aktivitas anak. Langkah Kecil akan menganalisisnya dan menyusunnya menjadi <strong>Rangkuman Pintar</strong> yang praktis, mudah dipahami, dan siap dibawa saat konsultasi.</div>
+                    <div class="summary-week-list" id="summaryWeekList">
+                        <section class="summary-day-group" data-day="senin">
+                            <div class="summary-day-head">
+                                <span class="summary-day-main"><span class="summary-day-title">Selasa</span><span class="summary-day-sub">24 Februari 2026</span></span>
+                                <span class="summary-day-meta"><span class="summary-day-count">5 log</span></span>
+                            </div>
+                            <div class="summary-day-panel"><div class="summary-day-list">
+                                <div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 180 ml</div></div><div class="lc-time">07:10</div></div>
+                                <div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pup</div><div class="lc-desc">Kondisi normal</div></div><div class="lc-time">08:20</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Bubur ayam 150 gr</div></div><div class="lc-time">12:05</div></div>
+                                <div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 35 menit</div></div><div class="lc-time">13:20</div></div>
+                                <div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">16:10</div></div>
+                            </div></div>
+                        </section>
+                        <section class="summary-day-group" data-day="selasa"><div class="summary-day-head"><span class="summary-day-main"><span class="summary-day-title">Rabu</span><span class="summary-day-sub">25 Februari 2026</span></span><span class="summary-day-meta"><span class="summary-day-count">5 log</span></span></div><div class="summary-day-panel"><div class="summary-day-list"><div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 200 ml</div></div><div class="lc-time">06:55</div></div><div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pipis</div><div class="lc-desc">Popok basah</div></div><div class="lc-time">08:40</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Nasi tim 160 gr</div></div><div class="lc-time">11:50</div></div><div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 40 menit</div></div><div class="lc-time">13:15</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">17:00</div></div></div></div></section>
+                        <section class="summary-day-group" data-day="rabu"><div class="summary-day-head"><span class="summary-day-main"><span class="summary-day-title">Kamis</span><span class="summary-day-sub">26 Februari 2026</span></span><span class="summary-day-meta"><span class="summary-day-count">5 log</span></span></div><div class="summary-day-panel"><div class="summary-day-list"><div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 190 ml</div></div><div class="lc-time">07:05</div></div><div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pup</div><div class="lc-desc">Kondisi normal</div></div><div class="lc-time">08:30</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Puree buah 150 gr</div></div><div class="lc-time">12:00</div></div><div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 30 menit</div></div><div class="lc-time">13:40</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">16:20</div></div></div></div></section>
+                        <section class="summary-day-group" data-day="kamis"><div class="summary-day-head"><span class="summary-day-main"><span class="summary-day-title">Jumat</span><span class="summary-day-sub">27 Februari 2026</span></span><span class="summary-day-meta"><span class="summary-day-count">5 log</span></span></div><div class="summary-day-panel"><div class="summary-day-list"><div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 170 ml</div></div><div class="lc-time">07:25</div></div><div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pipis</div><div class="lc-desc">Popok basah</div></div><div class="lc-time">09:10</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Nasi tim 170 gr</div></div><div class="lc-time">12:15</div></div><div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 45 menit</div></div><div class="lc-time">13:30</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Obat Demam</div><div class="lc-desc">Sesuai resep dokter</div></div><div class="lc-time">20:00</div></div></div></div></section>
+                        <section class="summary-day-group" data-day="jumat"><div class="summary-day-head"><span class="summary-day-main"><span class="summary-day-title">Sabtu</span><span class="summary-day-sub">28 Februari 2026</span></span><span class="summary-day-meta"><span class="summary-day-count">5 log</span></span></div><div class="summary-day-panel"><div class="summary-day-list"><div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 180 ml</div></div><div class="lc-time">07:15</div></div><div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pup</div><div class="lc-desc">Kondisi normal</div></div><div class="lc-time">08:25</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Bubur 140 gr</div></div><div class="lc-time">11:55</div></div><div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 35 menit</div></div><div class="lc-time">13:05</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">16:45</div></div></div></div></section>
+                        <section class="summary-day-group" data-day="sabtu"><div class="summary-day-head"><span class="summary-day-main"><span class="summary-day-title">Minggu</span><span class="summary-day-sub">01 Maret 2026</span></span><span class="summary-day-meta"><span class="summary-day-count">5 log</span></span></div><div class="summary-day-panel"><div class="summary-day-list"><div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 190 ml</div></div><div class="lc-time">07:00</div></div><div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pipis</div><div class="lc-desc">Popok basah</div></div><div class="lc-time">08:45</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Nasi tim 160 gr</div></div><div class="lc-time">12:20</div></div><div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 40 menit</div></div><div class="lc-time">13:35</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">17:10</div></div></div></div></section>
+                        <section class="summary-day-group" data-day="minggu"><div class="summary-day-head"><span class="summary-day-main"><span class="summary-day-title">Senin</span><span class="summary-day-sub">02 Maret 2026</span></span><span class="summary-day-meta"><span class="summary-day-count">5 log</span></span></div><div class="summary-day-panel"><div class="summary-day-list"><div class="log-card"><div class="lc-icon sus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div><div class="lc-content"><div class="lc-title">Minum Susu</div><div class="lc-desc">Susu formula 200 ml</div></div><div class="lc-time">07:20</div></div><div class="log-card"><div class="lc-icon pup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.17 1 2.8 2 4 1-1.2 2-2.83 2-4a2 2 0 0 0-2-2Z"/><path d="M3 21h18"/><path d="M15 21v-3.5a4.5 4.5 0 0 0-6 0V21"/></svg></div><div class="lc-content"><div class="lc-title">Diaper / Pup</div><div class="lc-desc">Kondisi normal</div></div><div class="lc-time">09:00</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div class="lc-content"><div class="lc-title">Makan Padat</div><div class="lc-desc">Puree kentang 150 gr</div></div><div class="lc-time">12:00</div></div><div class="log-card"><div class="lc-icon tdr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div class="lc-content"><div class="lc-title">Tidur Siang</div><div class="lc-desc">Durasi 30 menit</div></div><div class="lc-time">13:50</div></div><div class="log-card"><div class="lc-icon mkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.2 0-2.4.6-3 1.7A3.6 3.6 0 0 0 4.6 9c-1 .6-1.7 1.8-1.7 3s.7 2.4 1.7 3c-.3 1.2 0 2.5 1 3.4.8.8 2.1 1.2 3.3 1 .6 1 1.8 1.6 3 1.6s2.4-.6 3-1.7c1.2.3 2.5 0 3.4-1 .8-.8 1.2-2 1-3.3 1-.6 1.6-1.8 1.6-3s-.6-2.4-1.7-3c.3-1.2 0-2.5-1-3.4a3.7 3.7 0 0 0-3.3-1c-.6-1-1.8-1.6-3-1.6Z"/></svg></div><div class="lc-content"><div class="lc-title">Vitamin D3</div><div class="lc-desc">1 tetes</div></div><div class="lc-time">16:50</div></div></div></div></section>
+                    </div>
+                    <div class="demo-actions" style="opacity:1; margin-top:0;">
+                        <button class="btn-primary" onclick="startSummaryProcess()">Buat Rangkuman Pintar</button>
+                    </div>
+                </div>
+
+                <div class="summary-demo-loading" id="summaryLoading">
+                    <div class="loader"></div>
+                    <div class="demo-title">Menyusun Rangkuman Pintar...</div>
+                    <div class="demo-hint">AI sedang merangkum data log harian.</div>
+                </div>
+
+                <div class="summary-result" id="summaryResult">
+                    <div class="summary-card info">
+                        <div class="summary-label">ℹ️ INFO RENTANG</div>
+                        <p>- <strong>Periode analisis:</strong> 24 Februari 2026 s/d 02 Maret 2026 (7 hari).</p>
+                        <p>- <strong>Sumber data:</strong> 35 log aktivitas anak yang terdiri dari makan padat, susu, tidur siang, diaper, vitamin, dan obat.</p>
+                        <p>- <strong>Kelengkapan catatan:</strong> Data makan, minum, tidur, eliminasi, dan kesehatan tercatat konsisten setiap hari, sehingga AI punya konteks yang cukup untuk membaca pola mingguan.</p>
+                        <p>- <strong>Catatan keterbatasan:</strong> Pada rentang ini belum ada log growth, milestone, atau vaksin, jadi rangkuman difokuskan pada rutinitas harian dan pengamatan dasar keluarga.</p>
+                    </div>
+                    <div class="summary-card main">
+                        <div class="summary-label">✨ RINGKASAN UTAMA</div>
+                        <p>- <strong>Asupan nutrisi mingguan</strong> terlihat cukup stabil, dengan total 1.080 gr makanan padat dan 1.310 ml susu formula selama 7 hari.</p>
+                        <p>- <strong>Pola makan padat</strong> berada di kisaran 140–170 gr per hari, menunjukkan anak tetap menerima asupan utama secara teratur tanpa penurunan tajam.</p>
+                        <p>- <strong>Pola minum susu</strong> berada di rentang 170–200 ml per catatan utama, dengan frekuensi yang konsisten sebagai pelengkap kebutuhan cairan harian.</p>
+                        <p>- <strong>Tidur siang</strong> tercatat 30–45 menit per hari dengan total 255 menit dalam seminggu; polanya konsisten tetapi durasinya cenderung singkat.</p>
+                        <p>- <strong>Eliminasi</strong> terpantau setiap hari melalui catatan pup atau pipis, tanpa tanda keluhan menonjol pada mayoritas hari.</p>
+                        <p>- <strong>Pemberian vitamin/obat</strong> juga terdokumentasi rapi, terutama vitamin D3 harian dan satu catatan obat demam pada Jumat malam yang penting untuk konteks konsultasi.</p>
+                        <p>- <strong>Gambaran umum minggu ini</strong> menunjukkan rutinitas anak relatif stabil, dengan variasi kecil pada menu makan dan durasi tidur, namun belum terlihat perubahan ekstrem yang mengganggu pola harian.</p>
+                    </div>
+                    <div class="summary-card table">
+                        <div class="summary-label">📊 ANGKA RINGKAS</div>
+                        <p><strong>Total log:</strong> 35 aktivitas selama 7 hari.</p>
+                        <p><strong>Makan padat:</strong> 1.080 gr total • rata-rata sekitar 154 gr per hari.</p>
+                        <p><strong>Susu formula:</strong> 1.310 ml total • rata-rata sekitar 187 ml per hari.</p>
+                        <p><strong>Tidur siang:</strong> 255 menit total • rata-rata sekitar 36 menit per hari.</p>
+                        <p><strong>Eliminasi utama:</strong> 7 catatan harian tercatat konsisten.</p>
+                        <p><strong>Vitamin/obat:</strong> 7 catatan kesehatan, dengan vitamin rutin dan 1 catatan obat demam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-4 shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)] z-50 md:hidden flex justify-between items-center transition-transform duration-300 mobile-bottom-cta">
+      <div class="flex flex-col mobile-bottom-cta-label">
+        <span class="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Asisten Pintar AI</span>
+        <span class="text-sm font-bold text-gray-900 leading-none mt-1">Mulai Catat Gratis</span>
+      </div>
+      <a href="https://langkahkecil-v-1.pages.dev" class="bg-purple-600 text-white font-bold py-2.5 px-6 rounded-full shadow-md hover:bg-purple-700 active:scale-95 transition-all text-sm mobile-bottom-cta-button">
+        Buka Aplikasi
+      </a>
+    </div>
+
     <script>
-        function initReveal() { const r = document.querySelectorAll('.rv'); new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe && r.forEach(el => new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe(el)) }
-        function initNav() { const n = document.getElementById('navbar'); window.addEventListener('scroll', () => { n.classList.toggle('sc', scrollY > 50) }) }
-        function initMob() { const t = document.getElementById('navToggle'), l = document.getElementById('navLinks'); t.addEventListener('click', () => { l.classList.toggle('open'); const s = t.querySelectorAll('span'), o = l.classList.contains('open'); s[0].style.transform = o ? 'rotate(45deg) translate(5px,5px)' : ''; s[1].style.opacity = o ? '0' : ''; s[2].style.transform = o ? 'rotate(-45deg) translate(5px,-5px)' : '' }); l.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { l.classList.remove('open'); t.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = '' }) })) }
+        // Demo Logic
+        let demoTimeout1, demoTimeout2, demoTimeout3, summaryTimeout;
+
+        function openDemo() {
+            document.getElementById('demoOverlay').classList.add('active');
+            resetDemoState();
+            document.body.style.overflow = 'hidden'; // prevent bg scroll
+        }
+
+        function closeDemo() {
+            document.getElementById('demoOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+            clearTimeout(demoTimeout1);
+            clearTimeout(demoTimeout2);
+            clearTimeout(demoTimeout3);
+            clearTimeout(summaryTimeout);
+        }
+
+        function resetDemoState() {
+            document.querySelectorAll('.ds-idle, .ds-listening, .ds-parsing, .ds-result').forEach(el => el.classList.remove('active'));
+            document.getElementById('dsIdle').classList.add('active');
+            document.getElementById('listenStatus').innerText = "Mendengarkan...";
+            document.getElementById('liveTranscript').classList.remove('show');
+            document.querySelectorAll('.lc-anim').forEach(el => el.classList.remove('show'));
+            document.getElementById('demoActions').classList.remove('show');
+            
+            // Scroll ke atas modal
+            const bBody = document.getElementById('demoBody');
+            if(bBody) bBody.scrollTop = 0;
+        }
+
+        function startDemoRecording() {
+            // Switch to Listening
+            document.getElementById('dsIdle').classList.remove('active');
+            document.getElementById('dsListen').classList.add('active');
+
+            // 1. Show transcript after 2s
+            demoTimeout1 = setTimeout(() => {
+                document.getElementById('listenStatus').innerText = "Merekam...";
+                document.getElementById('liveTranscript').classList.add('show');
+                
+                // 2. Switch to Parsing after 2.5s more
+                demoTimeout2 = setTimeout(() => {
+                    document.getElementById('dsListen').classList.remove('active');
+                    document.getElementById('dsParse').classList.add('active');
+                    
+                    // 3. Switch to Result after 1.5s more
+                    demoTimeout3 = setTimeout(() => {
+                        document.getElementById('dsParse').classList.remove('active');
+                        document.getElementById('dsResult').classList.add('active');
+                        
+                        // Scroll top
+                        document.getElementById('demoBody').scrollTop = 0;
+
+                        // Trigger card animations
+                        setTimeout(() => {
+                            document.querySelectorAll('.lc-anim').forEach(el => el.classList.add('show'));
+                            document.getElementById('demoActions').classList.add('show');
+                        }, 50);
+
+                    }, 1800);
+                }, 3000);
+            }, 1500);
+        }
+
+        function openSummaryDemo() {
+            document.getElementById('summaryOverlay').classList.add('active');
+            document.getElementById('summaryLogsStage').classList.add('active');
+            document.getElementById('summaryLoading').classList.remove('active');
+            document.getElementById('summaryResult').classList.remove('active');
+            document.body.style.overflow = 'hidden';
+            clearTimeout(summaryTimeout);
+            document.getElementById('summaryDemoBody').scrollTop = 0;
+        }
+
+        function startSummaryProcess() {
+            document.getElementById('summaryLogsStage').classList.remove('active');
+            document.getElementById('summaryLoading').classList.add('active');
+            document.getElementById('summaryResult').classList.remove('active');
+            clearTimeout(summaryTimeout);
+            summaryTimeout = setTimeout(() => {
+                document.getElementById('summaryLoading').classList.remove('active');
+                document.getElementById('summaryResult').classList.add('active');
+                document.getElementById('summaryDemoBody').scrollTop = 0;
+            }, 2200);
+        }
+
+        function closeSummaryDemo() {
+            document.getElementById('summaryOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+            clearTimeout(summaryTimeout);
+        }
+        // Base Logic
+        function initReveal() {
+            const r = document.querySelectorAll('.rv');
+            if (window.innerWidth <= 768) {
+                r.forEach(el => el.classList.add('vis'));
+                return;
+            }
+            new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe && r.forEach(el => new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis') }) }, { threshold: .1, rootMargin: '0px 0px -50px 0px' }).observe(el))
+        }
+        function initNav() { const n = document.getElementById('navbar'); if (!n) return; const onScroll = () => n.classList.toggle('sc', window.scrollY > 8); onScroll(); window.addEventListener('scroll', onScroll, { passive: true }) }
+        function initMob() {
+            const t = document.getElementById('navToggle'), l = document.getElementById('navLinks');
+            if (!t || !l) return;
+            const spans = t.querySelectorAll('span');
+            const closeMenu = () => {
+                l.classList.remove('open');
+                spans.forEach(s => { s.style.transform = ''; s.style.opacity = '' });
+            };
+            t.addEventListener('click', () => {
+                l.classList.toggle('open');
+                const o = l.classList.contains('open');
+                spans[0].style.transform = o ? 'rotate(45deg) translate(5px,5px)' : '';
+                spans[1].style.opacity = o ? '0' : '';
+                spans[2].style.transform = o ? 'rotate(-45deg) translate(5px,-5px)' : '';
+            });
+            l.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+            window.addEventListener('scroll', () => { if (l.classList.contains('open')) closeMenu() }, { passive: true });
+            window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu() });
+        }
         function scrollToApp() { location.href = 'https://langkahkecil-v-1.pages.dev' }
-        document.addEventListener('DOMContentLoaded', () => { initReveal(); initNav(); initMob() });
+        document.addEventListener('DOMContentLoaded', () => { initReveal(); initNav(); initMob(); });
     </script>
 </body>
 
